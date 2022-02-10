@@ -1,25 +1,25 @@
-package meals.sql;
+package sql;
 
 /**
  * Holds methods containing strings with SQL commands for
- * manipulating the <code>Ingredients</code> table.
+ * manipulating the <code>RecipesIngredients</code> table.
  *
  * For more information database structure documentation is located at:
  * <a href="http://www.ericrytting.com/DatabaseDocs/">Docs</a>
  *
  * @author Eric R
  */
-public class SQLMeals {
+public class SQLRecipesIngredients {
     /**
      * Creates a string containing SQL commands to create
-     * the <code>Ingredients</code> table.
+     * the <code>RecipesIngredients</code> table.
      * <p>
      * Creates the table with the columns:
-     * ID, MealName, RecipeID, Photo.
+     * RecipeID and IngredientID.
      * <p>
      *
      * @return a string containing the SQL commands to create the
-     * <code>Ingredients</code> table.
+     * <code>RecipesIngredients</code> table.
      */
     public String createDatabase() {
         return null;
@@ -28,10 +28,10 @@ public class SQLMeals {
 
     /**
      * Creates a string containing SQL commands to drop
-     * the <code>Ingredients</code> table from the database.
+     * the <code>RecipesIngredients</code> table from the database.
      *
      * @return the string containing the SQL commands to drop the
-     * <code>Ingredients</code> table.
+     * <code>RecipesIngredients</code> table.
      */
     public String dropDatabase() {
         return null;
@@ -40,10 +40,10 @@ public class SQLMeals {
 
     /**
      * Creates a string containing SQL commands to pull all
-     * the information from the <code>Ingredients</code> table.
+     * the information from the <code>RecipesIngredients</code> table.
      *
      * @return the string containing the SQL commands to pull all
-     * data from the <code>Ingredients</code> table.
+     * data from the <code>RecipesIngredients</code> table.
      */
     public String allDataFromDatabase() {
         return null;
@@ -52,10 +52,10 @@ public class SQLMeals {
 
     /**
      * Creates a string containing SQL commands to put insert new data
-     * into the <code>Ingredients</code> table.
+     * into the <code>RecipesIngredients</code> table.
      *
      * @return the string containing the SQL commands to insert new
-     * data into the <code>Ingredients</code> table.
+     * data into the <code>RecipesIngredients</code> table.
      */
     public String insertDataIntoDatabase() {
         return null;
