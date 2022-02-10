@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
  * @author Malcolm
  *
  */
+
 public class Main extends Application {
 	// Add a properties file that can be read from for SQL queries.
 	@Override

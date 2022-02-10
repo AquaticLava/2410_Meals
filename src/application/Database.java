@@ -9,6 +9,7 @@ import java.sql.Statement;
  * @author Malcolm
  *
  */
+
 public class Database {
 
 	private String databaseURL;
