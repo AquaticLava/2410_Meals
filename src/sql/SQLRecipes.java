@@ -69,7 +69,20 @@ public class SQLRecipes {
      * data into the <code>Recipes</code> table.
      */
     public String insertDataIntoDatabase() {
-        return null;
-        //todo Create method!
+    	
+    	return "INSERT INTO Recipes "
+    			+ "(Name, Instructions, CookTime, PrepTime, RecipeDescription, CostCategory) "
+    			+ "VALUES "
+    			+ "('Spaghetti Bolognese', '1. Cook Spaghetti 2. Add Bolognese', 30, 15, 'It's spaghetti"
+    			+ " with a red meat sauce', 1), "
+    			+ "('Sushi', '1. prepare meat 2. slice avocado 3. wrap in seaweed', 0, 20, 'Suhsi rolls', 3), "
+    			+ "('Grilled Cheese', '1. put cheese between two slices of bread 2. cook on buttered pan',"
+    			+ " 10, 5, 'A grilled cheese sandwich', 1), "
+    			+ "('Tonkotsu Ramen', '1. Bring chicken broth to boil 2. add egg, noodles, meat, and spices',"
+    			+ " 20, 5, 'delicious, spicy ramen', 2), "
+    			+ "('Carne Asada Burrito', '1.Cook beans 2. cube meats and cook ingredients"
+    			+ " 3. wrap in tortilla', 10, 10, 'A classic mexican burrito', 2)"
+    			+ ")";
     }
 }
+

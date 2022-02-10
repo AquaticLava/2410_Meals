@@ -69,14 +69,16 @@ public class SQLIngredients {
 
     	return "INSERT INTO Ingredients "
 				+ "(Name, NutritionInfo) VALUES "
-				+ "('Spaghetti', 'Nutrition'), "
-				+ "('Tomato Sauce', 'Nutrition'), "
-				+ "('Ground Beef', 'Nutrition'), "
-				+ "('Tortillas', 'Nutrition'), "
+				+ "('Spaghetti', 'Healthy'), "
+				+ "('Tomato Sauce', 'Healthy'), "
+				+ "('Ground Beef', 'Healthy'), "
+				+ "('Tortillas', 'Unhealthy'), "
 				+ "('Eggs', 'Nutrition'), "
-				+ "('White Rice', 'Nutrition'), "
-				+ "('Avocado', 'Nutrition'), "
-				+ "('Black Beans', 'Nutrition')";
+				+ "('White Rice', 'Unhealthy'), "
+				+ "('Avocado', 'Healthy'), "
+				+ "('Bread', 'Unhealthy'), "
+				+ "('Cheese', 'Unhealthy'), "
+				+ "('Black Beans', 'Healthy')";
     }
 
 }

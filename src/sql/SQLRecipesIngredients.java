@@ -22,8 +22,10 @@ public class SQLRecipesIngredients {
      * <code>RecipesIngredients</code> table.
      */
     public String createDatabase() {
-        return null;
-        //todo Create method!
+
+    	return "CREATE TABLE RecipesIngredients ("
+    			+ "RecipeId int, "
+    			+ "IngredientId int)";
     }
 
     /**
@@ -34,8 +36,8 @@ public class SQLRecipesIngredients {
      * <code>RecipesIngredients</code> table.
      */
     public String dropDatabase() {
-        return null;
-        //todo Create method!
+
+    	return "DROP TABLE RecipesIngredients";
     }
 
     /**
@@ -46,8 +48,8 @@ public class SQLRecipesIngredients {
      * data from the <code>RecipesIngredients</code> table.
      */
     public String allDataFromDatabase() {
-        return null;
-        //todo Create method!
+
+    	return "SELECT * FROM RecipesIngredients";
     }
 
     /**
@@ -58,7 +60,24 @@ public class SQLRecipesIngredients {
      * data into the <code>RecipesIngredients</code> table.
      */
     public String insertDataIntoDatabase() {
-        return null;
-        //todo Create method!
+
+    	return "INSERT INTO RecipesIngredients "
+    			+ "(RecipeId, IngredientId) "
+    			+ "VALUES "
+    			+ "(1, 1), "
+    			+ "(1, 2), "
+    			+ "(1, 3), "
+    			+ "(2, 6), "
+    			+ "(2, 7), "
+    			+ "(3, 8), "
+    			+ "(3, 9), "
+    			+ "(4, 1), "
+    			+ "(4, 3), "
+    			+ "(4, 5), "
+    			+ "(5, 3), "
+    			+ "(5, 4), "
+    			+ "(5, 7), "
+    			+ "(5, 9), "
+    			+ "(5, 10))";
     }
 }
