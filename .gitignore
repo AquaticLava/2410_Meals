@@ -1,0 +1,12 @@
+### IntelliJ Idea
+.idea/
+
+### java libraries
+lib/
+
+### eclipse stuff
+.classpath/
+.settings/
+.project
+build.fxbuild
+bin/
