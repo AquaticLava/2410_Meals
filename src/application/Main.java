@@ -1,11 +1,12 @@
 package application;
 
+import java.sql.SQLException;
 import java.sql.Statement;
-
 import javafx.application.Application;
-import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import sql.SQLMeals;
 
 /**
  * 
@@ -34,5 +35,17 @@ public class Main extends Application {
 		Database db = new Database();
 		Statement s = db.getStatement();
 		
+		try {
+			s.execute(SQLMeals.createTable());
+			
+			
+			
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

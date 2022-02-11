@@ -12,7 +12,7 @@ import java.sql.Statement;
 
 public class Database {
 
-	private String databaseURL;
+	private String databaseURL = "jdbc:derby:MealDatabase;create=true";
 	private Connection c;
 	private Statement s;
 	

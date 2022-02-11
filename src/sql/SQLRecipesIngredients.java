@@ -21,7 +21,7 @@ public class SQLRecipesIngredients {
      * @return a string containing the SQL commands to create the
      * <code>RecipesIngredients</code> table.
      */
-    public String createDatabase() {
+	public static String createTable() {
 
     	return "CREATE TABLE RecipesIngredients ("
     			+ "RecipeId int, "
@@ -35,7 +35,7 @@ public class SQLRecipesIngredients {
      * @return the string containing the SQL commands to drop the
      * <code>RecipesIngredients</code> table.
      */
-    public String dropDatabase() {
+    public static String dropTable() {
 
     	return "DROP TABLE RecipesIngredients";
     }
@@ -47,7 +47,7 @@ public class SQLRecipesIngredients {
      * @return the string containing the SQL commands to pull all
      * data from the <code>RecipesIngredients</code> table.
      */
-    public String allDataFromDatabase() {
+    public static String allDataFromTable() {
 
     	return "SELECT * FROM RecipesIngredients";
     }
@@ -59,7 +59,7 @@ public class SQLRecipesIngredients {
      * @return the string containing the SQL commands to insert new
      * data into the <code>RecipesIngredients</code> table.
      */
-    public String insertDataIntoDatabase() {
+    public static String insertDataIntoTable() {
 
     	return "INSERT INTO RecipesIngredients "
     			+ "(RecipeId, IngredientId) "
