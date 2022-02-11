@@ -81,7 +81,7 @@ public class SQLRecipesIngredients {
     			+ "(5, 4), "
     			+ "(5, 7), "
     			+ "(5, 9), "
-    			+ "(5, 10))";
+    			+ "(5, 10)";
     }
     
 	public static void printData(ResultSet rs) throws SQLException {
@@ -94,7 +94,7 @@ public class SQLRecipesIngredients {
 			int recipeId = rs.getInt("RecipeId");
 			int ingredientId = rs.getInt("IngredientId");
 			
-			System.out.printf("%d | %d ",
+			System.out.printf("%d | %d%n",
 					recipeId, ingredientId);
 		}
 	}

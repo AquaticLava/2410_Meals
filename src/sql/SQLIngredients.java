@@ -95,7 +95,7 @@ public class SQLIngredients {
 			String name = rs.getString("Name");
 			String nutrition = rs.getString("NutritionInfo");
 			
-			System.out.printf("%d | %s | %s",
+			System.out.printf("%d | %s | %s%n",
 					id, name, nutrition);
 		}
 	}

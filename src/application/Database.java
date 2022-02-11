@@ -18,7 +18,6 @@ public class Database {
 	
 	Database(){
 		
-		
 		try(Connection c = 
 				DriverManager.getConnection(databaseURL);
 				Statement s = c.createStatement();) {		
@@ -26,6 +25,7 @@ public class Database {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 	
 	

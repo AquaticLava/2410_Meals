@@ -30,9 +30,9 @@ public class SQLMeals {
 		return "CREATE TABLE Meals ("
 				+ "Id int not null primary key "
 				+ "GENERATED ALWAYS AS IDENTITY "
-				+ "(START WITH 1, INCREMENT BY 1),"
+				+ "(START WITH 1, INCREMENT BY 1), "
 				+ "Name varchar(255), "
-				+ "Photo varchar(255)"
+				+ "Photo varchar(255), "
 				+ "RecipeId int )";
     }
 
@@ -71,11 +71,11 @@ public class SQLMeals {
     	
 		return "INSERT INTO Meals "
 				+ "(Name, Photo, RecipeId) VALUES "
-				+ "('Spaghetti Bolognese', 'Pic001.png', '1'), "
-				+ "('Sushi', 'Pic002.png', '2'), "
-				+ "('Grilled Cheese', 'Pic003.png', '3'), "
-				+ "('Tonkotsu Ramen', 'Pic004.png', '4'), "
-				+ "('Carne Asada Burrito', 'Pic005.png', '5')";
+				+ "('Spaghetti Bolognese', 'Pic001.png', 1), "
+				+ "('Sushi', 'Pic002.png', 2), "
+				+ "('Grilled Cheese', 'Pic003.png', 3), "
+				+ "('Tonkotsu Ramen', 'Pic004.png', 4), "
+				+ "('Carne Asada Burrito', 'Pic005.png', 5)";
     }
     
 	public static void printData(ResultSet rs) throws SQLException {
@@ -90,7 +90,7 @@ public class SQLMeals {
 			String photo = rs.getString("Photo");
 			int recipeId = rs.getInt("RecipeId");
 			
-			System.out.printf("%d | %s | %s | %d ",
+			System.out.printf("%d | %s | %s | %d%n ",
 					id, name, photo, recipeId);
 			
 		}

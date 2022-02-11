@@ -31,7 +31,7 @@ public class SQLRecipes {
 		return "CREATE TABLE Recipes ("
 				+ "Id int not null primary key "
 				+ "GENERATED ALWAYS AS IDENTITY "
-				+ "(START WITH 1, INCREMENT BY 1),"
+				+ "(START WITH 1, INCREMENT BY 1), "
 				+ "Name varchar(255), "
 				+ "Instructions varchar(5000), "
 				+ "CookTime int, "
@@ -76,16 +76,15 @@ public class SQLRecipes {
     	return "INSERT INTO Recipes "
     			+ "(Name, Instructions, CookTime, PrepTime, RecipeDescription, CostCategory) "
     			+ "VALUES "
-    			+ "('Spaghetti Bolognese', '1. Cook Spaghetti 2. Add Bolognese', 30, 15, 'It's spaghetti"
+    			+ "('Spaghetti Bolognese', '1. Cook Spaghetti 2. Add Bolognese', 30, 15, 'It is spaghetti"
     			+ " with a red meat sauce', 1), "
-    			+ "('Sushi', '1. prepare meat 2. slice avocado 3. wrap in seaweed', 0, 20, 'Suhsi rolls', 3), "
-    			+ "('Grilled Cheese', '1. put cheese between two slices of bread 2. cook on buttered pan',"
-    			+ " 10, 5, 'A grilled cheese sandwich', 1), "
-    			+ "('Tonkotsu Ramen', '1. Bring chicken broth to boil 2. add egg, noodles, meat, and spices',"
-    			+ " 20, 5, 'delicious, spicy ramen', 2), "
+    			+ "('Sushi', '1. prepare meat 2. slice avocado 3. wrap in seaweed', 0, 20, 'Sushi rolls', 3), "
+    			+ "('Grilled Cheese', '1. put cheese between two slices of bread 2. cook on buttered pan', "
+    			+ "10, 5, 'A grilled cheese sandwich', 1), "
+    			+ "('Tonkotsu Ramen', '1. Bring chicken broth to boil 2. add egg, noodles, meat, and spices', "
+    			+ "20, 5, 'delicious, spicy ramen', 2), "
     			+ "('Carne Asada Burrito', '1.Cook beans 2. cube meats and cook ingredients"
-    			+ " 3. wrap in tortilla', 10, 10, 'A classic mexican burrito', 2)"
-    			+ ")";
+    			+ " 3. wrap in tortilla', 10, 10, 'A classic mexican burrito', 2)";
     }
     
 	public static void printData(ResultSet rs) throws SQLException {
@@ -103,7 +102,7 @@ public class SQLRecipes {
 			String description = rs.getString("RecipeDescription");
 			int costCategory = rs.getInt("CostCategory");
 			
-			System.out.printf("%d | %-10s | %s | %d | %d | %s | %d",
+			System.out.printf("%d | %-10s | %s | %d | %d | %s | %d%n",
 					id, name, instructions, cookTime, prepTime, description, costCategory);
 		}
 	}
