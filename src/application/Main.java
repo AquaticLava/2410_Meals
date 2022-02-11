@@ -1,12 +1,13 @@
 package application;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import sql.SQLMeals;
+import sql.*;
 
 /**
  * 
@@ -37,7 +38,24 @@ public class Main extends Application {
 		
 		try {
 			s.execute(SQLMeals.createTable());
+			s.execute(SQLMeals.insertDataIntoTable());
+			ResultSet rsMeals = s.executeQuery(SQLMeals.allDataFromTable());
+			SQLMeals.printData(rsMeals);
 			
+			s.execute(SQLRecipes.createTable());
+			s.execute(SQLRecipes.insertDataIntoTable());
+			ResultSet rsRecipes = s.executeQuery(SQLRecipes.allDataFromTable());
+			SQLRecipes.printData(rsRecipes);
+			
+			s.execute(SQLIngredients.createTable());
+			s.execute(SQLIngredients.insertDataIntoTable());
+			ResultSet rsIngredients = s.executeQuery(SQLIngredients.allDataFromTable());
+			SQLIngredients.printData(rsIngredients);
+			
+			s.execute(SQLRecipesIngredients.createTable());
+			s.execute(SQLRecipesIngredients.insertDataIntoTable());
+			ResultSet rsRecipesIngredients = s.executeQuery(SQLRecipesIngredients.allDataFromTable());
+			SQLRecipesIngredients.printData(rsRecipesIngredients);
 			
 			
 			

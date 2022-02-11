@@ -78,7 +78,7 @@ public class SQLMeals {
 				+ "('Carne Asada Burrito', 'Pic005.png', '5')";
     }
     
-	static void printData(ResultSet rs) throws SQLException {
+	public static void printData(ResultSet rs) throws SQLException {
 		
 		System.out.println("Id   | Meal Name | Photo | Recipe Id");
 		System.out.println("____________________________________");
@@ -87,8 +87,11 @@ public class SQLMeals {
 			
 			int id = rs.getInt("Id");
 			String name = rs.getString("Name");
-			String photo = rs.getString("photoName");
+			String photo = rs.getString("Photo");
 			int recipeId = rs.getInt("RecipeId");
+			
+			System.out.printf("%d | %s | %s | %d ",
+					id, name, photo, recipeId);
 			
 		}
 	}

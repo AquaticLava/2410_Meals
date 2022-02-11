@@ -1,5 +1,8 @@
 package sql;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * Holds methods containing strings with SQL commands for
  * manipulating the <code>Ingredients</code> table.
@@ -80,5 +83,21 @@ public class SQLIngredients {
 				+ "('Cheese', 'Unhealthy'), "
 				+ "('Black Beans', 'Healthy')";
     }
+    
+	public static void printData(ResultSet rs) throws SQLException {
+		
+		System.out.println("Id   | Name | Nutrition Info");
+		System.out.println("____________________________");
+		
+		while(rs.next()) {
+			
+			int id = rs.getInt("Id");
+			String name = rs.getString("Name");
+			String nutrition = rs.getString("NutritionInfo");
+			
+			System.out.printf("%d | %s | %s",
+					id, name, nutrition);
+		}
+	}
 
 }
