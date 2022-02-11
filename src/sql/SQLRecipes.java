@@ -89,8 +89,8 @@ public class SQLRecipes {
     
 	public static void printData(ResultSet rs) throws SQLException {
 		
-		System.out.println("Id   | Recipe Name | Instructions | Cook Time | Prep Time | Description | Cost Category");
-		System.out.println("_______________________________________________________________________________________");
+		System.out.println("Id |     Recipe Name     |                              Instructions                              | Cook Time | Prep Time |               Description                | Cost Category");
+		System.out.println("___________________________________________________________________________________________________________________________________________________________________________");
 		
 		while(rs.next()) {
 			
@@ -102,7 +102,7 @@ public class SQLRecipes {
 			String description = rs.getString("RecipeDescription");
 			int costCategory = rs.getInt("CostCategory");
 			
-			System.out.printf("%d | %-10s | %s | %d | %d | %s | %d%n",
+			System.out.printf("%-3d| %-19s | %-70s | %-9d | %-9d | %-40s | %-10d%n",
 					id, name, instructions, cookTime, prepTime, description, costCategory);
 		}
 	}

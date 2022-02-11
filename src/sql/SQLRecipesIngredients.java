@@ -94,7 +94,7 @@ public class SQLRecipesIngredients {
 			int recipeId = rs.getInt("RecipeId");
 			int ingredientId = rs.getInt("IngredientId");
 			
-			System.out.printf("%d | %d%n",
+			System.out.printf("%-9d | %-12d%n",
 					recipeId, ingredientId);
 		}
 	}

@@ -86,8 +86,8 @@ public class SQLIngredients {
     
 	public static void printData(ResultSet rs) throws SQLException {
 		
-		System.out.println("Id   | Name | Nutrition Info");
-		System.out.println("____________________________");
+		System.out.println("Id |      Name      | Nutrition Info");
+		System.out.println("____________________________________");
 		
 		while(rs.next()) {
 			
@@ -95,7 +95,7 @@ public class SQLIngredients {
 			String name = rs.getString("Name");
 			String nutrition = rs.getString("NutritionInfo");
 			
-			System.out.printf("%d | %s | %s%n",
+			System.out.printf("%-2d | %-14s | %-14s%n",
 					id, name, nutrition);
 		}
 	}
