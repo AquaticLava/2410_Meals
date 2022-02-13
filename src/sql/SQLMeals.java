@@ -80,8 +80,8 @@ public class SQLMeals {
     
 	public static void printData(ResultSet rs) throws SQLException {
 		
-		System.out.println("Id |     Meal Name     |   Photo   | Recipe Id");
-		System.out.println("______________________________________________");
+		System.out.println(" Id |      Meal Name      |   Photo    | Recipe Id");
+		System.out.println("__________________________________________________");
 		
 		while(rs.next()) {
 			
@@ -90,7 +90,7 @@ public class SQLMeals {
 			String photo = rs.getString("Photo");
 			int recipeId = rs.getInt("RecipeId");
 			
-			System.out.printf("%-2d| %-19s | %-9s | %d%n ",
+			System.out.printf("%4d| %-19s | %-9s | %d%n",
 					id, name, photo, recipeId);
 			
 		}
