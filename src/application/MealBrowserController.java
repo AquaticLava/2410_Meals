@@ -15,31 +15,14 @@ public class MealBrowserController {
 	private Stage stage;
 	private Scene scene;
 	
-	public void switchToViewMeals(ActionEvent event) throws IOException {
+	public void switchToMainMenu(ActionEvent event) throws IOException {
 		
-		root = FXMLLoader.load(getClass().getResource("ViewMeals.fxml"));
+		root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
 		scene = new Scene(root);
 		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();
 	}
-	
-	public void switchToAddMeals(ActionEvent event) throws IOException {
-		
-		root = FXMLLoader.load(getClass().getResource("AddMeal.fxml"));
-		scene = new Scene(root);
-		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
-	}
-	
-	public void switchToEditData(ActionEvent event) throws IOException {
-		
-		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
-		scene = new Scene(root);
-		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
-	}
+
 	
 }
