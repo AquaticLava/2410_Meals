@@ -14,13 +14,13 @@ import javafx.stage.Stage;
  * @author Malcolm
  *
  */
-public class AddMealController {
+public class AddIngredientController {
 	
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
 	
-	public void submitMeal(ActionEvent event) throws IOException {
+	public void submitIngredient(ActionEvent event) throws IOException {
 		
 		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
 		scene = new Scene(root);
@@ -28,4 +28,5 @@ public class AddMealController {
 		stage.setScene(scene);
 		stage.show();
 	}
+
 }
