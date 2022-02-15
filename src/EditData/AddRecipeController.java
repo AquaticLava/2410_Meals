@@ -3,10 +3,13 @@ package EditData;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -15,12 +18,23 @@ import javafx.stage.Stage;
  *
  */
 public class AddRecipeController {
-	
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
 	
+	
+	@FXML
+	private TextField recipeNameField;
+	private TextArea recipeInstructionField;
+	private TextField cookTimeField;
+	private TextField prepTimeField;
+	private TextArea recipeDescriptionField;
+	private TextField costCategoryField;
+	
+	
 	public void submitRecipe(ActionEvent event) throws IOException {
+		
+		//TODO submit the info to the database
 		
 		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
 		scene = new Scene(root);
