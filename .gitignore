@@ -5,8 +5,12 @@
 lib/
 
 ### eclipse stuff
-.classpath/
+.classpath
 .settings/
 .project
 build.fxbuild
 bin/
+
+### Databse Stuff
+derby.log
+MealDatabase/

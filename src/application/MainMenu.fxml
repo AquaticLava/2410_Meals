@@ -4,16 +4,15 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainMenuController">
    <children>
       <TitledPane animated="false" layoutX="-112.0" layoutY="-142.0" prefHeight="300.0" prefWidth="300.0" text="Recipe Book" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="111.0" layoutY="55.0" mnemonicParsing="false" text="View Meals" />
-                  <Button layoutX="113.0" layoutY="124.0" mnemonicParsing="false" text="Add Meals" />
-                  <Button layoutX="114.0" layoutY="189.0" mnemonicParsing="false" text="View Data" />
+                  <Button layoutX="111.0" layoutY="55.0" mnemonicParsing="false" onAction="#switchToMealBrowser" text="Meal Browser" />
+                  <Button layoutX="113.0" layoutY="124.0" mnemonicParsing="false" onAction="#switchToAddMeals" text="Add Meals" />
+                  <Button layoutX="114.0" layoutY="189.0" mnemonicParsing="false" onAction="#switchToEditData" text="View Data" />
                </children>
             </AnchorPane>
         </content>
