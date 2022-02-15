@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="499.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TabPane layoutX="-148.0" layoutY="-69.0" prefHeight="500.0" prefWidth="500.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="50.0" tabMaxWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -15,17 +15,16 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="150.0" layoutY="38.0" prefHeight="433.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="38.0">
+                        <TableView layoutX="150.0" layoutY="38.0" prefHeight="433.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                           <columns>
+                            <TableColumn prefWidth="75.0" text="Id" />
                             <TableColumn prefWidth="75.0" text="Name" />
-                            <TableColumn prefWidth="75.0" text="Field 1" />
-                              <TableColumn prefWidth="75.0" text="Field 2" />
-                              <TableColumn prefWidth="75.0" text="Field 3" />
+                              <TableColumn prefWidth="75.0" text="Nutrition Info" />
                           </columns>
                         </TableView>
                         <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Add Item" />
-                        <Button layoutX="100.0" layoutY="14.0" mnemonicParsing="false" text="Delete Item" />
-                        <Button layoutX="203.0" layoutY="14.0" mnemonicParsing="false" text="Edit Item" />
+                        <Button layoutX="142.0" layoutY="14.0" mnemonicParsing="false" text="Delete Item" />
+                        <Button layoutX="79.0" layoutY="14.0" mnemonicParsing="false" text="Edit Item" />
                      </children>
                   </AnchorPane>
               </content>
@@ -34,15 +33,17 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="-1.0" layoutY="53.0" prefHeight="419.0" prefWidth="500.0">
+                        <TableView layoutX="-1.0" layoutY="53.0" prefHeight="419.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
+                            <TableColumn prefWidth="75.0" text="Id" />
+                            <TableColumn prefWidth="75.0" text="Name" />
+                              <TableColumn prefWidth="75.0" text="Photo" />
+                              <TableColumn prefWidth="75.0" text="Recipe" />
                           </columns>
                         </TableView>
                         <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" text="Add Item" />
-                        <Button layoutX="182.0" layoutY="12.0" mnemonicParsing="false" text="Delete Item" />
-                        <Button layoutX="100.0" layoutY="12.0" mnemonicParsing="false" text="Edit Item" />
+                        <Button layoutX="142.0" layoutY="12.0" mnemonicParsing="false" text="Delete Item" />
+                        <Button layoutX="79.0" layoutY="12.0" mnemonicParsing="false" text="Edit Item" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -50,15 +51,20 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutY="57.0" prefHeight="418.0" prefWidth="500.0">
+                        <TableView layoutY="57.0" prefHeight="418.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
+                              <TableColumn prefWidth="75.0" text="Id" />
+                              <TableColumn prefWidth="75.0" text="Name" />
+                              <TableColumn prefWidth="75.0" text="Instructions" />
+                              <TableColumn prefWidth="75.0" text="CookTime" />
+                              <TableColumn prefWidth="75.0" text="PrepTime" />
+                              <TableColumn prefWidth="75.0" text="RecipeDescription" />
+                              <TableColumn prefWidth="75.0" text="CostCategory" />
                           </columns>
                         </TableView>
-                        <Button layoutY="25.0" mnemonicParsing="false" text="Add Item" />
-                        <Button layoutX="211.0" layoutY="25.0" mnemonicParsing="false" text="Delete Item" />
-                        <Button layoutX="110.0" layoutY="25.0" mnemonicParsing="false" text="Edit Item" />
+                        <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" text="Add Item" />
+                        <Button layoutX="142.0" layoutY="12.0" mnemonicParsing="false" text="Delete Item" />
+                        <Button layoutX="79.0" layoutY="12.0" mnemonicParsing="false" text="Edit Item" />
                      </children></AnchorPane>
             </content>
           </Tab>
