@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="499.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="499.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditData.EditDataController">
    <children>
       <TabPane layoutX="-148.0" layoutY="-69.0" prefHeight="500.0" prefWidth="500.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="50.0" tabMaxWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -22,7 +22,7 @@
                               <TableColumn prefWidth="75.0" text="Nutrition Info" />
                           </columns>
                         </TableView>
-                        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Add Item" />
+                        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToAddIngredient" text="Add Item" />
                         <Button layoutX="142.0" layoutY="14.0" mnemonicParsing="false" text="Delete Item" />
                         <Button layoutX="79.0" layoutY="14.0" mnemonicParsing="false" text="Edit Item" />
                      </children>
@@ -41,7 +41,7 @@
                               <TableColumn prefWidth="75.0" text="Recipe" />
                           </columns>
                         </TableView>
-                        <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" text="Add Item" />
+                        <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchToAddMeal" text="Add Item" />
                         <Button layoutX="142.0" layoutY="12.0" mnemonicParsing="false" text="Delete Item" />
                         <Button layoutX="79.0" layoutY="12.0" mnemonicParsing="false" text="Edit Item" />
                      </children></AnchorPane>
@@ -62,7 +62,7 @@
                               <TableColumn prefWidth="75.0" text="CostCategory" />
                           </columns>
                         </TableView>
-                        <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" text="Add Item" />
+                        <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchToAddRecipe" text="Add Item" />
                         <Button layoutX="142.0" layoutY="12.0" mnemonicParsing="false" text="Delete Item" />
                         <Button layoutX="79.0" layoutY="12.0" mnemonicParsing="false" text="Edit Item" />
                      </children></AnchorPane>

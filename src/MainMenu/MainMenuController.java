@@ -1,4 +1,4 @@
-package application;
+package MainMenu;
 
 import java.io.IOException;
 
@@ -9,6 +9,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Controller class for the main menu, controls buttons to navigate to other pages.
+ * @author Malcolm
+ *
+ */
 public class MainMenuController {
 	
 	private Parent root;
@@ -17,16 +22,7 @@ public class MainMenuController {
 	
 	public void switchToMealBrowser(ActionEvent event) throws IOException {
 		
-		root = FXMLLoader.load(getClass().getResource("MealBrowser.fxml"));
-		scene = new Scene(root);
-		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
-	}
-	
-	public void switchToAddMeals(ActionEvent event) throws IOException {
-		
-		root = FXMLLoader.load(getClass().getResource("AddMeal.fxml"));
+		root = FXMLLoader.load(getClass().getResource("/MealBrowser/MealBrowser.fxml"));
 		scene = new Scene(root);
 		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
@@ -35,7 +31,7 @@ public class MainMenuController {
 	
 	public void switchToEditData(ActionEvent event) throws IOException {
 		
-		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
+		root = FXMLLoader.load(getClass().getResource("/EditData/EditData.fxml"));
 		scene = new Scene(root);
 		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setScene(scene);

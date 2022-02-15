@@ -1,4 +1,4 @@
-package application;
+package EditData;
 
 import java.io.IOException;
 
@@ -9,22 +9,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class AddMealController {
+/**
+ * Controller class for the data editing tab, controls buttons and manipulates data records.
+ * @author Malcolm
+ *
+ */
+public class EditDataController {
 	
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
 	
-	public void switchToViewMeals(ActionEvent event) throws IOException {
-		
-		root = FXMLLoader.load(getClass().getResource("ViewMeals.fxml"));
-		scene = new Scene(root);
-		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
-	}
-	
-	public void switchToAddMeals(ActionEvent event) throws IOException {
+	public void switchToAddMeal(ActionEvent event) throws IOException {
 		
 		root = FXMLLoader.load(getClass().getResource("AddMeal.fxml"));
 		scene = new Scene(root);
@@ -33,9 +29,18 @@ public class AddMealController {
 		stage.show();
 	}
 	
-	public void switchToEditData(ActionEvent event) throws IOException {
+	public void switchToAddIngredient(ActionEvent event) throws IOException {
 		
-		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
+		root = FXMLLoader.load(getClass().getResource("AddIngredient.fxml"));
+		scene = new Scene(root);
+		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void switchToAddRecipe(ActionEvent event) throws IOException {
+		
+		root = FXMLLoader.load(getClass().getResource("AddRecipe.fxml"));
 		scene = new Scene(root);
 		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setScene(scene);

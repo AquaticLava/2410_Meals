@@ -1,4 +1,4 @@
-module Recipe_Book {
+module 2410_Meals {
 	requires javafx.controls;
 	requires java.sql;
 	requires javafx.fxml;
