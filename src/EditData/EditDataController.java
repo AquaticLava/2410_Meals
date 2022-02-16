@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import application.Ingredient;
+import application.Meal;
 import application.Recipe;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,6 +35,7 @@ public class EditDataController implements Initializable{
 	
 	@FXML
 	private TableView ingredientTableView;
+
 	@FXML
 	private TableView recipeTableView;
 	@FXML
@@ -52,10 +55,19 @@ public class EditDataController implements Initializable{
 	
 	@FXML
 	private TableView mealTableView;
+	@FXML
+	private TableColumn mealIdColumn;
+	@FXML
+	private TableColumn mealNameColumn;
+	@FXML
+	private TableColumn mealPhotoColumn;
+	@FXML
+	private TableColumn mealRecipeColumn;
 	
 	@Override
     public void initialize(URL location, ResourceBundle resources) {
 		
+		//Recipe table initialize
 		recipeIdColumn.setCellValueFactory(new PropertyValueFactory<Recipe,Integer>("Id"));
 		recipeNameColumn.setCellValueFactory(new PropertyValueFactory<Recipe,String>("recipeName"));
 		recipeInstructionsColumn.setCellValueFactory(new PropertyValueFactory<Recipe,String>("recipeInstructions"));
@@ -65,17 +77,48 @@ public class EditDataController implements Initializable{
 		recipeCostCategoryColumn.setCellValueFactory(new PropertyValueFactory<Recipe,Integer>("costCategory"));
 		
 		recipeTableView.getItems().setAll(parseRecipeList());
+		
+		//meal table initialize
+		mealIdColumn.setCellValueFactory(new PropertyValueFactory<Meal,Integer>("Id"));
+		mealNameColumn.setCellValueFactory(new PropertyValueFactory<Meal,String>("name"));
+		mealPhotoColumn.setCellValueFactory(new PropertyValueFactory<Meal,String>("photoName"));
+		mealRecipeColumn.setCellValueFactory(new PropertyValueFactory<Meal,Integer>("recipeId"));
+		
+		mealTableView.getItems().setAll(parseMealList());
     }
 	
     private List<Recipe> parseRecipeList(){
+    	//Here is where we will populate the recipe table with default 10 rows for each table
         //TODO parse and construct recipe datamodel list by looping your ResultSet rs
-        // and return the list  
+        // and return the list 
     	List<Recipe> r = new LinkedList<Recipe>();
     	r.add(new Recipe(1, "Ramen", "1. Put Noodles in Bowl \n 2. Add hot water, eggs, and beef",
     	           	        20, 15, "It\'s a bowl of delicious ramen", 1));
     	
     	return r;
     }
+    
+    private List<Meal> parseMealList(){
+    	//Here is where we will populate the meal table with default 10 rows for each table
+        //TODO parse and construct recipe datamodel list by looping your ResultSet rs
+        // and return the list 
+    	List<Meal> m = new LinkedList<Meal>();
+    	m.add(new Meal(1, "Ramen", "Meal_001.png", 1));
+    	
+    	return m;
+    }
+	
+//    private List<Ingredient> parseIngredientList(){
+//    	//Here is where we will populate the ingredient table with default 10 rows for each table
+//        //TODO parse and construct recipe datamodel list by looping your ResultSet rs
+//        // and return the list 
+//    	List<Ingredient> i = new LinkedList<Ingredient>();
+//    	i.add(new Ingredient(1, "Ramen", "1. Put Noodles in Bowl \n 2. Add hot water, eggs, and beef",
+//    	           	        20, 15, "It\'s a bowl of delicious ramen", 1));
+//    	
+//    	return i;
+//    }
+//	
 	
 	
 	public void switchToMainMenu(ActionEvent event) throws IOException {
@@ -112,6 +155,18 @@ public class EditDataController implements Initializable{
 		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();
+	}
+	
+	public void deleteRecipe(ActionEvent event) throws IOException {
+		//TODO need to add call to remove from database
+		Recipe selectedItem = (Recipe)recipeTableView.getSelectionModel().getSelectedItem();
+		recipeTableView.getItems().remove(selectedItem);
+	}
+	
+	public void deleteMeal(ActionEvent event) throws IOException {
+		//TODO need to add call to remove from database
+		Meal selectedItem = (Meal)recipeTableView.getSelectionModel().getSelectedItem();
+		mealTableView.getItems().remove(selectedItem);
 	}
 	
 }

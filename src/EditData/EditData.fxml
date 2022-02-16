@@ -36,14 +36,14 @@
                      <children>
                         <TableView fx:id="mealTableView" layoutX="-1.0" layoutY="53.0" prefHeight="419.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="Id" />
-                              <TableColumn prefWidth="75.0" text="Name" />
-                              <TableColumn prefWidth="75.0" text="Photo" />
-                              <TableColumn prefWidth="75.0" text="Recipe" />
+                              <TableColumn fx:id="mealIdColumn" prefWidth="75.0" text="Id" />
+                              <TableColumn fx:id="mealNameColumn" prefWidth="75.0" text="Name" />
+                              <TableColumn fx:id="mealPhotoColumn" prefWidth="75.0" text="Photo" />
+                              <TableColumn fx:id="mealRecipeColumn" prefWidth="75.0" text="Recipe" />
                            </columns>
                         </TableView>
                         <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchToAddMeal" text="Add Item" />
-                        <Button layoutX="142.0" layoutY="12.0" mnemonicParsing="false" text="Delete Item" />
+                        <Button layoutX="142.0" layoutY="12.0" mnemonicParsing="false" onAction="#deleteMeal" text="Delete Item" />
                         <Button layoutX="79.0" layoutY="12.0" mnemonicParsing="false" text="Edit Item" />
                         <Button layoutX="380.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="Main Menu" />
                      </children>
@@ -66,7 +66,7 @@
                            </columns>
                         </TableView>
                         <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchToAddRecipe" text="Add Item" />
-                        <Button layoutX="142.0" layoutY="12.0" mnemonicParsing="false" text="Delete Item" />
+                        <Button layoutX="142.0" layoutY="12.0" mnemonicParsing="false" onAction="#deleteRecipe" text="Delete Item" />
                         <Button layoutX="79.0" layoutY="12.0" mnemonicParsing="false" text="Edit Item" />
                         <Button layoutX="380.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="Main Menu" />
                      </children>

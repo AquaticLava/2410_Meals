@@ -16,6 +16,13 @@ public class Meal {
 	private String photoName;
 	private int recipeId;
 
+	public Meal(int Id, String name, String photoName, int recipeId) {
+		this.Id = Id;
+		this.name = name;
+		this.photoName = photoName;
+		this.recipeId = recipeId;
+	}
+	
 	public int getId() {
 		return Id;
 	}
