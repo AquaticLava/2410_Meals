@@ -94,7 +94,8 @@ public class EditDataController implements Initializable{
     	List<Recipe> r = new LinkedList<Recipe>();
     	r.add(new Recipe(1, "Ramen", "1. Put Noodles in Bowl \n 2. Add hot water, eggs, and beef",
     	           	        20, 15, "It\'s a bowl of delicious ramen", 1));
-    	
+		r.add(new Recipe(2, "Ramen", "1. Put Noodles in Bowl \n 2. Add hot water, eggs, and beef",
+				20, 15, "It\'s a bowl of delicious ramen", 1));
     	return r;
     }
     

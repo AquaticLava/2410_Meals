@@ -39,12 +39,13 @@ public class Main extends Application{
 		
 		launch(args);
 		
-//		try {Connection c =
-//			DriverManager.getConnection("jdbc:derby:MealDatabase;create=true");
-//			Statement s = c.createStatement();
+//		try (Connection c = DriverManager.getConnection("jdbc:derby:MealDatabase;create=true");
+//			 Statement s = c.createStatement()){
+//
+//
 //
 //			System.out.println("Meals");
-////			s.execute(SQLMeals.dropTable());
+//			s.execute(SQLMeals.dropTable());
 //			s.execute(SQLMeals.createTable());
 //			s.execute(SQLMeals.insertDataIntoTable());
 //			ResultSet rsMeals = s.executeQuery(SQLMeals.allDataFromTable());
@@ -52,7 +53,7 @@ public class Main extends Application{
 //			System.out.println();
 //
 //			System.out.println("Recipes");
-////			s.execute(SQLRecipes.dropTable());
+//			s.execute(SQLRecipes.dropTable());
 //			s.execute(SQLRecipes.createTable());
 //			s.execute(SQLRecipes.insertDataIntoTable());
 //			ResultSet rsRecipes = s.executeQuery(SQLRecipes.allDataFromTable());
@@ -60,7 +61,7 @@ public class Main extends Application{
 //			System.out.println();
 //
 //			System.out.println("Ingredients");
-////			s.execute(SQLIngredients.dropTable());
+//			s.execute(SQLIngredients.dropTable());
 //			s.execute(SQLIngredients.createTable());
 //			s.execute(SQLIngredients.insertDataIntoTable());
 //			ResultSet rsIngredients = s.executeQuery(SQLIngredients.allDataFromTable());
@@ -68,7 +69,7 @@ public class Main extends Application{
 //			System.out.println();
 //
 //			System.out.println("Recipes/Ingredients");
-////			s.execute(SQLRecipesIngredients.dropTable());
+//			s.execute(SQLRecipesIngredients.dropTable());
 //			s.execute(SQLRecipesIngredients.createTable());
 //			s.execute(SQLRecipesIngredients.insertDataIntoTable());
 //			ResultSet rsRecipesIngredients = s.executeQuery(SQLRecipesIngredients.allDataFromTable());
