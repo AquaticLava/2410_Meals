@@ -1,12 +1,13 @@
 package application;
 
-import EditData.CSVInput;
-
-import java.util.ArrayList;
-
+/**
+ * An ingredient that contains a name, id and nutritional value.
+ *
+ * @author Collin Williams, Malcolm Bailey
+ */
 public class Ingredient {
 
-	private int Id;
+	private int id;
 	private String name;
 	private double calories, carbs, fiber, protein, fat, sugar, servingSize;
 
@@ -50,11 +51,11 @@ public class Ingredient {
 
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getName() {
@@ -124,7 +125,7 @@ public class Ingredient {
 	@Override
 	public String toString() {
 		return "Ingredient{" +
-				"Id = " + Id +
+				"Id = " + id +
 				", ingredientName = " + name +
 				", calories = " + calories +
 				", carbs = " + carbs +
