@@ -65,6 +65,62 @@ public class Ingredient {
 		this.name = name;
 	}
 
+	public double getCalories() {
+		return calories;
+	}
+
+	public void setCalories(double calories) {
+		this.calories = calories;
+	}
+
+	public double getCarbs() {
+		return carbs;
+	}
+
+	public void setCarbs(double carbs) {
+		this.carbs = carbs;
+	}
+
+	public double getFiber() {
+		return fiber;
+	}
+
+	public void setFiber(double fiber) {
+		this.fiber = fiber;
+	}
+
+	public double getProtein() {
+		return protein;
+	}
+
+	public void setProtein(double protein) {
+		this.protein = protein;
+	}
+
+	public double getFat() {
+		return fat;
+	}
+
+	public void setFat(double fat) {
+		this.fat = fat;
+	}
+
+	public double getSugar() {
+		return sugar;
+	}
+
+	public void setSugar(double sugar) {
+		this.sugar = sugar;
+	}
+
+	public double getServingSize() {
+		return servingSize;
+	}
+
+	public void setServingSize(double servingSize) {
+		this.servingSize = servingSize;
+	}
+
 	@Override
 	public String toString() {
 		return "Ingredient{" +
