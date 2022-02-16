@@ -1,6 +1,7 @@
 package EditData;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,8 +30,6 @@ public class AddIngredientController {
 	private TextArea ingredientNutritionField;
 	
 	public void submitIngredient(ActionEvent event) throws IOException {
-		
-		//TODO submit the info to the database
 		
 		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
 		scene = new Scene(root);
