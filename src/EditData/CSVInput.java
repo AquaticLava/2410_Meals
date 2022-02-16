@@ -8,6 +8,8 @@ import java.util.Scanner;
 /**
  * This class will provide functionality such as reading in the data from a
  * specific CSV file based on the passed path in its constructor.
+ *
+ * @author Collin WIlliams
  */
 public class CSVInput {
     private Scanner scan;
@@ -41,7 +43,7 @@ public class CSVInput {
      *
      * @return  <code>ArrayList<String></code> of data from CSV.
      */
-    public ArrayList<String> getData() {
+    public ArrayList<String> getDataList() {
         return data;
     }
 
@@ -49,12 +51,12 @@ public class CSVInput {
      * This main method test the this class but is not to be a part of or used in this program.
      * @param args
      */
-    public static void main (String[] args){
-        CSVInput c = new CSVInput("src/application/resources/ingredients.csv");
-        c.readFileData();
-        for (String el: c.getData()){
-            System.out.println(el);
-        }
-    }
+//    public static void main (String[] args){
+//        CSVInput c = new CSVInput("src/application/resources/ingredients.csv");
+//        c.readFileData();
+//        for (String el: c.getData()){
+//            System.out.println(el);
+//        }
+//    }
 
 }
