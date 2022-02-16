@@ -38,32 +38,20 @@ public class Main extends Application{
 		}
 	}
 
-	private void csvToDB (){
+	private static void csvToDB (){
 		CSVInput csv = new CSVInput("src/application/resources/ingredients.csv");
 		ArrayList<String> data = csv.getDataList();
+		Ingredient[] ingredients = new Ingredient[data.size()];
+		for (int i = 0; i < data.size(); i++){
+			ingredients[i] = new Ingredient(data.get(i));
+			System.out.println(ingredients[i]);
+		}
 
-	}
+		try (Connection c = DriverManager.getConnection("jdbc:derby:MealDatabase;create=true");
+			 Statement s = c.createStatement()){
 
 
-	public static void main(String[] args) {
-
-
-		
-		launch(args);
-		
-//		try (Connection c = DriverManager.getConnection("jdbc:derby:MealDatabase;create=true");
-//			 Statement s = c.createStatement()){
-//
-//
-//
-//			System.out.println("Meals");
-//			s.execute(SQLMeals.dropTable());
-//			s.execute(SQLMeals.createTable());
-//			s.execute(SQLMeals.insertDataIntoTable());
-//			ResultSet rsMeals = s.executeQuery(SQLMeals.allDataFromTable());
-//			SQLMeals.printData(rsMeals);
-//			System.out.println();
-//
+			//TODO : add Recipes functionality
 //			System.out.println("Recipes");
 //			s.execute(SQLRecipes.dropTable());
 //			s.execute(SQLRecipes.createTable());
@@ -71,15 +59,15 @@ public class Main extends Application{
 //			ResultSet rsRecipes = s.executeQuery(SQLRecipes.allDataFromTable());
 //			SQLRecipes.printData(rsRecipes);
 //			System.out.println();
-//
-//			System.out.println("Ingredients");
-//			s.execute(SQLIngredients.dropTable());
-//			s.execute(SQLIngredients.createTable());
-//			s.execute(SQLIngredients.insertDataIntoTable());
-//			ResultSet rsIngredients = s.executeQuery(SQLIngredients.allDataFromTable());
-//			SQLIngredients.printData(rsIngredients);
-//			System.out.println();
-//
+
+			System.out.println("Ingredients");
+			s.execute(SQLIngredients.dropTable());
+			s.execute(SQLIngredients.createTable());
+			s.execute(SQLIngredients.insertDataIntoTable(ingredients));
+			ResultSet rsIngredients = s.executeQuery(SQLIngredients.allDataFromTable());
+			SQLIngredients.printData(rsIngredients);
+			System.out.println();
+
 //			System.out.println("Recipes/Ingredients");
 //			s.execute(SQLRecipesIngredients.dropTable());
 //			s.execute(SQLRecipesIngredients.createTable());
@@ -87,13 +75,23 @@ public class Main extends Application{
 //			ResultSet rsRecipesIngredients = s.executeQuery(SQLRecipesIngredients.allDataFromTable());
 //			SQLRecipesIngredients.printData(rsRecipesIngredients);
 //			System.out.println();
-//
-//
-//
-//
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+
+
+
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+	}
+
+
+	public static void main(String[] args) {
+
+		csvToDB();
+		
+//		launch(args);
+		
+
 	}
 }

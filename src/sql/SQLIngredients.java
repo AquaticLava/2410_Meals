@@ -1,7 +1,11 @@
 package sql;
 
+import application.Ingredient;
+
+import java.sql.JDBCType;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Holds methods containing strings with SQL commands for
@@ -42,13 +46,13 @@ public class SQLIngredients {
 				+ "GENERATED ALWAYS AS IDENTITY "
 				+ "(START WITH 1, INCREMENT BY 1), "
 				+ "Name varchar (255), "
-				+ "calories double,"
-				+ "carbs double,"
-				+ "fiber double,"
-				+ "protein double,"
-				+ "fat double,"
-				+ "sugar double,"
-				+ "servingSize double)";
+				+ "Calories varchar (255),"
+				+ "Carbs varchar (255),"
+				+ "Fiber varchar (255),"
+				+ "Protein varchar (255),"
+				+ "Fat varchar (255),"
+				+ "Sugar varchar (255),"
+				+ "ServingSize varchar (255))";
 	}
 
     /**
@@ -83,35 +87,42 @@ public class SQLIngredients {
      * @return the string containing the SQL commands to insert new
      * data into the <code>Ingredients</code> table.
      */
-    public static String insertDataIntoTable(){
+    public static String insertDataIntoTable(Ingredient[] ingredients){
+		StringBuilder sb = new StringBuilder();
 
-    	return "INSERT INTO Ingredients "
-				+ "(Name, NutritionInfo) VALUES "
-				+ "('Spaghetti', 'Healthy'), "
-				+ "('Tomato Sauce', 'Healthy'), "
-				+ "('Ground Beef', 'Healthy'), "
-				+ "('Tortillas', 'Unhealthy'), "
-				+ "('Eggs', 'Nutrition'), "
-				+ "('White Rice', 'Unhealthy'), "
-				+ "('Avocado', 'Healthy'), "
-				+ "('Bread', 'Unhealthy'), "
-				+ "('Cheese', 'Unhealthy'), "
-				+ "('Black Beans', 'Healthy')";
+		sb.append("INSERT INTO Ingredients (Name, Calories, " +
+				"Carbs, Fiber, Protein, Fat, Sugar, ServingSize) VALUES ");
+
+
+		for (Ingredient el: ingredients){
+			sb.append("('").append(el.getName()).append("', '")
+					.append(el.getCalories()).append("', '")
+					.append(el.getCarbs()).append("', '")
+					.append(el.getFiber()).append("', '")
+					.append(el.getProtein()).append("', '")
+					.append(el.getFat()).append("', '")
+					.append(el.getSugar()).append("', '")
+					.append(el.getServingSize()).append("'),");
+
+		}
+		sb.replace(sb.length() - 1,sb.length(),"");
+		System.out.println(sb);
+		return sb.toString();
     }
     
 	public static void printData(ResultSet rs) throws SQLException {
 		
-		System.out.println("Id |      Name      | Nutrition Info");
+		System.out.println("Id |      Name      | Calores");
 		System.out.println("____________________________________");
 		
 		while(rs.next()) {
 			
 			int id = rs.getInt("Id");
 			String name = rs.getString("Name");
-			String nutrition = rs.getString("NutritionInfo");
-			
+			String calories = rs.getString("Calories");
+
 			System.out.printf("%-2d | %-14s | %-14s%n",
-					id, name, nutrition);
+					id, name, calories);
 		}
 	}
 

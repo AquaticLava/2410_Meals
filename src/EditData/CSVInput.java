@@ -25,6 +25,7 @@ public class CSVInput {
         } catch (FileNotFoundException e){
             e.printStackTrace();
         }
+        readFileData();
     }
 
     /**
@@ -32,8 +33,15 @@ public class CSVInput {
      * into an <code>ArrayList<String><code> where each line of the csv is one element.
      */
     public void readFileData (){
+        boolean skipHeader = true;
         while (scan.hasNext())
-            data.add(scan.nextLine());
+            if (skipHeader == false){
+                data.add(scan.nextLine());
+            } else {
+                scan.nextLine();
+                skipHeader = false;
+            }
+
 
         scan.close();
     }

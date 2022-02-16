@@ -34,16 +34,16 @@ public class Ingredient {
 					fiber = Double.parseDouble(data[i]);
 					break;
 				case 4:		//protein
-					protein = Double.parseDouble(data[i]);
+					protein = data[i];
 					break;
 				case 5:		//fat
-					fat = Double.parseDouble(data[i]);
+					fat = data[i];
 					break;
 				case 6:		//sugar
-					sugar = Double.parseDouble(data[i]);
+					sugar = data[i];
 					break;
 				case 7:		//serving size
-					servingSize = Double.parseDouble(data[i]);
+					servingSize = data[i];
 					break;
 			}
 		}
@@ -118,7 +118,7 @@ public class Ingredient {
 		return servingSize;
 	}
 
-	public void setServingSize(double servingSize) {
+	public void setServingSize(String servingSize) {
 		this.servingSize = servingSize;
 	}
 
