@@ -26,15 +26,30 @@ public class SQLIngredients {
      * @return a string containing the SQL commands to create the
      * <code>Ingredients</code> table.
      */
+//	public static String createTable(){
+//
+//		return "CREATE TABLE Ingredients ("
+//				+ "Id int not null primary key "
+//				+ "GENERATED ALWAYS AS IDENTITY "
+//				+ "(START WITH 1, INCREMENT BY 1), "
+//				+ "Name varchar (255), "
+//				+ "NutritionInfo varchar(1028) )";
+//    }
+
 	public static String createTable(){
-    	
 		return "CREATE TABLE Ingredients ("
 				+ "Id int not null primary key "
 				+ "GENERATED ALWAYS AS IDENTITY "
 				+ "(START WITH 1, INCREMENT BY 1), "
 				+ "Name varchar (255), "
-				+ "NutritionInfo varchar(1028) )";
-    }
+				+ "calories double,"
+				+ "carbs double,"
+				+ "fiber double,"
+				+ "protein double,"
+				+ "fat double,"
+				+ "sugar double,"
+				+ "servingSize double)";
+	}
 
     /**
      * Creates a string containing SQL commands to drop

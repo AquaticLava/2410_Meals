@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import EditData.CSVInput;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -34,8 +37,17 @@ public class Main extends Application{
 			e.printStackTrace();
 		}
 	}
-//	
+
+	private void csvToDB (){
+		CSVInput csv = new CSVInput("src/application/resources/ingredients.csv");
+		ArrayList<String> data = csv.getDataList();
+
+	}
+
+
 	public static void main(String[] args) {
+
+
 		
 		launch(args);
 		
