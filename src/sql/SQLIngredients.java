@@ -36,6 +36,21 @@ public class SQLIngredients {
 				+ "NutritionInfo varchar(1028) )";
     }
 
+	public static String createNewTable(){
+		return "CREATE TABLE Ingredients ("
+				+ "Id int not null primary key "
+				+ "GENERATED ALWAYS AS IDENTITY "
+				+ "(START WITH 1, INCREMENT BY 1), "
+				+ "Name varchar (255), "
+				+ "calories double,"
+				+ "carbs double,"
+				+ "fiber double,"
+				+ "protein double,"
+				+ "fat double,"
+				+ "sugar double,"
+				+ "servingSize double)";
+	}
+
     /**
      * Creates a string containing SQL commands to drop
      * the <code>Ingredients</code> table from the database.
