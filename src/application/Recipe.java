@@ -51,4 +51,34 @@ public class Recipe {
 	public int getCostCategory() {
 		return costCategory;
 	}
+	
+	public void setId(int Id) {
+		this.Id = Id;
+	}
+	
+	public void setRecipeName(String name) {
+		this.recipeName = name;
+	}
+	
+	public void setRecipeInstructions(String instructions) {
+		this.recipeInstructions = instructions;
+	}
+	
+	public void setCookTime(int cookTime) {
+		this.cookTime = cookTime;
+	}
+	
+	public void setPrepTime(int prepTime) {
+		this.prepTime = prepTime;
+	}
+	
+	public void setRecipeDescription(String description) {
+		this.recipeDescription = description;
+	}
+	
+	public void setCostCategory(int costCategory) {
+		
+		this.costCategory = costCategory;
+	}
+	
 }
