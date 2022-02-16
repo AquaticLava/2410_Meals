@@ -11,15 +11,44 @@ public class Recipe {
 	private int cookTime;
 	private int prepTime;
 	private String recipeDescription;
-	private enum costCategory {
-		$(1),
-		$$(2),
-		$$$(3),
-		$$$$(4);
-		private int costInt;
-		private costCategory(int num) {
-			this.costInt = num;
-		}
+	private int costCategory;
+	
+	public Recipe(int Id, String recipeName, String recipeInstructions, int cookTime,
+	 int prepTime, String recipeDescription, int costCategory) {
+		this.Id = Id;
+		this.recipeName = recipeName;
+		this.recipeInstructions = recipeInstructions;
+		this.cookTime = cookTime;
+		this.prepTime = prepTime;
+		this.recipeDescription = recipeDescription;
+		this.costCategory = costCategory;
 	}
 	
+	public int getId() {
+		return Id;
+	}
+	
+	public String getRecipeName() {
+		return recipeName;
+	}
+	
+	public String getRecipeInstructions() {
+		return recipeInstructions;
+	}
+	
+	public int getCookTime() {
+		return cookTime;
+	}
+	
+	public int getPrepTime() {
+		return prepTime;
+	}
+	
+	public String getRecipeDescription() {
+		return recipeDescription;
+	}
+	
+	public int getCostCategory() {
+		return costCategory;
+	}
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditData.EditDataController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditData.EditDataController">
    <children>
       <TabPane layoutX="-148.0" layoutY="-69.0" prefHeight="431.3333333333333" prefWidth="457.3333333333333" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="50.0" tabMaxWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
@@ -15,7 +15,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="150.0" layoutY="38.0" prefHeight="433.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                        <TableView fx:id="ingredientTableView" layoutX="150.0" layoutY="38.0" prefHeight="433.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                            <columns>
                               <TableColumn prefWidth="75.0" text="Id" />
                               <TableColumn prefWidth="75.0" text="Name" />
@@ -34,7 +34,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="-1.0" layoutY="53.0" prefHeight="419.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                        <TableView fx:id="mealTableView" layoutX="-1.0" layoutY="53.0" prefHeight="419.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                            <columns>
                               <TableColumn prefWidth="75.0" text="Id" />
                               <TableColumn prefWidth="75.0" text="Name" />
@@ -54,15 +54,15 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutY="57.0" prefHeight="418.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                        <TableView fx:id="recipeTableView" layoutY="57.0" prefHeight="418.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="Id" />
-                              <TableColumn prefWidth="75.0" text="Name" />
-                              <TableColumn prefWidth="75.0" text="Instructions" />
-                              <TableColumn prefWidth="75.0" text="CookTime" />
-                              <TableColumn prefWidth="75.0" text="PrepTime" />
-                              <TableColumn prefWidth="75.0" text="RecipeDescription" />
-                              <TableColumn prefWidth="75.0" text="CostCategory" />
+                              <TableColumn fx:id="recipeIdColumn" prefWidth="75.0" text="Id" />
+                              <TableColumn fx:id="recipeNameColumn" prefWidth="75.0" text="Name" />
+                              <TableColumn fx:id="recipeInstructionsColumn" prefWidth="75.0" text="Instructions" />
+                              <TableColumn fx:id="recipeCookTimeColumn" prefWidth="75.0" text="CookTime" />
+                              <TableColumn fx:id="recipePrepTimeColumn" prefWidth="75.0" text="PrepTime" />
+                              <TableColumn fx:id="recipeDescriptionColumn" prefWidth="75.0" text="RecipeDescription" />
+                              <TableColumn fx:id="recipeCostCategoryColumn" prefWidth="75.0" text="CostCategory" />
                            </columns>
                         </TableView>
                         <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchToAddRecipe" text="Add Item" />

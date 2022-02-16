@@ -27,8 +27,11 @@ public class AddMealController {
 	
 	@FXML
 	private TextArea mealNameField;
+	@FXML
 	private TextArea mealPhotoField;
+	@FXML
 	private TableView mealRecipeTable;
+	@FXML
 	private TableColumn mealRecipeIdColumn;
 	
 	public void submitMeal(ActionEvent event) throws IOException {

@@ -25,10 +25,15 @@ public class AddRecipeController {
 	
 	@FXML
 	private TextField recipeNameField;
+	@FXML
 	private TextArea recipeInstructionField;
+	@FXML
 	private TextField cookTimeField;
+	@FXML
 	private TextField prepTimeField;
+	@FXML
 	private TextArea recipeDescriptionField;
+	@FXML
 	private TextField costCategoryField;
 	
 	

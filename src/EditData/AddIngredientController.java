@@ -25,6 +25,7 @@ public class AddIngredientController {
 	
 	@FXML
 	private TextField ingredientNameField;
+	@FXML
 	private TextArea ingredientNutritionField;
 	
 	public void submitIngredient(ActionEvent event) throws IOException {
