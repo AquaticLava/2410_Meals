@@ -129,10 +129,10 @@ public class EditDataController implements Initializable{
 						Integer.parseInt(recipeRS.getString("ID")),
 						recipeRS.getString("RecipeName"),
 						recipeRS.getString("RecipeInstructions"),
-						Integer.parseInt(recipeRS.getString("CookTime")),
-						Integer.parseInt(recipeRS.getString("PrepTime")),
+						recipeRS.getString("CookTime"),
+						recipeRS.getString("PrepTime"),
 						recipeRS.getString("RecipeDescription"),
-						Integer.parseInt(recipeRS.getString("CostCategory"))
+						recipeRS.getString("CostCategory")
 				));
 			}
 			recipeRS.close();

@@ -8,13 +8,29 @@ public class Recipe {
 	private int Id;
 	private String recipeName;
 	private String recipeInstructions;
-	private int cookTime;
-	private int prepTime;
+	private String cookTime;
+	private String prepTime;
 	private String recipeDescription;
-	private int costCategory;
-	
-	public Recipe(int Id, String recipeName, String recipeInstructions, int cookTime,
-	 int prepTime, String recipeDescription, int costCategory) {
+	private String costCategory;
+
+	/**
+	 * Overloaded constructor that takes in a line from a csv file
+	 * and initializes the values to the attributes above.
+	 *
+	 * @param csvString One whole line from a csv file.
+	 */
+	public Recipe (String csvString){
+		String[] parts = csvString.split("#");
+		this.recipeName = parts[0];
+		this.recipeInstructions = parts[1];
+		this.cookTime = parts[2];
+		this.prepTime = parts[3];
+		this.recipeDescription = parts[4];
+		this.costCategory = parts[5];
+	}
+
+	public Recipe(int Id, String recipeName, String recipeInstructions, String cookTime,
+	 String prepTime, String recipeDescription, String costCategory) {
 		this.Id = Id;
 		this.recipeName = recipeName;
 		this.recipeInstructions = recipeInstructions;
@@ -36,11 +52,11 @@ public class Recipe {
 		return recipeInstructions;
 	}
 	
-	public int getCookTime() {
+	public String getCookTime() {
 		return cookTime;
 	}
-	
-	public int getPrepTime() {
+
+	public String getPrepTime() {
 		return prepTime;
 	}
 	
@@ -48,7 +64,7 @@ public class Recipe {
 		return recipeDescription;
 	}
 	
-	public int getCostCategory() {
+	public String getCostCategory() {
 		return costCategory;
 	}
 	
@@ -64,11 +80,11 @@ public class Recipe {
 		this.recipeInstructions = instructions;
 	}
 	
-	public void setCookTime(int cookTime) {
+	public void setCookTime(String cookTime) {
 		this.cookTime = cookTime;
 	}
 	
-	public void setPrepTime(int prepTime) {
+	public void setPrepTime(String prepTime) {
 		this.prepTime = prepTime;
 	}
 	
@@ -76,9 +92,21 @@ public class Recipe {
 		this.recipeDescription = description;
 	}
 	
-	public void setCostCategory(int costCategory) {
+	public void setCostCategory(String costCategory) {
 		
 		this.costCategory = costCategory;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Recipe{" +
+				"Id=" + Id +
+				", recipeName='" + recipeName + '\'' +
+				", recipeInstructions='" + recipeInstructions + '\'' +
+				", cookTime=" + cookTime +
+				", prepTime=" + prepTime +
+				", recipeDescription='" + recipeDescription + '\'' +
+				", costCategory=" + costCategory +
+				'}';
+	}
 }
