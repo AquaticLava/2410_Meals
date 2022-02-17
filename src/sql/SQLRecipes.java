@@ -32,8 +32,8 @@ public class SQLRecipes {
 				+ "Id int not null primary key "
 				+ "GENERATED ALWAYS AS IDENTITY "
 				+ "(START WITH 1, INCREMENT BY 1), "
-				+ "Name varchar(255), "
-				+ "Instructions varchar(5000), "
+				+ "RecipeName varchar(255), "
+				+ "RecipeInstructions varchar(5000), "
 				+ "CookTime int, "
 				+ "PrepTime int, "
 				+ "RecipeDescription varchar(1000), "
@@ -74,7 +74,7 @@ public class SQLRecipes {
     public static String insertDataIntoTable() {
     	
     	return "INSERT INTO Recipes "
-    			+ "(Name, Instructions, CookTime, PrepTime, RecipeDescription, CostCategory) "
+    			+ "(RecipeName, RecipeInstructions, CookTime, PrepTime, RecipeDescription, CostCategory) "
     			+ "VALUES "
     			+ "('Spaghetti Bolognese', '1. Cook Spaghetti 2. Add Bolognese', 30, 15, 'It is spaghetti"
     			+ " with a red meat sauce', 1), "
@@ -86,6 +86,41 @@ public class SQLRecipes {
     			+ "('Carne Asada Burrito', '1.Cook beans 2. cube meats and cook ingredients"
     			+ " 3. wrap in tortilla', 10, 10, 'A classic mexican burrito', 2)";
     }
+
+	/**
+	 * Returns a string to query for the rows based off of id.
+	 *
+	 * Start id is the first id in the query.
+	 * and end id is the last id in the query.
+	 *
+	 *
+	 * @param startID ID to start at.
+	 * @param endID ID to end at.
+	 * @return the string for a query of rows between startID and endID, inclusive.
+	 */
+	public static String partialDataFromTable(int startID, int endID){
+		return partialDataFromTable(startID,endID,"ID");
+	}
+
+	/**
+	 * Returns a string to query for the rows based off of id with sorting.
+	 *
+	 * Start id is the first id in the query
+	 * and end id is the last id in the query.
+	 * The sort method is a SQL command to add to the query for sorting.
+	 * ORDER BY is included in this method.
+	 *
+	 * @see <a href='https://www.w3schools.com/sql/sql_orderby.asp'>sortMethod Refrence</a>
+	 * @param startID ID to start at.
+	 * @param endID ID to end at.
+	 * @param sortMethod SQL command for sorting, ORDER BY is not needed.
+	 * @return a string to query for the rows based off of id with sorting.
+	 */
+	public static String partialDataFromTable(int startID, int endID, String sortMethod){
+		return "SELECT * from Recipes WHERE ID "
+				+ "BETWEEN " + startID + " AND " + endID +
+				" ORDER BY " + sortMethod;
+	}
     
 	public static void printData(ResultSet rs) throws SQLException {
 		
