@@ -51,22 +51,22 @@ public class Main extends Application{
 			 Statement s = c.createStatement()){
 
 
-			//TODO : add Recipes functionality
-//			System.out.println("Recipes");
-//			s.execute(SQLRecipes.dropTable());
-//			s.execute(SQLRecipes.createTable());
-//			s.execute(SQLRecipes.insertDataIntoTable());
+//			TODO : add Recipes functionality
+			System.out.println("Recipes");
+			s.execute(SQLRecipes.dropTable());
+			s.execute(SQLRecipes.createTable());
+			s.execute(SQLRecipes.insertDataIntoTable());
 //			ResultSet rsRecipes = s.executeQuery(SQLRecipes.allDataFromTable());
 //			SQLRecipes.printData(rsRecipes);
-//			System.out.println();
-
-			System.out.println("Ingredients");
-			s.execute(SQLIngredients.dropTable());
-			s.execute(SQLIngredients.createTable());
-			s.execute(SQLIngredients.insertDataIntoTable(ingredients));
-			ResultSet rsIngredients = s.executeQuery(SQLIngredients.allDataFromTable());
-			SQLIngredients.printData(rsIngredients);
 			System.out.println();
+
+//			System.out.println("Ingredients");
+//			s.execute(SQLIngredients.dropTable());
+//			s.execute(SQLIngredients.createTable());
+//			s.execute(SQLIngredients.insertDataIntoTable(ingredients));
+//			ResultSet rsIngredients = s.executeQuery(SQLIngredients.allDataFromTable());
+//			SQLIngredients.printData(rsIngredients);
+//			System.out.println();
 
 //			System.out.println("Recipes/Ingredients");
 //			s.execute(SQLRecipesIngredients.dropTable());
@@ -88,9 +88,9 @@ public class Main extends Application{
 
 	public static void main(String[] args) {
 
-		csvToDB();
+//		csvToDB();
 		
-//		launch(args);
+		launch(args);
 		
 
 	}
