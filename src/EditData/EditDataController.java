@@ -2,6 +2,9 @@ package EditData;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -9,6 +12,8 @@ import java.util.ResourceBundle;
 import application.Ingredient;
 import application.Meal;
 import application.Recipe;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +21,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import sql.SQLConnection;
+import sql.SQLRecipes;
 
 /**
  * Controller class for the data editing tab, controls buttons and manipulates data records.
@@ -27,8 +33,10 @@ import javafx.stage.Stage;
  *
  */
 public class EditDataController implements Initializable{
-	
-	
+
+
+	@FXML
+	private ToggleGroup sortRecipes;
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
@@ -76,7 +84,7 @@ public class EditDataController implements Initializable{
 		recipeDescriptionColumn.setCellValueFactory(new PropertyValueFactory<Recipe,String>("recipeDescription"));
 		recipeCostCategoryColumn.setCellValueFactory(new PropertyValueFactory<Recipe,Integer>("costCategory"));
 		
-		recipeTableView.getItems().setAll(parseRecipeList());
+		recipeTableView.getItems().setAll(parseRecipeList("ID"));
 		
 		//meal table initialize
 		mealIdColumn.setCellValueFactory(new PropertyValueFactory<Meal,Integer>("Id"));
@@ -85,18 +93,53 @@ public class EditDataController implements Initializable{
 		mealRecipeColumn.setCellValueFactory(new PropertyValueFactory<Meal,Integer>("recipeId"));
 		
 		mealTableView.getItems().setAll(parseMealList());
+
+		sortRecipes.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
+			String toggleMethod = "ID";
+			RadioButton rb = (RadioButton)sortRecipes.getSelectedToggle();
+
+			if (rb != null) {
+				switch (rb.getText()){
+					case "Sort: Name":
+						toggleMethod = "RecipeName";
+						break;
+					case "Sort: cost":
+						toggleMethod = "CostCategory, RecipeName";
+						break;
+					case "Sort: Cook & prep":
+						toggleMethod = "CookTime, PrepTime, RecipeName";
+						break;
+					default:
+						toggleMethod = "ID";
+				}
+			}
+
+			recipeTableView.getItems().setAll(parseRecipeList(toggleMethod));
+		});
     }
 	
-    private List<Recipe> parseRecipeList(){
-    	//Here is where we will populate the recipe table with default 10 rows for each table
-        //TODO parse and construct recipe datamodel list by looping your ResultSet rs
-        // and return the list 
-    	List<Recipe> r = new LinkedList<Recipe>();
-    	r.add(new Recipe(1, "Ramen", "1. Put Noodles in Bowl \n 2. Add hot water, eggs, and beef",
-    	           	        20, 15, "It\'s a bowl of delicious ramen", 1));
-		r.add(new Recipe(2, "Ramen", "1. Put Noodles in Bowl \n 2. Add hot water, eggs, and beef",
-				20, 15, "It\'s a bowl of delicious ramen", 1));
-    	return r;
+    private List<Recipe> parseRecipeList(String sortMethod){
+    	List<Recipe> r = new LinkedList<>();
+		try (SQLConnection sqlConnection = new SQLConnection()) {
+			Statement s = sqlConnection.getSqlStatement();
+			ResultSet recipeRS = s.executeQuery(
+					SQLRecipes.partialDataFromTable(1,10,sortMethod));
+			while (recipeRS.next()){
+				r.add(new Recipe(
+						Integer.parseInt(recipeRS.getString("ID")),
+						recipeRS.getString("RecipeName"),
+						recipeRS.getString("RecipeInstructions"),
+						Integer.parseInt(recipeRS.getString("CookTime")),
+						Integer.parseInt(recipeRS.getString("PrepTime")),
+						recipeRS.getString("RecipeDescription"),
+						Integer.parseInt(recipeRS.getString("CostCategory"))
+				));
+			}
+			recipeRS.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return r;
     }
     
     private List<Meal> parseMealList(){
