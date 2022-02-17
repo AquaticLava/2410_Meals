@@ -9,7 +9,7 @@ public class Ingredient {
 
 	private int id;
 	private String name;
-	private double calories, carbs, fiber, protein, fat, sugar, servingSize;
+	private String calories, carbs, fiber, protein, fat, sugar, servingSize;
 
 	/**
 	 * This overloaded constructor will take in a String from the csv file
@@ -25,13 +25,13 @@ public class Ingredient {
 					name = data[i];
 					break;
 				case 1:		//calories
-					calories = Double.parseDouble(data[i]);
+					calories = data[i];
 					break;
 				case 2:		//carbs
-					carbs = Double.parseDouble(data[i]);
+					carbs = data[i];
 					break;
 				case 3:		//fiber
-					fiber = Double.parseDouble(data[i]);
+					fiber = data[i];
 					break;
 				case 4:		//protein
 					protein = data[i];
@@ -66,55 +66,55 @@ public class Ingredient {
 		this.name = name;
 	}
 
-	public double getCalories() {
+	public String getCalories() {
 		return calories;
 	}
 
-	public void setCalories(double calories) {
+	public void setCalories(String calories) {
 		this.calories = calories;
 	}
 
-	public double getCarbs() {
+	public String getCarbs() {
 		return carbs;
 	}
 
-	public void setCarbs(double carbs) {
+	public void setCarbs(String carbs) {
 		this.carbs = carbs;
 	}
 
-	public double getFiber() {
+	public String getFiber() {
 		return fiber;
 	}
 
-	public void setFiber(double fiber) {
+	public void setFiber(String fiber) {
 		this.fiber = fiber;
 	}
 
-	public double getProtein() {
+	public String getProtein() {
 		return protein;
 	}
 
-	public void setProtein(double protein) {
+	public void setProtein(String protein) {
 		this.protein = protein;
 	}
 
-	public double getFat() {
+	public String getFat() {
 		return fat;
 	}
 
-	public void setFat(double fat) {
+	public void setFat(String fat) {
 		this.fat = fat;
 	}
 
-	public double getSugar() {
+	public String getSugar() {
 		return sugar;
 	}
 
-	public void setSugar(double sugar) {
+	public void setSugar(String sugar) {
 		this.sugar = sugar;
 	}
 
-	public double getServingSize() {
+	public String getServingSize() {
 		return servingSize;
 	}
 
