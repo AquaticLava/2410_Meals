@@ -56,12 +56,13 @@ public class Main extends Application{
 //		Read in and save the recipes into an array list of recipes.
 		CSVInput csvRecipes = new CSVInput("src/application/resources/recipes.csv", "recipes");
 		ArrayList<String> dataLineRecipes = csvRecipes.getDataList();
-		Recipe[] recipes = new Recipe[dataLineRecipes.size()];
-		for (int i = 0; i < dataLineRecipes.size(); i++){
-			recipes[i] = new Recipe(dataLineRecipes.get(i));
+		String[] lines = dataLineRecipes.get(0).split("@");
+		Recipe[] recipes = new Recipe[lines.length];
+		for (int i = 0; i < lines.length; i++){
+			recipes[i] = new Recipe(lines[i]);
 
 			//Testing
-//			System.out.println(recipes[i].toString());
+			System.out.println(recipes[i].toString());
 			//Testing
 		}
 
@@ -69,15 +70,13 @@ public class Main extends Application{
 		try (Connection c = DriverManager.getConnection("jdbc:derby:MealDatabase;create=true");
 			 Statement s = c.createStatement()){
 
-
-////			TODO : add Recipes functionality
-//			System.out.println("Recipes");
-//			s.execute(SQLRecipes.dropTable());
-//			s.execute(SQLRecipes.createTable());
-//			s.execute(SQLRecipes.insertDataIntoTable(recipes));
-////			ResultSet rsRecipes = s.executeQuery(SQLRecipes.allDataFromTable());
-////			SQLRecipes.printData(rsRecipes);
-//			System.out.println();
+			System.out.println("Recipes");
+			s.execute(SQLRecipes.dropTable());
+			s.execute(SQLRecipes.createTable());
+			s.execute(SQLRecipes.insertDataIntoTable(recipes));
+			ResultSet rsRecipes = s.executeQuery(SQLRecipes.allDataFromTable());
+			SQLRecipes.printData(rsRecipes);
+			System.out.println();
 
 //			System.out.println("Ingredients");
 //			s.execute(SQLIngredients.dropTable());
@@ -107,7 +106,7 @@ public class Main extends Application{
 
 	public static void main(String[] args) {
 
-//		csvToDB();
+		csvToDB();
 
 
 		launch(args);

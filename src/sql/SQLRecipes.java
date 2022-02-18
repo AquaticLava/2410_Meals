@@ -144,16 +144,16 @@ public class SQLRecipes {
 		System.out.println("___________________________________________________________________________________________________________________________________________________________________________");
 		
 		while(rs.next()) {
-			
+
 			int id = rs.getInt("Id");
-			String name = rs.getString("Name");
-			String instructions = rs.getString("Instructions");
-			int cookTime = rs.getInt("CookTime");
-			int prepTime = rs.getInt("PrepTime");
+			String name = rs.getString("RecipeName");
+			String instructions = rs.getString("RecipeInstructions");
+			String cookTime = rs.getString("CookTime");
+			String prepTime = rs.getString("PrepTime");
 			String description = rs.getString("RecipeDescription");
-			int costCategory = rs.getInt("CostCategory");
+			String costCategory = rs.getString("CostCategory");
 			
-			System.out.printf("%-3d| %-19s | %-70s | %-9d | %-9d | %-40s | %-10d%n",
+			System.out.printf("%-3d| %-19s | %-70s | %-9s | %-9s | %-40s | %-10s%n",
 					id, name, instructions, cookTime, prepTime, description, costCategory);
 		}
 	}
