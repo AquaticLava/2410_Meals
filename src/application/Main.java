@@ -108,9 +108,7 @@ public class Main extends Application{
 
 		csvToDB();
 
-
 		launch(args);
-		
 
 	}
 }
