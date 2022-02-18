@@ -62,9 +62,9 @@ public class SQLRecipes {
      * @return the string containing the SQL commands to pull all
      * data from the <code>Recipes</code> table.
      */
-    public static String allDataFromTable() {
+    public static String allDataFromTable(String sortMethod) {
     	
-    	return "SELECT * FROM Recipes";
+    	return "SELECT * FROM Recipes ORDER BY " + sortMethod;
     }
 
     /**

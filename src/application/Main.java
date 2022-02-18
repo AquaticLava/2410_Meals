@@ -74,7 +74,7 @@ public class Main extends Application{
 			s.execute(SQLRecipes.dropTable());
 			s.execute(SQLRecipes.createTable());
 			s.execute(SQLRecipes.insertDataIntoTable(recipes));
-			ResultSet rsRecipes = s.executeQuery(SQLRecipes.allDataFromTable());
+			ResultSet rsRecipes = s.executeQuery(SQLRecipes.allDataFromTable("ID"));
 			SQLRecipes.printData(rsRecipes);
 			System.out.println();
 

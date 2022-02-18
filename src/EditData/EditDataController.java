@@ -146,7 +146,7 @@ public class EditDataController implements Initializable{
 			Statement s = sqlConnection.getSqlStatement();
 
 			ResultSet recipeRS = (numOfRowsRecipe == -1) ?
-					s.executeQuery(SQLRecipes.allDataFromTable()) :
+					s.executeQuery(SQLRecipes.allDataFromTable(sortMethod)) :
 					s.executeQuery(SQLRecipes.partialDataFromTable
 							(1,numOfRowsRecipe,sortMethod));
 
