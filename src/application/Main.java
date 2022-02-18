@@ -1,11 +1,13 @@
 package application;
 
+import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import EditData.CSVInput;
 import javafx.application.Application;
@@ -51,30 +53,30 @@ public class Main extends Application{
 			ingredients[i] = new Ingredient(dataLines.get(i));
 		}
 
-		//Read in and save the recipes into an array list of recipes.
-//		CSVInput csvRecipes = new CSVInput("src/application/resources/recipes.csv", "recipes");
-//		ArrayList<String> dataLineRecipes = csvRecipes.getDataList();
-//		Recipe[] recipes = new Recipe[dataLineRecipes.size()];
-//		for (int i = 0; i < dataLineRecipes.size(); i++){
-//			recipes[i] = new Recipe(dataLineRecipes.get(i));
-//
-//			//Testing
+//		Read in and save the recipes into an array list of recipes.
+		CSVInput csvRecipes = new CSVInput("src/application/resources/recipes.csv", "recipes");
+		ArrayList<String> dataLineRecipes = csvRecipes.getDataList();
+		Recipe[] recipes = new Recipe[dataLineRecipes.size()];
+		for (int i = 0; i < dataLineRecipes.size(); i++){
+			recipes[i] = new Recipe(dataLineRecipes.get(i));
+
+			//Testing
 //			System.out.println(recipes[i].toString());
-//			//Testing
-//		}
+			//Testing
+		}
 
 
 		try (Connection c = DriverManager.getConnection("jdbc:derby:MealDatabase;create=true");
 			 Statement s = c.createStatement()){
 
 
-//			TODO : add Recipes functionality
+////			TODO : add Recipes functionality
 //			System.out.println("Recipes");
 //			s.execute(SQLRecipes.dropTable());
 //			s.execute(SQLRecipes.createTable());
-//			s.execute(SQLRecipes.insertDataIntoTable());
-//			ResultSet rsRecipes = s.executeQuery(SQLRecipes.allDataFromTable());
-//			SQLRecipes.printData(rsRecipes);
+//			s.execute(SQLRecipes.insertDataIntoTable(recipes));
+////			ResultSet rsRecipes = s.executeQuery(SQLRecipes.allDataFromTable());
+////			SQLRecipes.printData(rsRecipes);
 //			System.out.println();
 
 //			System.out.println("Ingredients");
@@ -105,9 +107,10 @@ public class Main extends Application{
 
 	public static void main(String[] args) {
 
-		csvToDB();
-		
-//		launch(args);
+//		csvToDB();
+
+
+		launch(args);
 		
 
 	}

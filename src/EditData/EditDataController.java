@@ -2,6 +2,7 @@ package EditData;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,6 +15,9 @@ import application.Meal;
 import application.Recipe;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableListBase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,18 +38,19 @@ import sql.SQLRecipes;
  */
 public class EditDataController implements Initializable{
 
-
+	public ComboBox<String> rowSelectionRecipe;
 	@FXML
 	private ToggleGroup sortRecipes;
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
+	private int numOfRowsRecipe = 5;
 	
 	@FXML
 	private TableView ingredientTableView;
 
 	@FXML
-	private TableView recipeTableView;
+	private TableView<Recipe> recipeTableView;
 	@FXML
 	private TableColumn recipeIdColumn;
 	@FXML
@@ -113,17 +118,36 @@ public class EditDataController implements Initializable{
 						toggleMethod = "ID";
 				}
 			}
-
 			recipeTableView.getItems().setAll(parseRecipeList(toggleMethod));
 		});
+
+
+		LinkedList<String> ints = new LinkedList<>();
+		ints.add("5");
+		ints.add("10");
+		ints.add("25");
+		ints.add("50");
+		ints.add("all");
+		ObservableList<String> integers = FXCollections.observableList(ints);
+		rowSelectionRecipe.setItems(integers);
+		rowSelectionRecipe.selectionModelProperty().addListener
+				((observableValue1, integerSingleSelectionModel, t11) -> {
+					String intAsString = rowSelectionRecipe.getSelectionModel().getSelectedItem();
+					numOfRowsRecipe = intAsString.equals("all") ?
+							-1 : Integer.parseInt(intAsString);
+				});
     }
 	
     private List<Recipe> parseRecipeList(String sortMethod){
     	List<Recipe> r = new LinkedList<>();
 		try (SQLConnection sqlConnection = new SQLConnection()) {
 			Statement s = sqlConnection.getSqlStatement();
-			ResultSet recipeRS = s.executeQuery(
-					SQLRecipes.partialDataFromTable(1,10,sortMethod));
+
+			ResultSet recipeRS = (numOfRowsRecipe == -1) ?
+					s.executeQuery(SQLRecipes.allDataFromTable()) :
+					s.executeQuery(SQLRecipes.partialDataFromTable
+							(1,numOfRowsRecipe,sortMethod));
+
 			while (recipeRS.next()){
 				r.add(new Recipe(
 						Integer.parseInt(recipeRS.getString("ID")),
@@ -202,15 +226,19 @@ public class EditDataController implements Initializable{
 	}
 	
 	public void deleteRecipe(ActionEvent event) throws IOException {
-		//TODO need to add call to remove from database
-		Recipe selectedItem = (Recipe)recipeTableView.getSelectionModel().getSelectedItem();
+		Recipe selectedItem = recipeTableView.getSelectionModel().getSelectedItem();
 		recipeTableView.getItems().remove(selectedItem);
+		try (SQLConnection sqlConnection = new SQLConnection()){
+			Statement s = sqlConnection.getSqlStatement();
+			s.execute(SQLRecipes.deleteRow(selectedItem.getId()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void deleteMeal(ActionEvent event) throws IOException {
 		//TODO need to add call to remove from database
-		Meal selectedItem = (Meal)recipeTableView.getSelectionModel().getSelectedItem();
-		mealTableView.getItems().remove(selectedItem);
+//		Meal selectedItem = (Meal)recipeTableView.getSelectionModel().getSelectedItem();
+//		mealTableView.getItems().remove(selectedItem);
 	}
-	
 }

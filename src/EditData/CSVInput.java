@@ -43,18 +43,14 @@ public class CSVInput {
      * into an <code>ArrayList<String><code> where each line of the csv is one element.
      */
     public void readFileDataRecipes (){
-//        StringBuilder sb = new StringBuilder();
-//        boolean skipHeader = true;
-//        while (scan.hasNext()) {
-//            if (skipHeader == false) {
-//                sb.append(scan.nextLine() + " ");
-//            } else {
-//                scan.nextLine();
-//                skipHeader = false;
-//            }
-//        }
-//        data.add(sb.toString());
-//        scan.close();
+        StringBuilder sb = new StringBuilder();
+
+        scan.nextLine();//Skip header
+        while (scan.hasNext()) {
+            sb.append(scan.nextLine()).append(" ");
+        }
+        data.add(sb.toString());
+        scan.close();
     }
 
     /**

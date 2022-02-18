@@ -1,5 +1,8 @@
 package sql;
 
+import application.Ingredient;
+import application.Recipe;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -34,10 +37,10 @@ public class SQLRecipes {
 				+ "(START WITH 1, INCREMENT BY 1), "
 				+ "RecipeName varchar(255), "
 				+ "RecipeInstructions varchar(5000), "
-				+ "CookTime int, "
-				+ "PrepTime int, "
+				+ "CookTime varchar(4), "
+				+ "PrepTime varchar(4), "
 				+ "RecipeDescription varchar(1000), "
-				+ "CostCategory int)";
+				+ "CostCategory varchar(10))";
     }
 
     /**
@@ -71,20 +74,24 @@ public class SQLRecipes {
      * @return the string containing the SQL commands to insert new
      * data into the <code>Recipes</code> table.
      */
-    public static String insertDataIntoTable() {
-    	
-    	return "INSERT INTO Recipes "
-    			+ "(RecipeName, RecipeInstructions, CookTime, PrepTime, RecipeDescription, CostCategory) "
-    			+ "VALUES "
-    			+ "('Spaghetti Bolognese', '1. Cook Spaghetti 2. Add Bolognese', 30, 15, 'It is spaghetti"
-    			+ " with a red meat sauce', 1), "
-    			+ "('Sushi', '1. prepare meat 2. slice avocado 3. wrap in seaweed', 0, 20, 'Sushi rolls', 3), "
-    			+ "('Grilled Cheese', '1. put cheese between two slices of bread 2. cook on buttered pan', "
-    			+ "10, 5, 'A grilled cheese sandwich', 1), "
-    			+ "('Tonkotsu Ramen', '1. Bring chicken broth to boil 2. add egg, noodles, meat, and spices', "
-    			+ "20, 5, 'delicious, spicy ramen', 2), "
-    			+ "('Carne Asada Burrito', '1.Cook beans 2. cube meats and cook ingredients"
-    			+ " 3. wrap in tortilla', 10, 10, 'A classic mexican burrito', 2)";
+    public static String insertDataIntoTable(Recipe[] recipes) {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("INSERT INTO Recipes (RecipeName, RecipeInstructions, CookTime, " +
+				"PrepTime, RecipeDescription, CostCategory)  VALUES ");
+
+
+		for (Recipe recipe: recipes){
+			sb.append("('").append(recipe.getRecipeName()).append("', '")
+					.append(recipe.getRecipeInstructions()).append("', '")
+					.append(recipe.getCookTime()).append("', '")
+					.append(recipe.getPrepTime()).append("', '")
+					.append(recipe.getRecipeDescription()).append("', '")
+					.append(recipe.getCostCategory()).append("'),");
+		}
+		sb.replace(sb.length() - 1,sb.length(),"");
+//		System.out.println(sb);
+		return sb.toString();
     }
 
 	/**
@@ -120,6 +127,10 @@ public class SQLRecipes {
 		return "SELECT * from Recipes WHERE ID "
 				+ "BETWEEN " + startID + " AND " + endID +
 				" ORDER BY " + sortMethod;
+	}
+
+	public static String deleteRow(int id){
+		return "DELETE FROM Recipes WHERE ID = " + id;
 	}
     
 	public static void printData(ResultSet rs) throws SQLException {
