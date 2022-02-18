@@ -39,6 +39,7 @@ import sql.SQLRecipes;
 public class EditDataController implements Initializable{
 
 	public ComboBox<String> rowSelectionRecipe;
+	String toggleMethod = "ID";
 	@FXML
 	private ToggleGroup sortRecipes;
 	private Parent root;
@@ -100,7 +101,6 @@ public class EditDataController implements Initializable{
 		mealTableView.getItems().setAll(parseMealList());
 
 		sortRecipes.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
-			String toggleMethod = "ID";
 			RadioButton rb = (RadioButton)sortRecipes.getSelectedToggle();
 
 			if (rb != null) {
@@ -130,11 +130,13 @@ public class EditDataController implements Initializable{
 		ints.add("all");
 		ObservableList<String> integers = FXCollections.observableList(ints);
 		rowSelectionRecipe.setItems(integers);
-		rowSelectionRecipe.selectionModelProperty().addListener
+		rowSelectionRecipe.getSelectionModel().selectedItemProperty().addListener
 				((observableValue1, integerSingleSelectionModel, t11) -> {
 					String intAsString = rowSelectionRecipe.getSelectionModel().getSelectedItem();
 					numOfRowsRecipe = intAsString.equals("all") ?
 							-1 : Integer.parseInt(intAsString);
+					System.out.println(numOfRowsRecipe);
+					recipeTableView.getItems().setAll(parseRecipeList(toggleMethod));
 				});
     }
 	

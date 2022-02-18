@@ -94,6 +94,11 @@ public class SQLRecipes {
 		return sb.toString();
     }
 
+	public static String insertDataIntoTable(Recipe recipe) {
+		Recipe[] r = {recipe};
+		return insertDataIntoTable(r);
+	}
+
 	/**
 	 * Returns a string to query for the rows based off of id.
 	 *
