@@ -38,5 +38,10 @@ public class MealBrowserController {
 		stage.show();
 	}
 
-	
+	/* ******
+	Pull GUI into class //TODO
+	Add Items to those GUI elements (use SQL Commands here - Meal / Recipe)
+		-Populate Instructions
+	 */
+
 }
