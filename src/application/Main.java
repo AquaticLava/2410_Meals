@@ -18,6 +18,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import sql.*;
 
+import javax.xml.transform.Result;
+
 /**
  * 
  * @author Malcolm
@@ -77,6 +79,16 @@ public class Main extends Application{
 			ResultSet rsRecipes = s.executeQuery(SQLRecipes.allDataFromTable("ID"));
 			SQLRecipes.printData(rsRecipes);
 			System.out.println();
+
+			//Puts five meals into the database and prints out the results.
+			System.out.println("Put Testing Meals into the database");
+			s.execute(SQLMeals.dropTable());
+			s.execute(SQLMeals.createTable());
+			s.execute(SQLMeals.insertFirstTestMeals());
+			ResultSet rsMeals = s.executeQuery(SQLMeals.allDataFromTable());
+			SQLMeals.printData(rsMeals);
+			System.out.println();
+
 
 //			System.out.println("Ingredients");
 //			s.execute(SQLIngredients.dropTable());

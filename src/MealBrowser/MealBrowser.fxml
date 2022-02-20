@@ -15,10 +15,10 @@
    <center>
        <TabPane>
            <Tab text="Description">
-               <TextArea fx:id="recipeDescriptionField" editable="false" prefHeight="300.0" prefWidth="300.0" text="Populate with Recipe description &#10;and recipe instructions&#10;" />
+               <TextArea fx:id="recipeDescriptionField" wrapText="true" editable="false" prefHeight="300.0" prefWidth="300.0" text="Populate with Recipe description &#10;and recipe instructions&#10;" />
            </Tab>
            <Tab text="Instructions">
-               <TextArea fx:id="recipeInstructionField" editable="false" prefHeight="300.0" prefWidth="300.0" text="Populate with Recipe description &#10;and recipe instructions&#10;" />
+               <TextArea fx:id="recipeInstructionField" wrapText="true" editable="false" prefHeight="300.0" prefWidth="300.0" text="Populate with Recipe description &#10;and recipe instructions&#10;" />
            </Tab>
        </TabPane>
    </center>

@@ -79,6 +79,16 @@ public class SQLMeals {
 				+ "('Tonkotsu Ramen', 'Pic004.png', 4), "
 				+ "('Carne Asada Burrito', 'Pic005.png', 5)";
     }
+
+	public static String insertFirstTestMeals (){
+		return "INSERT INTO Meals "
+				+ "(Name, Photo, RecipeId) VALUES "
+				+ "('Pork and Peanut Dragon Noodles', 'PorkAndPeanutDragonNoodles.jpg', 1), "
+				+ "('Ground Turkey Skillet with Veggies', 'GroundTurkey.png', 2), "
+				+ "('Spinach Stuffed Chicken Breast', 'SpinachStuffedChicken.png', 3), "
+				+ "('Instant Pot Baked Ziti', 'InstantPotBakedZiti.png', 4), "
+				+ "('Air Fryer Chicken Sandwich', 'AirFryerChickenSandwich.png', 5)";
+	}
     
 	public static void printData(ResultSet rs) throws SQLException {
 		

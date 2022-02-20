@@ -17,6 +17,13 @@ import java.sql.SQLException;
  * @author Malcolm
  */
 public class SQLRecipes {
+
+	public static String returnSpecificColumns (String[] columns){
+		StringBuilder sb = new StringBuilder();
+
+		return sb.toString();
+	}
+
 	/* ****************************************************************
 		Make method that takes in array of columns and returns sql query that returns only those columns.
 		Return the command //TODO
@@ -99,6 +106,10 @@ public class SQLRecipes {
 //		System.out.println(sb);
 		return sb.toString();
     }
+
+	public static String pullRecipeByID (int ID){
+		return "SELECT * from Recipes WHERE ID = " + ID;
+	}
 
 	public static String insertDataIntoTable(Recipe recipe) {
 		Recipe[] r = {recipe};

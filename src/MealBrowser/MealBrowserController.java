@@ -2,6 +2,8 @@ package MealBrowser;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import application.Ingredient;
@@ -25,6 +27,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import sql.SQLConnection;
+import sql.SQLMeals;
 import sql.SQLRecipes;
 
 /**
@@ -54,16 +57,60 @@ public class MealBrowserController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+//		recipeDescriptionField recipeInstructionField
 		ObservableList<StringKeyValuePair<Meal>> observableList = FXCollections.observableArrayList();
 		//observableList.add(new Meal(1,"test","photo",9));
 		mealsDropdown.setItems(observableList);
-		Meal meal = new Meal(1,"test","photo",9);
-		observableList.add(new StringKeyValuePair<>(meal, meal.getName()));
+
+		//==========================================================================
+		SQLConnection c = null;
+		ResultSet rsMeals = null;
+		int i = 0;
+		Meal[] meals = new Meal[5];
+		//Pull Meals from database
+		try {
+			c = new SQLConnection();
+			rsMeals = c.getSqlStatement().executeQuery(SQLMeals.allDataFromTable());
+			while (rsMeals.next()){
+				meals[i] = new Meal(i+1, rsMeals.getString("Name"), rsMeals.getString("Photo"), i+1);
+				i++;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//==========================================================================
+
+//		Meal meal = new Meal(1,"test","photo",9);
+		for (int j = 0; j < meals.length; j++){
+			observableList.add(new StringKeyValuePair<>(meals[j], meals[j].getName()));
+		}
+
+		SQLConnection finalC = c;
 		mealsDropdown.getSelectionModel().selectedItemProperty().addListener
 				((observableValue1, integerSingleSelectionModel, t11) -> {
-					Recipe recipe = new Recipe(4,"Recipe","Cookme","7","56","Dish","$$");
-					recipeDescriptionField.setText(recipe.getRecipeDescription());
-					recipeInstructionField.setText(recipe.getRecipeInstructions());
+					Meal m = mealsDropdown.getSelectionModel().getSelectedItem().getValue();
+					Recipe r = null;
+					try {
+						ResultSet rs = finalC.getSqlStatement().executeQuery(SQLRecipes.pullRecipeByID(m.getId()));
+						while (rs.next()){
+							//RecipeName, RecipeInstructions, CookTime, " +
+							//				"PrepTime, RecipeDescription, CostCategory
+							r = new Recipe(rs.getInt("Id"),
+									rs.getString("RecipeName"),
+									rs.getString("RecipeInstructions"),
+									rs.getString("CookTime"),
+									rs.getString("PrepTime"),
+									rs.getString("RecipeDescription"),
+									rs.getString("CostCategory"));
+						}
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+
+//					Recipe recipe = new Recipe(4,"Recipe","Cookme","7","56","Dish","$$");
+					recipeDescriptionField.setText(r.getRecipeDescription());
+					recipeInstructionField.setText(r.getRecipeInstructions());
 				});
 	}
 
