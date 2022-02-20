@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MealBrowser.MealBrowserController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MealBrowser.MealBrowserController">
    <left>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../../../../../../Downloads/istockphoto-1284690585-1024x1024.jpg" />
+            <Image fx:id="mealImage" url="@../../../../../../Downloads/istockphoto-1284690585-1024x1024.jpg" />
          </image>
       </ImageView>
    </left>
    <center>
-      <TextArea fx:id="recipeDescriptionAndInstructionField" editable="false" prefHeight="300.0" prefWidth="300.0" text="Populate with Recipe description &#10;and recipe instructions&#10;" BorderPane.alignment="CENTER" />
+       <TabPane>
+           <Tab text="Description">
+               <TextArea fx:id="recipeDescriptionField" editable="false" prefHeight="300.0" prefWidth="300.0" text="Populate with Recipe description &#10;and recipe instructions&#10;" />
+           </Tab>
+           <Tab text="Instructions">
+               <TextArea fx:id="recipeInstructionField" editable="false" prefHeight="300.0" prefWidth="300.0" text="Populate with Recipe description &#10;and recipe instructions&#10;" />
+           </Tab>
+       </TabPane>
    </center>
    <right>
       <SplitPane dividerPositions="0.15949820788530464" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
@@ -60,7 +58,7 @@
    <top>
       <HBox prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <ComboBox prefHeight="35.0" prefWidth="426.0" promptText="Select Meal" />
+            <ComboBox fx:id="mealsDropdown" prefHeight="35.0" prefWidth="426.0" promptText="Select Meal" />
             <Button mnemonicParsing="false" onAction="#switchToMainMenu" text="Back to Main Menu" />
          </children>
       </HBox>
