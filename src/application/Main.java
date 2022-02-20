@@ -23,7 +23,7 @@ import javax.xml.transform.Result;
 /**
  * 
  * @author Malcolm
- *
+ * @author Collin
  */
 
 public class Main extends Application{
@@ -106,9 +106,6 @@ public class Main extends Application{
 //			SQLRecipesIngredients.printData(rsRecipesIngredients);
 //			System.out.println();
 
-
-
-
 		} catch (SQLException e) {
 
 			e.printStackTrace();
@@ -118,7 +115,7 @@ public class Main extends Application{
 
 	public static void main(String[] args) {
 
-		csvToDB();
+//		csvToDB();
 
 		launch(args);
 

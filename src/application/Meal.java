@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * 
+ * Class represent a meal with a name, id and recipe id.
  * @author Malcolm
  *
  */

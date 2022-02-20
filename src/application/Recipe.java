@@ -3,6 +3,11 @@ package application;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Represents a recipe.
+ *
+ * @author Collin, Malcolm
+ */
 public class Recipe {
 
 	private int Id;

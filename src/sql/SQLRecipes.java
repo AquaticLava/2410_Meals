@@ -15,6 +15,7 @@ import java.sql.SQLException;
  *
  * @author Eric R
  * @author Malcolm
+ * @author Collin
  */
 public class SQLRecipes {
 
@@ -108,7 +109,7 @@ public class SQLRecipes {
     }
 
 	public static String pullRecipeByID (int ID){
-		return "SELECT * from Recipes WHERE ID = " + ID;
+		return "SELECT RecipeDescription, RecipeInstructions from Recipes WHERE ID = " + ID;
 	}
 
 	public static String insertDataIntoTable(Recipe recipe) {

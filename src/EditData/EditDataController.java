@@ -33,7 +33,7 @@ import sql.SQLRecipes;
 
 /**
  * Controller class for the data editing tab, controls buttons and manipulates data records.
- * @author Malcolm
+ * @author Malcolm and Eric
  *
  */
 public class EditDataController implements Initializable{
@@ -135,7 +135,7 @@ public class EditDataController implements Initializable{
 					String intAsString = rowSelectionRecipe.getSelectionModel().getSelectedItem();
 					numOfRowsRecipe = intAsString.equals("all") ?
 							-1 : Integer.parseInt(intAsString);
-					System.out.println(numOfRowsRecipe);
+//					System.out.println(numOfRowsRecipe);
 					recipeTableView.getItems().setAll(parseRecipeList(toggleMethod));
 				});
     }

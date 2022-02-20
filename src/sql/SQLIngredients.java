@@ -16,6 +16,7 @@ import java.util.ArrayList;
  *
  * @author Eric R
  * @author Malcolm
+ * @author Collin
  */
 public class SQLIngredients {
     /**

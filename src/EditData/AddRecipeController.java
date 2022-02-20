@@ -64,7 +64,5 @@ public class AddRecipeController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-
 	}
 }

@@ -12,6 +12,7 @@ import java.sql.SQLException;
  *
  * @author Eric R
  * @author Malcolm
+ * @author Collin W.
  */
 public class SQLMeals {
     /**

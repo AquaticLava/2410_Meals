@@ -32,7 +32,7 @@ import sql.SQLRecipes;
 
 /**
  * Controller class for the meal browser, controls buttons and loads meal/recipe info.
- * @author Malcolm
+ * @author Malcolm, Collin, and Eric
  *
  */
 public class MealBrowserController implements Initializable{
@@ -93,15 +93,8 @@ public class MealBrowserController implements Initializable{
 					try {
 						ResultSet rs = finalC.getSqlStatement().executeQuery(SQLRecipes.pullRecipeByID(m.getId()));
 						while (rs.next()){
-							//RecipeName, RecipeInstructions, CookTime, " +
-							//				"PrepTime, RecipeDescription, CostCategory
-							r = new Recipe(rs.getInt("Id"),
-									rs.getString("RecipeName"),
-									rs.getString("RecipeInstructions"),
-									rs.getString("CookTime"),
-									rs.getString("PrepTime"),
-									rs.getString("RecipeDescription"),
-									rs.getString("CostCategory"));
+							recipeDescriptionField.setText(rs.getString("RecipeDescription"));
+							recipeInstructionField.setText(rs.getString("RecipeInstructions"));
 						}
 
 					} catch (SQLException e) {
