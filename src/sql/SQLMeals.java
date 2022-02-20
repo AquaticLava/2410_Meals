@@ -60,6 +60,8 @@ public class SQLMeals {
 		return "SELECT * FROM Meals";
     }
 
+
+
     /**
      * Creates a string containing SQL commands to put insert new data
      * into the <code>Ingredients</code> table.

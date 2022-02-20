@@ -17,6 +17,12 @@ import java.sql.SQLException;
  * @author Malcolm
  */
 public class SQLRecipes {
+	/* ****************************************************************
+		Make method that takes in array of columns and returns sql query that returns only those columns.
+		Return the command //TODO
+	 */
+
+
     /**
      * Creates a string containing SQL commands to create
      * the <code>Recipes</code> table.

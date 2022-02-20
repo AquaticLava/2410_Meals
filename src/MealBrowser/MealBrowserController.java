@@ -78,5 +78,10 @@ public class MealBrowserController implements Initializable{
 		stage.show();
 	}
 
-	
+	/* ******
+	Pull GUI into class //TODO
+	Add Items to those GUI elements (use SQL Commands here - Meal / Recipe)
+		-Populate Instructions
+	 */
+
 }
