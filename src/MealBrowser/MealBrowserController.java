@@ -101,9 +101,6 @@ public class MealBrowserController implements Initializable{
 						e.printStackTrace();
 					}
 
-//					Recipe recipe = new Recipe(4,"Recipe","Cookme","7","56","Dish","$$");
-					recipeDescriptionField.setText(r.getRecipeDescription());
-					recipeInstructionField.setText(r.getRecipeInstructions());
 				});
 	}
 
