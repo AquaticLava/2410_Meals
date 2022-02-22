@@ -41,27 +41,19 @@ public class SQLMeals {
      * Creates a string containing SQL commands to drop
      * the <code>Ingredients</code> table from the database.
      *
-     * @return the string containing the SQL commands to drop the
+     * The string containing the SQL commands to drop the
      * <code>Ingredients</code> table.
      */
-    public static String dropTable() {
-
-		return "DROP TABLE Meals";
-    }
+    public static String DROPTABLE =  "DROP TABLE Meals";
 
     /**
      * Creates a string containing SQL commands to pull all
      * the information from the <code>Ingredients</code> table.
      *
-     * @return the string containing the SQL commands to pull all
+     * The string containing the SQL commands to pull all
      * data from the <code>Ingredients</code> table.
      */
-    public static String allDataFromTable() {
-
-		return "SELECT * FROM Meals";
-    }
-
-
+    public static String ALLDATAFROMTABLE = "SELECT * FROM Meals";
 
     /**
      * Creates a string containing SQL commands to put insert new data

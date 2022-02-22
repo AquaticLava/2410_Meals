@@ -18,7 +18,7 @@ public class CSVInput {
     /**
      * Constructs a CSVInput.
      *
-     * @param type - "ingredients" if the csv has ingredients or "recipes" if its the recipes csv
+     * @param type - "ingredients" if the csv has ingredients or "recipes" if it's the recipes csv
      */
     public CSVInput (String path, String type){
         try {
@@ -60,7 +60,7 @@ public class CSVInput {
     public void readFileDataIngredients (){
         boolean skipHeader = true;
         while (scan.hasNext())
-            if (skipHeader == false){
+            if (!skipHeader){
                 data.add(scan.nextLine());
             } else {
                 scan.nextLine();
@@ -80,10 +80,10 @@ public class CSVInput {
         return data;
     }
 
-    /**
-     * This main method test the this class but is not to be a part of or used in this program.
-     * @param args
-     */
+//    /**
+//     * This main method test this class but is not to be a part of or used in this program.
+//     * @param args
+//     */
 //    public static void main (String[] args){
 //        CSVInput c = new CSVInput("src/application/resources/ingredients.csv");
 //        c.readFileData();

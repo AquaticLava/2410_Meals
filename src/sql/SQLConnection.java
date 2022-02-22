@@ -28,7 +28,7 @@ public class SQLConnection implements AutoCloseable{
     }
 
     @Override
-    public void close() throws Exception {
+    public void close() throws SQLException {
         sqlStatement.close();
         sqlConnection.close();
     }

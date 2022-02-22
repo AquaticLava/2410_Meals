@@ -2,10 +2,8 @@ package sql;
 
 import application.Ingredient;
 
-import java.sql.JDBCType;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  * Holds methods containing strings with SQL commands for
@@ -60,26 +58,19 @@ public class SQLIngredients {
      * Creates a string containing SQL commands to drop
      * the <code>Ingredients</code> table from the database.
      *
-     * @return the string containing the SQL commands to drop the
+     * The string containing the SQL commands to drop the
      * <code>Ingredients</code> table.
      */
-    public static String dropTable(){
-    	
-        return "DROP TABLE Ingredients";
-
-    }
+    public static String DROPTABLE = "DROP TABLE Ingredients";
 
     /**
      * Creates a string containing SQL commands to pull all
      * the information from the <code>Ingredients</code> table.
      *
-     * @return the string containing the SQL commands to pull all
+     * The string containing the SQL commands to pull all
      * data from the <code>Ingredients</code> table.
      */
-    public static String allDataFromTable(){
-
-    	return "SELECT * FROM Ingredients";
-    }
+    public static String ALLDATAFROMTABLE = "SELECT * FROM Ingredients";
 
     /**
      * Creates a string containing SQL commands to put insert new data

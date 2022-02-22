@@ -1,8 +1,5 @@
 package application;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 /**
  * Represents a recipe.
  *
@@ -71,35 +68,6 @@ public class Recipe {
 	
 	public String getCostCategory() {
 		return costCategory;
-	}
-	
-	public void setId(int Id) {
-		this.Id = Id;
-	}
-	
-	public void setRecipeName(String name) {
-		this.recipeName = name;
-	}
-	
-	public void setRecipeInstructions(String instructions) {
-		this.recipeInstructions = instructions;
-	}
-	
-	public void setCookTime(String cookTime) {
-		this.cookTime = cookTime;
-	}
-	
-	public void setPrepTime(String prepTime) {
-		this.prepTime = prepTime;
-	}
-	
-	public void setRecipeDescription(String description) {
-		this.recipeDescription = description;
-	}
-	
-	public void setCostCategory(String costCategory) {
-		
-		this.costCategory = costCategory;
 	}
 
 	@Override

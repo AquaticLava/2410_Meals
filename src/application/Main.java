@@ -1,24 +1,19 @@
 package application;
 
-import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import EditData.CSVInput;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import sql.*;
-
-import javax.xml.transform.Result;
 
 /**
  * 
@@ -73,7 +68,7 @@ public class Main extends Application{
 			 Statement s = c.createStatement()){
 
 			System.out.println("Recipes");
-			s.execute(SQLRecipes.dropTable());
+			s.execute(SQLRecipes.DROPTABLE);
 			s.execute(SQLRecipes.createTable());
 			s.execute(SQLRecipes.insertDataIntoTable(recipes));
 			ResultSet rsRecipes = s.executeQuery(SQLRecipes.allDataFromTable("ID"));
@@ -82,10 +77,10 @@ public class Main extends Application{
 
 			//Puts five meals into the database and prints out the results.
 			System.out.println("Put Testing Meals into the database");
-			s.execute(SQLMeals.dropTable());
+			s.execute(SQLMeals.DROPTABLE);
 			s.execute(SQLMeals.createTable());
 			s.execute(SQLMeals.insertFirstTestMeals());
-			ResultSet rsMeals = s.executeQuery(SQLMeals.allDataFromTable());
+			ResultSet rsMeals = s.executeQuery(SQLMeals.ALLDATAFROMTABLE);
 			SQLMeals.printData(rsMeals);
 			System.out.println();
 

@@ -1,6 +1,5 @@
 package sql;
 
-import application.Ingredient;
 import application.Recipe;
 
 import java.sql.ResultSet;
@@ -61,13 +60,10 @@ public class SQLRecipes {
      * Creates a string containing SQL commands to drop
      * the <code>Recipes</code> table from the database.
      *
-     * @return the string containing the SQL commands to drop the
+     * The string containing the SQL commands to drop the
      * <code>Recipes</code> table.
      */
-    public static String dropTable() {
-    	
-    	return "DROP TABLE Recipes";
-    }
+    public static String DROPTABLE = "DROP TABLE Recipes";
 
     /**
      * Creates a string containing SQL commands to pull all
@@ -118,38 +114,31 @@ public class SQLRecipes {
 	}
 
 	/**
-	 * Returns a string to query for the rows based off of id.
-	 *
-	 * Start id is the first id in the query.
-	 * and end id is the last id in the query.
+	 * Returns a string to query for a limited number of rows.
 	 *
 	 *
-	 * @param startID ID to start at.
-	 * @param endID ID to end at.
+	 * @param numberOfRows Number of rows to query for.
 	 * @return the string for a query of rows between startID and endID, inclusive.
 	 */
-	public static String partialDataFromTable(int startID, int endID){
-		return partialDataFromTable(startID,endID,"ID");
+	public static String partialDataFromTable(int numberOfRows){
+		return partialDataFromTable(numberOfRows,"ID");
 	}
 
 	/**
-	 * Returns a string to query for the rows based off of id with sorting.
+	 * Returns a string to query for a limited number of rows with sorting.
 	 *
-	 * Start id is the first id in the query
-	 * and end id is the last id in the query.
 	 * The sort method is a SQL command to add to the query for sorting.
 	 * ORDER BY is included in this method.
 	 *
 	 * @see <a href='https://www.w3schools.com/sql/sql_orderby.asp'>sortMethod Refrence</a>
-	 * @param startID ID to start at.
-	 * @param endID ID to end at.
+	 * @param numberOfRows Number of rows for the query to return.
 	 * @param sortMethod SQL command for sorting, ORDER BY is not needed.
 	 * @return a string to query for the rows based off of id with sorting.
 	 */
-	public static String partialDataFromTable(int startID, int endID, String sortMethod){
-		return "SELECT * from Recipes WHERE ID "
-				+ "BETWEEN " + startID + " AND " + endID +
-				" ORDER BY " + sortMethod;
+	public static String partialDataFromTable(int numberOfRows, String sortMethod){
+		return "SELECT * from Recipes " +
+				"ORDER BY " + sortMethod +
+				" FETCH FIRST " + numberOfRows + " ROWS ONLY";
 	}
 
 	public static String deleteRow(int id){

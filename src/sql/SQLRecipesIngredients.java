@@ -35,25 +35,19 @@ public class SQLRecipesIngredients {
      * Creates a string containing SQL commands to drop
      * the <code>RecipesIngredients</code> table from the database.
      *
-     * @return the string containing the SQL commands to drop the
+     * The string containing the SQL commands to drop the
      * <code>RecipesIngredients</code> table.
      */
-    public static String dropTable() {
-
-    	return "DROP TABLE RecipesIngredients";
-    }
+    public static String DROPTABLE = "DROP TABLE RecipesIngredients";
 
     /**
      * Creates a string containing SQL commands to pull all
      * the information from the <code>RecipesIngredients</code> table.
      *
-     * @return the string containing the SQL commands to pull all
+     * The string containing the SQL commands to pull all
      * data from the <code>RecipesIngredients</code> table.
      */
-    public static String allDataFromTable() {
-
-    	return "SELECT * FROM RecipesIngredients";
-    }
+    public static String ALLDATAFROMTABLE = "SELECT * FROM RecipesIngredients";
 
     /**
      * Creates a string containing SQL commands to put insert new data

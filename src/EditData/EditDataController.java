@@ -1,23 +1,10 @@
 package EditData;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ResourceBundle;
-
 import application.Ingredient;
 import application.Meal;
 import application.Recipe;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,72 +18,80 @@ import javafx.stage.Stage;
 import sql.SQLConnection;
 import sql.SQLRecipes;
 
+import java.io.IOException;
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.*;
+
 /**
  * Controller class for the data editing tab, controls buttons and manipulates data records.
  * @author Malcolm and Eric
  *
  */
 public class EditDataController implements Initializable{
-
-	public ComboBox<String> rowSelectionRecipe;
 	String toggleMethod = "ID";
+
+	@FXML
+	private ComboBox<String> rowSelectionRecipe;
+
 	@FXML
 	private ToggleGroup sortRecipes;
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
-	private int numOfRowsRecipe = 5;
+	private int numOfRows = 5;
 	
 	@FXML
-	private TableView ingredientTableView;
+	private TableView<Ingredient> ingredientTableView;
 
 	@FXML
 	private TableView<Recipe> recipeTableView;
 	@FXML
-	private TableColumn recipeIdColumn;
+	private TableColumn<Recipe,Integer> recipeIdColumn;
 	@FXML
-	private TableColumn recipeNameColumn;
+	private TableColumn<Recipe,String> recipeNameColumn;
 	@FXML
-	private TableColumn recipeInstructionsColumn;
+	private TableColumn<Recipe,String> recipeInstructionsColumn;
 	@FXML
-	private TableColumn recipeCookTimeColumn;
+	private TableColumn<Recipe,Integer> recipeCookTimeColumn;
 	@FXML
-	private TableColumn recipePrepTimeColumn;
+	private TableColumn<Recipe,Integer> recipePrepTimeColumn;
 	@FXML
-	private TableColumn recipeDescriptionColumn;
+	private TableColumn<Recipe,String> recipeDescriptionColumn;
 	@FXML
-	private TableColumn recipeCostCategoryColumn;
+	private TableColumn<Recipe,Integer> recipeCostCategoryColumn;
 	
 	@FXML
-	private TableView mealTableView;
+	private TableView<Meal> mealTableView;
 	@FXML
-	private TableColumn mealIdColumn;
+	private TableColumn<Meal,Integer> mealIdColumn;
 	@FXML
-	private TableColumn mealNameColumn;
+	private TableColumn<Meal,String> mealNameColumn;
 	@FXML
-	private TableColumn mealPhotoColumn;
+	private TableColumn<Meal,String> mealPhotoColumn;
 	@FXML
-	private TableColumn mealRecipeColumn;
+	private TableColumn<Meal,Integer> mealRecipeColumn;
 	
 	@Override
     public void initialize(URL location, ResourceBundle resources) {
 		
 		//Recipe table initialize
-		recipeIdColumn.setCellValueFactory(new PropertyValueFactory<Recipe,Integer>("Id"));
-		recipeNameColumn.setCellValueFactory(new PropertyValueFactory<Recipe,String>("recipeName"));
-		recipeInstructionsColumn.setCellValueFactory(new PropertyValueFactory<Recipe,String>("recipeInstructions"));
-		recipeCookTimeColumn.setCellValueFactory(new PropertyValueFactory<Recipe,Integer>("cookTime"));
-		recipePrepTimeColumn.setCellValueFactory(new PropertyValueFactory<Recipe,Integer>("prepTime"));
-		recipeDescriptionColumn.setCellValueFactory(new PropertyValueFactory<Recipe,String>("recipeDescription"));
-		recipeCostCategoryColumn.setCellValueFactory(new PropertyValueFactory<Recipe,Integer>("costCategory"));
+		recipeIdColumn.setCellValueFactory(new PropertyValueFactory<>("Id"));
+		recipeNameColumn.setCellValueFactory(new PropertyValueFactory<>("recipeName"));
+		recipeInstructionsColumn.setCellValueFactory(new PropertyValueFactory<>("recipeInstructions"));
+		recipeCookTimeColumn.setCellValueFactory(new PropertyValueFactory<>("cookTime"));
+		recipePrepTimeColumn.setCellValueFactory(new PropertyValueFactory<>("prepTime"));
+		recipeDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("recipeDescription"));
+		recipeCostCategoryColumn.setCellValueFactory(new PropertyValueFactory<>("costCategory"));
 		
 		recipeTableView.getItems().setAll(parseRecipeList("ID"));
 		
 		//meal table initialize
-		mealIdColumn.setCellValueFactory(new PropertyValueFactory<Meal,Integer>("Id"));
-		mealNameColumn.setCellValueFactory(new PropertyValueFactory<Meal,String>("name"));
-		mealPhotoColumn.setCellValueFactory(new PropertyValueFactory<Meal,String>("photoName"));
-		mealRecipeColumn.setCellValueFactory(new PropertyValueFactory<Meal,Integer>("recipeId"));
+		mealIdColumn.setCellValueFactory(new PropertyValueFactory<>("Id"));
+		mealNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+		mealPhotoColumn.setCellValueFactory(new PropertyValueFactory<>("photoName"));
+		mealRecipeColumn.setCellValueFactory(new PropertyValueFactory<>("recipeId"));
 		
 		mealTableView.getItems().setAll(parseMealList());
 
@@ -104,38 +99,27 @@ public class EditDataController implements Initializable{
 			RadioButton rb = (RadioButton)sortRecipes.getSelectedToggle();
 
 			if (rb != null) {
-				switch (rb.getText()){
-					case "Sort: Name":
-						toggleMethod = "RecipeName";
-						break;
-					case "Sort: cost":
-						toggleMethod = "CostCategory, RecipeName";
-						break;
-					case "Sort: Cook & prep":
-						toggleMethod = "CookTime, PrepTime, RecipeName";
-						break;
-					default:
-						toggleMethod = "ID";
+				switch (rb.getText()) {
+					case "Sort: Name" -> toggleMethod = "RecipeName";
+					case "Sort: cost" -> toggleMethod = "CostCategory, RecipeName";
+					case "Sort: Cook & prep" -> toggleMethod = "CookTime, PrepTime, RecipeName";
+					default -> toggleMethod = "ID";
 				}
 			}
 			recipeTableView.getItems().setAll(parseRecipeList(toggleMethod));
 		});
 
+		String[] ints = {
+				"5","10","25","50","all"
+		};
+		ObservableList<String> integers = FXCollections.observableList(Arrays.asList(ints));
 
-		LinkedList<String> ints = new LinkedList<>();
-		ints.add("5");
-		ints.add("10");
-		ints.add("25");
-		ints.add("50");
-		ints.add("all");
-		ObservableList<String> integers = FXCollections.observableList(ints);
 		rowSelectionRecipe.setItems(integers);
 		rowSelectionRecipe.getSelectionModel().selectedItemProperty().addListener
 				((observableValue1, integerSingleSelectionModel, t11) -> {
 					String intAsString = rowSelectionRecipe.getSelectionModel().getSelectedItem();
-					numOfRowsRecipe = intAsString.equals("all") ?
+					numOfRows = intAsString.equals("all") ?
 							-1 : Integer.parseInt(intAsString);
-//					System.out.println(numOfRowsRecipe);
 					recipeTableView.getItems().setAll(parseRecipeList(toggleMethod));
 				});
     }
@@ -145,10 +129,10 @@ public class EditDataController implements Initializable{
 		try (SQLConnection sqlConnection = new SQLConnection()) {
 			Statement s = sqlConnection.getSqlStatement();
 
-			ResultSet recipeRS = (numOfRowsRecipe == -1) ?
+			ResultSet recipeRS = (numOfRows == -1) ?
 					s.executeQuery(SQLRecipes.allDataFromTable(sortMethod)) :
 					s.executeQuery(SQLRecipes.partialDataFromTable
-							(1,numOfRowsRecipe,sortMethod));
+							(numOfRows,sortMethod));
 
 			while (recipeRS.next()){
 				r.add(new Recipe(
@@ -172,7 +156,7 @@ public class EditDataController implements Initializable{
     	//Here is where we will populate the meal table with default 10 rows for each table
         //TODO parse and construct recipe datamodel list by looping your ResultSet rs
         // and return the list 
-    	List<Meal> m = new LinkedList<Meal>();
+    	List<Meal> m = new LinkedList<>();
     	m.add(new Meal(1, "Ramen", "Meal_001.png", 1));
     	
     	return m;
@@ -227,7 +211,7 @@ public class EditDataController implements Initializable{
 		stage.show();
 	}
 	
-	public void deleteRecipe(ActionEvent event) throws IOException {
+	public void deleteRecipe() {
 		Recipe selectedItem = recipeTableView.getSelectionModel().getSelectedItem();
 		recipeTableView.getItems().remove(selectedItem);
 		try (SQLConnection sqlConnection = new SQLConnection()){
@@ -238,7 +222,7 @@ public class EditDataController implements Initializable{
 		}
 	}
 	
-	public void deleteMeal(ActionEvent event) throws IOException {
+	public void deleteMeal() {
 		//TODO need to add call to remove from database
 //		Meal selectedItem = (Meal)recipeTableView.getSelectionModel().getSelectedItem();
 //		mealTableView.getItems().remove(selectedItem);

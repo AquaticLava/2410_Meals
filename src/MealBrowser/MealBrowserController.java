@@ -8,9 +8,7 @@ import java.util.ResourceBundle;
 
 import application.Ingredient;
 import application.Meal;
-import application.Recipe;
 import application.StringKeyValuePair;
-import javafx.animation.KeyValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -64,13 +62,13 @@ public class MealBrowserController implements Initializable{
 
 		//==========================================================================
 		SQLConnection c = null;
-		ResultSet rsMeals = null;
+		ResultSet rsMeals;
 		int i = 0;
 		Meal[] meals = new Meal[5];
 		//Pull Meals from database
 		try {
 			c = new SQLConnection();
-			rsMeals = c.getSqlStatement().executeQuery(SQLMeals.allDataFromTable());
+			rsMeals = c.getSqlStatement().executeQuery(SQLMeals.ALLDATAFROMTABLE);
 			while (rsMeals.next()){
 				meals[i] = new Meal(i+1, rsMeals.getString("Name"), rsMeals.getString("Photo"), i+1);
 				i++;
@@ -81,15 +79,14 @@ public class MealBrowserController implements Initializable{
 		//==========================================================================
 
 //		Meal meal = new Meal(1,"test","photo",9);
-		for (int j = 0; j < meals.length; j++){
-			observableList.add(new StringKeyValuePair<>(meals[j], meals[j].getName()));
+		for (Meal meal : meals) {
+			observableList.add(new StringKeyValuePair<>(meal, meal.getName()));
 		}
 
 		SQLConnection finalC = c;
 		mealsDropdown.getSelectionModel().selectedItemProperty().addListener
 				((observableValue1, integerSingleSelectionModel, t11) -> {
 					Meal m = mealsDropdown.getSelectionModel().getSelectedItem().getValue();
-					Recipe r = null;
 					try {
 						ResultSet rs = finalC.getSqlStatement().executeQuery(SQLRecipes.pullRecipeByID(m.getId()));
 						while (rs.next()){
