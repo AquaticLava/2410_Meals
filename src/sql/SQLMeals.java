@@ -12,6 +12,7 @@ import java.sql.SQLException;
  *
  * @author Eric R
  * @author Malcolm
+ * @author Collin W.
  */
 public class SQLMeals {
     /**
@@ -40,25 +41,19 @@ public class SQLMeals {
      * Creates a string containing SQL commands to drop
      * the <code>Ingredients</code> table from the database.
      *
-     * @return the string containing the SQL commands to drop the
+     * The string containing the SQL commands to drop the
      * <code>Ingredients</code> table.
      */
-    public static String dropTable() {
-
-		return "DROP TABLE Meals";
-    }
+    public static String DROPTABLE =  "DROP TABLE Meals";
 
     /**
      * Creates a string containing SQL commands to pull all
      * the information from the <code>Ingredients</code> table.
      *
-     * @return the string containing the SQL commands to pull all
+     * The string containing the SQL commands to pull all
      * data from the <code>Ingredients</code> table.
      */
-    public static String allDataFromTable() {
-
-		return "SELECT * FROM Meals";
-    }
+    public static String ALLDATAFROMTABLE = "SELECT * FROM Meals";
 
     /**
      * Creates a string containing SQL commands to put insert new data
@@ -77,6 +72,16 @@ public class SQLMeals {
 				+ "('Tonkotsu Ramen', 'Pic004.png', 4), "
 				+ "('Carne Asada Burrito', 'Pic005.png', 5)";
     }
+
+	public static String insertFirstTestMeals (){
+		return "INSERT INTO Meals "
+				+ "(Name, Photo, RecipeId) VALUES "
+				+ "('Pork and Peanut Dragon Noodles', 'PorkAndPeanutDragonNoodles.jpg', 1), "
+				+ "('Ground Turkey Skillet with Veggies', 'GroundTurkey.png', 2), "
+				+ "('Spinach Stuffed Chicken Breast', 'SpinachStuffedChicken.png', 3), "
+				+ "('Instant Pot Baked Ziti', 'InstantPotBakedZiti.png', 4), "
+				+ "('Air Fryer Chicken Sandwich', 'AirFryerChickenSandwich.png', 5)";
+	}
     
 	public static void printData(ResultSet rs) throws SQLException {
 		

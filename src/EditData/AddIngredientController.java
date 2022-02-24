@@ -1,7 +1,6 @@
 package EditData;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

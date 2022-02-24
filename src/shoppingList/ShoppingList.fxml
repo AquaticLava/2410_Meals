@@ -9,58 +9,52 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shoppingList.ShoppingListController">
-  <items>
+<SplitPane dividerPositions="0.1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           orientation="VERTICAL" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="shoppingList.ShoppingListController">
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-         <children>
-            <Label layoutX="22.0" layoutY="14.0" text="Shopping List" />
-            <Button layoutX="495.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="Meal Browser" />
-         </children></AnchorPane>
+        <Label layoutX="22.0" layoutY="14.0" text="Shopping List"/>
+        <Button layoutX="495.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToMainMenu"
+                text="Meal Browser"/>
+    </AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-         <children>
-            <Accordion fx:id="shoppingListMeals" layoutX="198.0" layoutY="185.0" prefHeight="444.6666666666667" prefWidth="597.3333333333334" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <panes>
+        <Accordion fx:id="shoppingListMeals" layoutX="198.0" layoutY="185.0" prefHeight="444.6666666666667"
+                   prefWidth="597.3333333333334" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <panes>
                 <TitledPane animated="false" text="Meal 1">
-                  <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <TableView layoutX="190.0" layoutY="84.0" prefHeight="368.0" prefWidth="595.3333333333334" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <columns>
-                                  <TableColumn prefWidth="180.0000034570694" text="Ingredient Name" />
-                                  <TableColumn prefWidth="169.33334350585938" text="Quantity" />
-                                </columns>
-                              </TableView>
-                           </children></AnchorPane>
-                  </content>
+                        <TableView layoutX="190.0" layoutY="84.0" prefHeight="368.0" prefWidth="595.3333333333334"
+                                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <columns>
+                                <TableColumn prefWidth="180.0000034570694" text="Ingredient Name"/>
+                                <TableColumn prefWidth="169.33334350585938" text="Quantity"/>
+                            </columns>
+                        </TableView>
+                    </AnchorPane>
                 </TitledPane>
                 <TitledPane animated="false" text="Meal 2">
-                  <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <TableView prefHeight="368.0" prefWidth="595.3333333333334">
-                                 <columns>
-                                    <TableColumn prefWidth="180.0000034570694" text="Ingredient Name" />
-                                    <TableColumn prefWidth="169.33334350585938" text="Quantity" />
-                                 </columns>
-                              </TableView>
-                           </children></AnchorPane>
-                  </content>
+                        <TableView prefHeight="368.0" prefWidth="595.3333333333334">
+                            <columns>
+                                <TableColumn prefWidth="180.0000034570694" text="Ingredient Name"/>
+                                <TableColumn prefWidth="169.33334350585938" text="Quantity"/>
+                            </columns>
+                        </TableView>
+                    </AnchorPane>
                 </TitledPane>
                 <TitledPane animated="false" text="Meal 3">
-                  <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <TableView prefHeight="368.0" prefWidth="595.3333333333334">
-                                 <columns>
-                                    <TableColumn prefWidth="180.0000034570694" text="Ingredient Name" />
-                                    <TableColumn prefWidth="169.33334350585938" text="Quantity" />
-                                 </columns>
-                              </TableView>
-                           </children></AnchorPane>
-                  </content>
+                        <TableView prefHeight="368.0" prefWidth="595.3333333333334">
+                            <columns>
+                                <TableColumn prefWidth="180.0000034570694" text="Ingredient Name"/>
+                                <TableColumn prefWidth="169.33334350585938" text="Quantity"/>
+                            </columns>
+                        </TableView>
+                    </AnchorPane>
                 </TitledPane>
-              </panes>
-            </Accordion>
-         </children></AnchorPane>
-  </items>
+            </panes>
+        </Accordion>
+    </AnchorPane>
 </SplitPane>
