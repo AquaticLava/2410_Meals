@@ -43,7 +43,7 @@ public class Main extends Application{
 	 * Method reads in the ingredients and recipes csv files and syncs them with
 	 * the java database.
 	 */
-	private static void csvToDB (){
+	private static void csvToDB() {
 		//Read in and save the ingredients into an array list of ingredients.
 		CSVInput csvIngredients = new CSVInput("src/application/resources/ingredients.csv", "ingredients");
 		ArrayList<String> dataLines = csvIngredients.getDataList();
