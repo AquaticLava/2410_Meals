@@ -43,9 +43,6 @@ public class EditDataController implements Initializable{
 	private int numOfRows = 5;
 	
 	@FXML
-	private TableView<Ingredient> ingredientTableView;
-
-	@FXML
 	private TableView<Recipe> recipeTableView;
 	@FXML
 	private TableColumn<Recipe,Integer> recipeIdColumn;
@@ -73,6 +70,27 @@ public class EditDataController implements Initializable{
 	@FXML
 	private TableColumn<Meal,Integer> mealRecipeColumn;
 	
+	@FXML
+	private TableView<Ingredient> ingredientTableView;
+	@FXML
+	private TableColumn<Ingredient,Integer> ingredientIdColumn;
+	@FXML
+	private TableColumn<Ingredient,String> ingredientNameColumn;
+	@FXML
+	private TableColumn<Ingredient,String> ingredientCaloriesColumn;
+	@FXML
+	private TableColumn<Ingredient,String> ingredientCarbColumn;
+	@FXML
+	private TableColumn<Ingredient,String> ingredientFiberColumn;
+	@FXML
+	private TableColumn<Ingredient,String> ingredientProteinColumn;
+	@FXML
+	private TableColumn<Ingredient,String> ingredientFatColumn;
+	@FXML
+	private TableColumn<Ingredient,String> ingredientSugarColumn;
+	@FXML
+	private TableColumn<Ingredient,String> ingredientServingSizeColumn;
+	
 	@Override
     public void initialize(URL location, ResourceBundle resources) {
 		
@@ -94,7 +112,21 @@ public class EditDataController implements Initializable{
 		mealRecipeColumn.setCellValueFactory(new PropertyValueFactory<>("recipeId"));
 		
 		mealTableView.getItems().setAll(parseMealList());
+		
+		//ingredient table initialize
+		ingredientIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+		ingredientNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+		ingredientCaloriesColumn.setCellValueFactory(new PropertyValueFactory<>("calories"));
+		ingredientCarbColumn.setCellValueFactory(new PropertyValueFactory<>("carbs"));
+		ingredientFiberColumn.setCellValueFactory(new PropertyValueFactory<>("fiber"));
+		ingredientProteinColumn.setCellValueFactory(new PropertyValueFactory<>("protein"));
+		ingredientFatColumn.setCellValueFactory(new PropertyValueFactory<>("fat"));
+		ingredientSugarColumn.setCellValueFactory(new PropertyValueFactory<>("sugar"));
+		ingredientServingSizeColumn.setCellValueFactory(new PropertyValueFactory<>("servingSize"));
 
+		ingredientTableView.getItems().setAll(parseIngredientList());
+
+		
 		sortRecipes.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
 			RadioButton rb = (RadioButton)sortRecipes.getSelectedToggle();
 
@@ -162,17 +194,16 @@ public class EditDataController implements Initializable{
     	return m;
     }
 	
-//    private List<Ingredient> parseIngredientList(){
-//    	//Here is where we will populate the ingredient table with default 10 rows for each table
-//        //TODO parse and construct recipe datamodel list by looping your ResultSet rs
-//        // and return the list 
-//    	List<Ingredient> i = new LinkedList<Ingredient>();
-//    	i.add(new Ingredient(1, "Ramen", "1. Put Noodles in Bowl \n 2. Add hot water, eggs, and beef",
-//    	           	        20, 15, "It\'s a bowl of delicious ramen", 1));
-//    	
-//    	return i;
-//    }
-//	
+    private List<Ingredient> parseIngredientList(){
+    	//Here is where we will populate the ingredient table with default 10 rows for each table
+        //TODO parse and construct recipe datamodel list by looping your ResultSet rs
+        // and return the list 
+    	List<Ingredient> i = new LinkedList<Ingredient>();
+    	i.add(new Ingredient(1, "Chicken Broth", "100", "20g", "0g", "5g", "3g", "0g", "6 oz"));
+    	
+    	return i;
+    }
+	
 	
 	
 	public void switchToMainMenu(ActionEvent event) throws IOException {

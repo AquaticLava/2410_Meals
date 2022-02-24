@@ -11,15 +11,21 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditData.EditDataController">
+<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditData.EditDataController">
    <TabPane layoutX="-148.0" layoutY="-69.0" prefHeight="431.3333333333333" prefWidth="457.3333333333333" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="50.0" tabMaxWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Tab text="Ingredients">
          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
             <TableView fx:id="ingredientTableView" layoutX="150.0" layoutY="38.0" prefHeight="433.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="82.0">
                <columns>
-                  <TableColumn prefWidth="75.0" text="Id" />
-                  <TableColumn prefWidth="75.0" text="Name" />
-                  <TableColumn prefWidth="75.0" text="Nutrition Info" />
+                  <TableColumn fx:id="ingredientIdColumn" prefWidth="75.0" text="Id" />
+                  <TableColumn fx:id="ingredientNameColumn" prefWidth="176.66665649414062" text="Name" />
+                  <TableColumn fx:id="ingredientCaloriesColumn" prefWidth="56.0" text="Calories" />
+                  <TableColumn fx:id="ingredientCarbColumn" prefWidth="88.0" text="Carbohydrates" />
+                  <TableColumn fx:id="ingredientFiberColumn" prefWidth="67.3333740234375" text="Fiber" />
+                  <TableColumn fx:id="ingredientProteinColumn" prefWidth="65.33331298828125" text="Protein" />
+                  <TableColumn fx:id="ingredientFatColumn" prefWidth="69.3333740234375" text="Fat" />
+                  <TableColumn fx:id="ingredientSugarColumn" text="Sugar" />
+                  <TableColumn fx:id="ingredientServingSizeColumn" prefWidth="122.0" text="Serving Size" />
                </columns>
             </TableView>
             <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToAddIngredient" text="Add Item" />
@@ -36,8 +42,8 @@
                   <ToggleGroup fx:id="sortRecipes2" />
                </toggleGroup>
             </RadioButton>
-            <Separator layoutX="376.0" layoutY="8.0" orientation="VERTICAL" prefHeight="86.0" prefWidth="22.0" />
-            <Separator layoutX="164.0" layoutY="4.0" orientation="VERTICAL" prefHeight="86.0" prefWidth="22.0" />
+            <Separator layoutX="378.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="86.0" prefWidth="22.0" />
+            <Separator layoutX="164.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="86.0" prefWidth="22.0" />
             <ComboBox fx:id="rowSelectionRecipe2" editable="true" layoutX="413.0" layoutY="29.0" prefWidth="150.0" value="5" visibleRowCount="5" />
          </AnchorPane>
       </Tab>
