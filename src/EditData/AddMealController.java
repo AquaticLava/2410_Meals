@@ -1,6 +1,8 @@
 package EditData;
 
+import application.Ingredient;
 import application.Meal;
+import application.Recipe;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,8 +13,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import sql.SQLConnection;
 
 import java.io.IOException;
+import java.sql.Statement;
 
 /**
  * Controller class for the add meal page, this will allow users to submit new meals and take them back to the main menu.
@@ -30,13 +34,25 @@ public class AddMealController {
 	@FXML
 	private TextArea mealPhotoField;
 	@FXML
-	private TableView<Meal> mealRecipeTable;
+	private TableView<Recipe> mealRecipeTable;
 	@FXML
-	private TableColumn<Meal,Integer> mealRecipeIdColumn;
+	private TableColumn<Recipe,Integer> mealRecipeIdColumn;
 	
 	public void submitMeal(ActionEvent event) throws IOException {
 		
-		//TODO submit the info to the database
+		Recipe selectedRecipe = mealRecipeTable.getSelectionModel().getSelectedItem();
+		//todo: input validation, change gui to use dropdowns
+		Meal meal = new Meal(0,mealNameField.getText(),
+				mealPhotoField.getText(),
+				selectedRecipe.getId()
+		);
+
+		try (SQLConnection sqlConnection = new SQLConnection()){
+			Statement s = sqlConnection.getSqlStatement();
+			//s.execute(SQLIngredients.insertDataIntoTable(ingredient));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
 		scene = new Scene(root);

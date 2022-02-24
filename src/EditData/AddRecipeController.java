@@ -43,11 +43,7 @@ public class AddRecipeController {
 	
 	public void submitRecipe(ActionEvent event) throws IOException {
 
-		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
-		scene = new Scene(root);
-		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
+		
 		//todo: input validation, change gui to use dropdowns
 		Recipe recipe = new Recipe(0,recipeNameField.getText(),
 				recipeInstructionField.getText(),
@@ -63,5 +59,12 @@ public class AddRecipeController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
+		scene = new Scene(root);
+		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		stage.setScene(scene);
+		stage.show();
+
 	}
 }
