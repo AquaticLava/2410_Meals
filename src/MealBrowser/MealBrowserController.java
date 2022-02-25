@@ -56,8 +56,6 @@ public class MealBrowserController implements Initializable{
 	private TextArea recipeInstructionField;
 	@FXML
 	private ListView<String> ingredientNameList;
-	@FXML
-	private Slider ingredientsSlider;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -114,6 +112,7 @@ public class MealBrowserController implements Initializable{
 								while(rs.next()) {
 									ingredientNames.add(rs.getString("Name"));
 								}
+								rs.close();
 							}
 							
 							ingredientNameList.setItems(FXCollections.observableList(ingredientNames));

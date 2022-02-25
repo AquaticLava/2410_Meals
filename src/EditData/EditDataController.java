@@ -35,9 +35,15 @@ public class EditDataController implements Initializable{
 
 	@FXML
 	private ComboBox<String> rowSelectionRecipe;
+	
+	@FXML
+	private ComboBox<String> rowSelectionIngredient;
 
 	@FXML
 	private ToggleGroup sortRecipes;
+	@FXML
+	private ToggleGroup sortIngredients;
+	
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
@@ -131,12 +137,12 @@ public class EditDataController implements Initializable{
 
 		ingredientTableView.getItems().setAll(parseIngredientList("Id"));
 
-		
+		//Recipe sort buttons
 		sortRecipes.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
-			RadioButton rb = (RadioButton)sortRecipes.getSelectedToggle();
+			RadioButton rbRecipe = (RadioButton)sortRecipes.getSelectedToggle();
 
-			if (rb != null) {
-				switch (rb.getText()) {
+			if (rbRecipe != null) {
+				switch (rbRecipe.getText()) {
 					case "Sort: Name" -> toggleMethod = "RecipeName";
 					case "Sort: cost" -> toggleMethod = "CostCategory, RecipeName";
 					case "Sort: Cook & prep" -> toggleMethod = "CookTime, PrepTime, RecipeName";
@@ -150,7 +156,7 @@ public class EditDataController implements Initializable{
 				"5","10","25","50","all"
 		};
 		ObservableList<String> integers = FXCollections.observableList(Arrays.asList(ints));
-
+		//Recipe parse based on sort button
 		rowSelectionRecipe.setItems(integers);
 		rowSelectionRecipe.getSelectionModel().selectedItemProperty().addListener
 				((observableValue1, integerSingleSelectionModel, t11) -> {
@@ -158,6 +164,28 @@ public class EditDataController implements Initializable{
 					numOfRows = intAsString.equals("all") ?
 							-1 : Integer.parseInt(intAsString);
 					recipeTableView.getItems().setAll(parseRecipeList(toggleMethod));
+				});
+		
+		//Ingredient sort buttons
+		sortIngredients.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
+			RadioButton rbIngredient = (RadioButton)sortIngredients.getSelectedToggle();
+
+			if (rbIngredient != null) {
+				switch (rbIngredient.getText()) {
+					case "Sort: Name" -> toggleMethod = "Name";
+					default -> toggleMethod = "ID";
+				}
+			}
+			ingredientTableView.getItems().setAll(parseIngredientList(toggleMethod));
+		});
+		
+		rowSelectionIngredient.setItems(integers);
+		rowSelectionIngredient.getSelectionModel().selectedItemProperty().addListener
+				((observableValue1, integerSingleSelectionModel, t11) -> {
+					String intAsString = rowSelectionIngredient.getSelectionModel().getSelectedItem();
+					numOfRows = intAsString.equals("all") ?
+							-1 : Integer.parseInt(intAsString);
+					ingredientTableView.getItems().setAll(parseIngredientList(toggleMethod));
 				});
     }
 	
@@ -212,34 +240,11 @@ public class EditDataController implements Initializable{
 		try (SQLConnection sqlConnection = new SQLConnection()) {
 			Statement s = sqlConnection.getSqlStatement();
 
-			ResultSet ingredientRS = s.executeQuery((SQLIngredients.allDataFromTable("Id")));
+			ResultSet ingredientRS = (numOfRows == -1) ?
+					s.executeQuery(SQLIngredients.allDataFromTable(sortMethod)) :
+					s.executeQuery(SQLIngredients.partialDataFromTable
+							(numOfRows,sortMethod));
 
-			//May need this.....
-//			ResultSet ingredientRS = (numOfRows == -1) ?
-//					s.executeQuery(SQLIngredients.allDataFromTable(sortMethod)) :
-//					s.executeQuery(SQLIngredients.partialDataFromTable
-//							(numOfRows,sortMethod));
-
-			/*
-			int id,
-					  String name, String calories, String carbs,
-					  String fiber, String protein, String fat,
-					  String sugar, String servingSize
-			 */
-			/*
-			"CREATE TABLE Ingredients ("
-				+ "Id int not null primary key "
-				+ "GENERATED ALWAYS AS IDENTITY "
-				+ "(START WITH 1, INCREMENT BY 1), "
-				+ "Name varchar (255), "
-				+ "Calories varchar (255),"
-				+ "Carbs varchar (255),"
-				+ "Fiber varchar (255),"
-				+ "Protein varchar (255),"
-				+ "Fat varchar (255),"
-				+ "Sugar varchar (255),"
-				+ "ServingSize varchar (255))";
-			 */
 			while (ingredientRS.next()){
 				r.add(new Ingredient(
 						Integer.parseInt(ingredientRS.getString("Id")),
