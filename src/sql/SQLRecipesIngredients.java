@@ -78,6 +78,10 @@ public class SQLRecipesIngredients {
     			+ "(5, 10)";
     }
     
+	public static String pullIngredientsByRecipeID (int ID){
+		return "SELECT IngredientId from RecipesIngredients WHERE RecipeId = " + ID;
+	}
+	
 	public static void printData(ResultSet rs) throws SQLException {
 		
 		System.out.println("Recipe Id | Ingredient Id");

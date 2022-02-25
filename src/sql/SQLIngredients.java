@@ -105,7 +105,7 @@ public class SQLIngredients {
 	public static void printData(ResultSet rs) throws SQLException {
 		
 		System.out.println("Id |      Name      | Calores");
-		System.out.println("____________________________________");
+		System.out.println("________________________________");
 		
 		while(rs.next()) {
 			
@@ -120,6 +120,10 @@ public class SQLIngredients {
 
     public static String allDataFromTable(String sortMethod) {
 		return "SELECT * FROM Ingredients ORDER BY " + sortMethod;
+    }
+    
+    public static String getIngredientById(int Id) {
+		return "SELECT * FROM Ingredients WHERE Id = " + Id;
     }
 
 	public static String partialDataFromTable(int numberOfRows, String sortMethod) {

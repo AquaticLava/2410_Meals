@@ -100,7 +100,7 @@ public class Ingredient {
 	public String toString() {
 		return "Ingredient{" +
 				"Id = " + id +
-				", ingredientName = " + name +
+				", name = " + name +
 				", calories = " + calories +
 				", carbs = " + carbs +
 				", fiber = " + fiber +
