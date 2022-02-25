@@ -54,7 +54,46 @@ public class SQLMeals {
      * data from the <code>Ingredients</code> table.
      */
     public static String ALLDATAFROMTABLE = "SELECT * FROM Meals";
-
+    
+    /**
+     * Creates a string containing SQL commands to pull all
+     * the information from the <code>Recipes</code> table.
+     *
+     * @return the string containing the SQL commands to pull all
+     * data from the <code>Recipes</code> table.
+     */
+    public static String allDataFromTable(String sortMethod) {
+    	
+    	return "SELECT * FROM Meals ORDER BY " + sortMethod;
+    }
+    
+	/**
+	 * Returns a string to query for a limited number of rows.
+	 *
+	 *
+	 * @param numberOfRows Number of rows to query for.
+	 * @return the string for a query of rows between startID and endID, inclusive.
+	 */
+	public static String partialDataFromTable(int numberOfRows){
+		return partialDataFromTable(numberOfRows,"ID");
+	}
+	
+	/**
+	 * Returns a string to query for a limited number of rows with sorting.
+	 *
+	 * The sort method is a SQL command to add to the query for sorting.
+	 * ORDER BY is included in this method.
+	 *
+	 * @see <a href='https://www.w3schools.com/sql/sql_orderby.asp'>sortMethod Refrence</a>
+	 * @param numberOfRows Number of rows for the query to return.
+	 * @param sortMethod SQL command for sorting, ORDER BY is not needed.
+	 * @return a string to query for the rows based off of id with sorting.
+	 */
+	public static String partialDataFromTable(int numberOfRows, String sortMethod){
+		return "SELECT * from Meals " +
+				"ORDER BY " + sortMethod +
+				" FETCH FIRST " + numberOfRows + " ROWS ONLY";
+	}
     /**
      * Creates a string containing SQL commands to put insert new data
      * into the <code>Ingredients</code> table.
@@ -100,4 +139,6 @@ public class SQLMeals {
 			
 		}
 	}
+
+
 }

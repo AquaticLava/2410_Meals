@@ -57,15 +57,16 @@
             <Button layoutX="91.0" layoutY="40.0" mnemonicParsing="false" onAction="#deleteMeal" text="Delete Item" />
             <Button layoutX="15.0" layoutY="40.0" mnemonicParsing="false" text="Edit Item" />
             <Button layoutX="91.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="Main Menu" />
-            <RadioButton layoutX="300.0" layoutY="32.0" mnemonicParsing="false" selected="true" text="Sort: Name">
+            <RadioButton layoutX="277.0" layoutY="32.0" mnemonicParsing="false" text="Sort: Name" toggleGroup="$sortMeals">
+               <toggleGroup>
+                  <ToggleGroup fx:id="sortMeals" />
+               </toggleGroup></RadioButton>
+            <RadioButton layoutX="191.0" layoutY="32.0" mnemonicParsing="false" selected="true" text="Sort: Id" toggleGroup="$sortMeals">
 
             </RadioButton>
-            <RadioButton layoutX="191.0" layoutY="32.0" mnemonicParsing="false" selected="true" text="Sort: Id">
-
-            </RadioButton>
-            <Separator layoutX="394.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="86.0" prefWidth="22.0" />
+            <Separator layoutX="369.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="86.0" prefWidth="22.0" />
             <Separator layoutX="169.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="86.0" prefWidth="22.0" />
-            <ComboBox fx:id="rowSelectionRecipe1" editable="true" layoutX="416.0" layoutY="12.0" prefWidth="150.0" value="5" visibleRowCount="5" />
+            <ComboBox fx:id="rowSelectionMeal" editable="true" layoutX="414.0" layoutY="28.0" prefWidth="150.0" value="5" visibleRowCount="5" />
          </AnchorPane>
       </Tab>
       <Tab text="Recipes">
@@ -87,7 +88,7 @@
             <Button layoutX="87.0" layoutY="46.0" mnemonicParsing="false" onAction="#deleteRecipe" text="Delete Item" />
             <Button layoutX="15.0" layoutY="46.0" mnemonicParsing="false" text="Edit Item" />
             <Button layoutX="87.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="Main Menu" />
-            <RadioButton layoutX="278.0" layoutY="50.0" mnemonicParsing="false" selected="true" text="Sort: Name">
+            <RadioButton layoutX="278.0" layoutY="50.0" mnemonicParsing="false" text="Sort: Name">
                <toggleGroup>
                   <ToggleGroup fx:id="sortRecipes" />
                </toggleGroup>
