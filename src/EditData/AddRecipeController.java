@@ -45,7 +45,7 @@ public class AddRecipeController {
 
 		
 		//todo: input validation, change gui to use dropdowns
-		Recipe recipe = new Recipe(0,recipeNameField.getText(),
+		Recipe recipe = new Recipe(-1,recipeNameField.getText(),
 				recipeInstructionField.getText(),
 				cookTimeField.getText(),
 				prepTimeField.getText(),

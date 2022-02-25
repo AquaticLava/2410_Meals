@@ -49,7 +49,7 @@ public class AddIngredientController {
 	public void submitIngredient(ActionEvent event) throws IOException {
 		
 		//todo: input validation, change gui to use dropdowns
-		Ingredient ingredient = new Ingredient(0,ingredientNameField.getText(),
+		Ingredient ingredient = new Ingredient(-1, ingredientNameField.getText(),
 				ingredientCaloriesField.getText(),
 				ingredientCarbsField.getText(),
 				ingredientFiberField.getText(),

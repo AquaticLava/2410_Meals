@@ -199,7 +199,7 @@ public class EditDataController implements Initializable{
         //TODO parse and construct recipe datamodel list by looping your ResultSet rs
         // and return the list 
     	List<Ingredient> i = new LinkedList<Ingredient>();
-    	i.add(new Ingredient(1, "Chicken Broth", "100", "20g", "0g", "5g", "3g", "0g", "6 oz"));
+    	i.add(new Ingredient(-1, "Chicken Broth", "100", "20g", "0g", "5g", "3g", "0g", "6 oz"));
     	
     	return i;
     }

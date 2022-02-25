@@ -42,7 +42,7 @@ public class AddMealController {
 		
 		Recipe selectedRecipe = mealRecipeTable.getSelectionModel().getSelectedItem();
 		//todo: input validation, change gui to use dropdowns
-		Meal meal = new Meal(0,mealNameField.getText(),
+		Meal meal = new Meal(-1,mealNameField.getText(),
 				mealPhotoField.getText(),
 				selectedRecipe.getId()
 		);
