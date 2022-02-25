@@ -7,7 +7,7 @@ package application;
  */
 public class Ingredient {
 
-	private int id;
+	private int Id;
 	private String name, calories, carbs, fiber, protein, fat, sugar, servingSize;
 
 	/**
@@ -45,11 +45,11 @@ public class Ingredient {
 		}
 	}
 
-	public Ingredient(int id,
+	public Ingredient(int Id,
 					  String name, String calories, String carbs,
 					  String fiber, String protein, String fat,
 					  String sugar, String servingSize) {
-		this.id = id;
+		this.Id = Id;
 		this.name = name;
 		this.calories = calories;
 		this.carbs = carbs;
@@ -61,7 +61,7 @@ public class Ingredient {
 	}
 
 	public int getId() {
-		return id;
+		return Id;
 	}
 
 	public String getName() {
@@ -99,7 +99,7 @@ public class Ingredient {
 	@Override
 	public String toString() {
 		return "Ingredient{" +
-				"Id = " + id +
+				"Id = " + Id +
 				", name = " + name +
 				", calories = " + calories +
 				", carbs = " + carbs +

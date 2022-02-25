@@ -131,7 +131,7 @@ public class EditDataController implements Initializable {
 		mealTableView.getItems().setAll(parseMealList("ID"));
 
 		// ingredient table initialize
-		ingredientIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+		ingredientIdColumn.setCellValueFactory(new PropertyValueFactory<>("Id"));
 		ingredientNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 		ingredientCaloriesColumn.setCellValueFactory(new PropertyValueFactory<>("calories"));
 		ingredientCarbColumn.setCellValueFactory(new PropertyValueFactory<>("carbs"));
@@ -141,7 +141,7 @@ public class EditDataController implements Initializable {
 		ingredientSugarColumn.setCellValueFactory(new PropertyValueFactory<>("sugar"));
 		ingredientServingSizeColumn.setCellValueFactory(new PropertyValueFactory<>("servingSize"));
 
-		ingredientTableView.getItems().setAll(parseIngredientList("Id"));
+		ingredientTableView.getItems().setAll(parseIngredientList("ID"));
 
 		// Recipe sort buttons
 		sortRecipes.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
