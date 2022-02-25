@@ -57,12 +57,12 @@ public class Main extends Application{
 		ArrayList<String> dataLineRecipes = csvRecipes.getDataList();
 		String[] lines = dataLineRecipes.get(0).split("@");
 		Recipe[] recipes = new Recipe[lines.length];
-		System.out.println("Printing out recipes!");
+//		System.out.println("Printing out recipes!");
 		for (int i = 0; i < lines.length; i++){
 			recipes[i] = new Recipe(lines[i]);
 
 			//Testing
-			System.out.println(recipes[i].toString());
+//			System.out.println(recipes[i].toString());
 			//Testing
 		}
 
@@ -70,32 +70,32 @@ public class Main extends Application{
 		try (Connection c = DriverManager.getConnection("jdbc:derby:MealDatabase;create=true");
 			 Statement s = c.createStatement()){
 
-			System.out.println("Recipes");
+//			System.out.println("Recipes");
 			s.execute(SQLRecipes.DROPTABLE);
 			s.execute(SQLRecipes.createTable());
 			s.execute(SQLRecipes.insertDataIntoTable(recipes));
 			ResultSet rsRecipes = s.executeQuery(SQLRecipes.allDataFromTable("ID"));
-			SQLRecipes.printData(rsRecipes);
-			System.out.println();
+//			SQLRecipes.printData(rsRecipes);
+//			System.out.println();
 
 			//Puts five meals into the database and prints out the results.
-			System.out.println("Put Testing Meals into the database");
+//			System.out.println("Put Testing Meals into the database");
 			s.execute(SQLMeals.DROPTABLE);
 			s.execute(SQLMeals.createTable());
 			s.execute(SQLMeals.insertFirstTestMeals());
 			ResultSet rsMeals = s.executeQuery(SQLMeals.ALLDATAFROMTABLE);
-			SQLMeals.printData(rsMeals);
-			System.out.println();
+//			SQLMeals.printData(rsMeals);
+//			System.out.println();
 
 
-			System.out.println("Ingredients");
+//			System.out.println("Ingredients");
 //			s.execute(SQLIngredients.dropTable());
 //			s.execute(SQLIngredients.createTable());
 //			s.execute(SQLIngredients.insertDataIntoTable(ingredients));
 			ResultSet rsIngredients = s.executeQuery(SQLIngredients.allDataFromTable("Id"));
-			System.out.println("PRINTING OUT INGREDIENTS");
-			SQLIngredients.printData(rsIngredients);
-			System.out.println();
+//			System.out.println("PRINTING OUT INGREDIENTS");
+//			SQLIngredients.printData(rsIngredients);
+//			System.out.println();
 
 //			System.out.println("Recipes/Ingredients");
 //			s.execute(SQLRecipesIngredients.dropTable());
