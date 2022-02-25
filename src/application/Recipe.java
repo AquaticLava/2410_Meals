@@ -1,5 +1,8 @@
 package application;
 
+import java.sql.Array;
+import java.util.ArrayList;
+
 /**
  * Represents a recipe.
  *
@@ -14,6 +17,8 @@ public class Recipe {
 	private String prepTime;
 	private String recipeDescription;
 	private String costCategory;
+	private ArrayList<String> amountIngredient = new ArrayList<>();
+	private ArrayList<String> ingredients = new ArrayList<>();;
 
 	/**
 	 * Overloaded constructor that takes in a line from a csv file
@@ -29,6 +34,18 @@ public class Recipe {
 		this.prepTime = parts[3];
 		this.recipeDescription = parts[4];
 		this.costCategory = parts[5];
+		if (parts.length == 7){
+			String[] listIngred = parts[6].split(",");
+			for (int i = 0; i < listIngred.length; i++){
+				if (i % 2 == 0){
+					//Adds the amount of the ingredient to the array list amount Ingredient
+					amountIngredient.add(listIngred[i]);
+				} else {
+					//Adds the actual ingredient to the array list of ingredients
+					ingredients.add(listIngred[i]);
+				}
+			}
+		}
 	}
 
 	public Recipe(int Id, String recipeName, String recipeInstructions, String cookTime,
@@ -72,6 +89,13 @@ public class Recipe {
 
 	@Override
 	public String toString() {
+		StringBuilder sb = new StringBuilder();
+
+		for (int i = 0; i < amountIngredient.size(); i++){
+			sb.append(amountIngredient.get(i) + " ");
+			sb.append(ingredients.get(i) + "\n");
+		}
+
 		return "Recipe{" +
 				"Id=" + Id +
 				", recipeName='" + recipeName + '\'' +
@@ -80,6 +104,7 @@ public class Recipe {
 				", prepTime=" + prepTime +
 				", recipeDescription='" + recipeDescription + '\'' +
 				", costCategory=" + costCategory +
+				", ingredients:\n" + sb.toString() +
 				'}';
 	}
 }

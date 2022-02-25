@@ -57,6 +57,7 @@ public class Main extends Application{
 		ArrayList<String> dataLineRecipes = csvRecipes.getDataList();
 		String[] lines = dataLineRecipes.get(0).split("@");
 		Recipe[] recipes = new Recipe[lines.length];
+		System.out.println("Printing out recipes!");
 		for (int i = 0; i < lines.length; i++){
 			recipes[i] = new Recipe(lines[i]);
 
@@ -112,9 +113,9 @@ public class Main extends Application{
 
 	public static void main(String[] args) {
 
-//		csvToDB();
+		csvToDB();
 
-		launch(args);
+//		launch(args);
 
 	}
 }
