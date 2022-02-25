@@ -62,7 +62,7 @@ public class Main extends Application{
 			recipes[i] = new Recipe(lines[i]);
 
 			//Testing
-			System.out.println(recipes[i].toString());
+//			System.out.println(recipes[i].toString());
 			//Testing
 		}
 
@@ -113,9 +113,9 @@ public class Main extends Application{
 
 	public static void main(String[] args) {
 
-		csvToDB();
+//		csvToDB();
 
-//		launch(args);
+		launch(args);
 
 	}
 }

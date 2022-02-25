@@ -83,10 +83,12 @@
                   <TableColumn fx:id="recipeIdColumn" prefWidth="75.0" text="Id" />
                   <TableColumn fx:id="recipeNameColumn" prefWidth="75.0" text="Name" />
                   <TableColumn fx:id="recipeInstructionsColumn" prefWidth="75.0" text="Instructions" />
-                  <TableColumn fx:id="recipeCookTimeColumn" prefWidth="75.0" text="CookTime" />
-                  <TableColumn fx:id="recipePrepTimeColumn" prefWidth="75.0" text="PrepTime" />
-                  <TableColumn fx:id="recipeDescriptionColumn" prefWidth="75.0" text="RecipeDescription" />
-                  <TableColumn fx:id="recipeCostCategoryColumn" prefWidth="75.0" text="CostCategory" />
+                  <TableColumn fx:id="recipeCookTimeColumn" prefWidth="75.0" text="Cook Time" />
+                  <TableColumn fx:id="recipePrepTimeColumn" prefWidth="75.0" text="Prep Time" />
+                  <TableColumn fx:id="recipeDescriptionColumn" prefWidth="75.0" text="Recipe Description" />
+                  <TableColumn fx:id="recipeCostCategoryColumn" prefWidth="75.0" text="Cost Category" />
+                  <TableColumn fx:id="recipeIngredientsColumn" prefWidth="75.0" text="Recipe Ingredients" />
+
                </columns>
             </TableView>
             <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchToAddRecipe" text="Add Item" />
