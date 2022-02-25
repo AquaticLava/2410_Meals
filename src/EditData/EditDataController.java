@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import sql.SQLConnection;
+import sql.SQLIngredients;
 import sql.SQLRecipes;
 
 import java.io.IOException;
@@ -128,7 +129,7 @@ public class EditDataController implements Initializable{
 		ingredientSugarColumn.setCellValueFactory(new PropertyValueFactory<>("sugar"));
 		ingredientServingSizeColumn.setCellValueFactory(new PropertyValueFactory<>("servingSize"));
 
-		ingredientTableView.getItems().setAll(parseIngredientList());
+		ingredientTableView.getItems().setAll(parseIngredientList("Id"));
 
 		
 		sortRecipes.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
@@ -198,14 +199,64 @@ public class EditDataController implements Initializable{
     	return m;
     }
 	
-    private List<Ingredient> parseIngredientList(){
+    private List<Ingredient> parseIngredientList(String sortMethod){
     	//Here is where we will populate the ingredient table with default 10 rows for each table
         //TODO parse and construct recipe datamodel list by looping your ResultSet rs
-        // and return the list 
-    	List<Ingredient> i = new LinkedList<Ingredient>();
-    	i.add(new Ingredient(-1, "Chicken Broth", "100", "20g", "0g", "5g", "3g", "0g", "6 oz"));
-    	
-    	return i;
+        // and return the list
+//    	List<Ingredient> i = new LinkedList<Ingredient>();
+//    	i.add(new Ingredient(-1, "Chicken Broth", "100", "20g", "0g", "5g", "3g", "0g", "6 oz"));
+//
+//    	return i;
+
+		List<Ingredient> r = new LinkedList<>();
+		try (SQLConnection sqlConnection = new SQLConnection()) {
+			Statement s = sqlConnection.getSqlStatement();
+
+			ResultSet ingredientRS = s.executeQuery((SQLIngredients.allDataFromTable("Id")));
+
+			//May need this.....
+//			ResultSet ingredientRS = (numOfRows == -1) ?
+//					s.executeQuery(SQLIngredients.allDataFromTable(sortMethod)) :
+//					s.executeQuery(SQLIngredients.partialDataFromTable
+//							(numOfRows,sortMethod));
+
+			/*
+			int id,
+					  String name, String calories, String carbs,
+					  String fiber, String protein, String fat,
+					  String sugar, String servingSize
+			 */
+			/*
+			"CREATE TABLE Ingredients ("
+				+ "Id int not null primary key "
+				+ "GENERATED ALWAYS AS IDENTITY "
+				+ "(START WITH 1, INCREMENT BY 1), "
+				+ "Name varchar (255), "
+				+ "Calories varchar (255),"
+				+ "Carbs varchar (255),"
+				+ "Fiber varchar (255),"
+				+ "Protein varchar (255),"
+				+ "Fat varchar (255),"
+				+ "Sugar varchar (255),"
+				+ "ServingSize varchar (255))";
+			 */
+			while (ingredientRS.next()){
+				r.add(new Ingredient(
+						Integer.parseInt(ingredientRS.getString("Id")),
+						ingredientRS.getString("Name"),
+						ingredientRS.getString("Calories"),
+						ingredientRS.getString("Carbs"),
+						ingredientRS.getString("Fiber"),
+						ingredientRS.getString("Protein"),
+						ingredientRS.getString("Fat"),
+						ingredientRS.getString("Sugar"),
+						ingredientRS.getString("ServingSize")
+				));
+			}
+			ingredientRS.close();
+		} catch (Exception e) {e.printStackTrace();}
+
+		return r;
     }
 	
 	

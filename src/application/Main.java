@@ -62,7 +62,7 @@ public class Main extends Application{
 			recipes[i] = new Recipe(lines[i]);
 
 			//Testing
-//			System.out.println(recipes[i].toString());
+			System.out.println(recipes[i].toString());
 			//Testing
 		}
 
@@ -88,13 +88,14 @@ public class Main extends Application{
 			System.out.println();
 
 
-//			System.out.println("Ingredients");
+			System.out.println("Ingredients");
 //			s.execute(SQLIngredients.dropTable());
 //			s.execute(SQLIngredients.createTable());
 //			s.execute(SQLIngredients.insertDataIntoTable(ingredients));
-//			ResultSet rsIngredients = s.executeQuery(SQLIngredients.allDataFromTable());
-//			SQLIngredients.printData(rsIngredients);
-//			System.out.println();
+			ResultSet rsIngredients = s.executeQuery(SQLIngredients.allDataFromTable("Id"));
+			System.out.println("PRINTING OUT INGREDIENTS");
+			SQLIngredients.printData(rsIngredients);
+			System.out.println();
 
 //			System.out.println("Recipes/Ingredients");
 //			s.execute(SQLRecipesIngredients.dropTable());
@@ -113,7 +114,7 @@ public class Main extends Application{
 
 	public static void main(String[] args) {
 
-//		csvToDB();
+		csvToDB();
 
 		launch(args);
 

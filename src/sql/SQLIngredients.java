@@ -110,12 +110,25 @@ public class SQLIngredients {
 		while(rs.next()) {
 			
 			int id = rs.getInt("Id");
-			String name = rs.getString("Name");
-			String calories = rs.getString("Calories");
+//			String name = rs.getString("Name");
+			String calories = rs.getString(3);
 
-			System.out.printf("%-2d | %-14s | %-14s%n",
-					id, name, calories);
+			System.out.printf("%-2d |  | %-14s%n",
+					id, calories);
 		}
 	}
 
+    public static String allDataFromTable(String sortMethod) {
+		return "SELECT * FROM Ingredients ORDER BY " + sortMethod;
+    }
+
+	public static String partialDataFromTable(int numberOfRows, String sortMethod) {
+		return "SELECT * from Ingredients " +
+				"ORDER BY " + sortMethod +
+				" FETCH FIRST " + numberOfRows + " ROWS ONLY";
+	}
+
+	public static String dropTable() {
+		return "DROP TABLE Ingredients";
+	}
 }
