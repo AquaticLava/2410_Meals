@@ -117,8 +117,6 @@ public class EditDataController implements Initializable {
 		recipePrepTimeColumn.setCellValueFactory(new PropertyValueFactory<>("prepTime"));
 		recipeDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("recipeDescription"));
 		recipeCostCategoryColumn.setCellValueFactory(new PropertyValueFactory<>("costCategory"));
-		// TODO Needs to be connected to the database using an id recipeIngredients...
-//		recipeIngredientsColumn.setCellValueFactory(new PropertyValueFactory<>("recipeIngredients"));
 
 		recipeTableView.getItems().setAll(parseRecipeList("ID"));
 

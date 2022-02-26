@@ -87,11 +87,12 @@ public class MealBrowserController implements Initializable{
 			observableList.add(new StringKeyValuePair<>(meal, meal.getName()));
 		}
 
-		SQLConnection finalC = c;
+		;
 		mealsDropdown.getSelectionModel().selectedItemProperty().addListener
 				((observableValue1, integerSingleSelectionModel, t11) -> {
 					Meal m = mealsDropdown.getSelectionModel().getSelectedItem().getValue();
 					try {
+						SQLConnection finalC = new SQLConnection();
 						ResultSet rs = finalC.getSqlStatement().executeQuery(SQLRecipes.pullRecipeByID(m.getId()));
 						while (rs.next()){
 							recipeDescriptionField.setText(rs.getString("RecipeDescription"));
@@ -113,6 +114,7 @@ public class MealBrowserController implements Initializable{
 								ingredientNames.add(rs.getString("Name"));
 
 							}
+
 							
 							ingredientNameList.setItems(FXCollections.observableList(ingredientNames));
 						}

@@ -14,6 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import sql.SQLConnection;
+import sql.SQLMeals;
 
 import java.io.IOException;
 import java.sql.Statement;
@@ -47,9 +48,11 @@ public class AddMealController {
 				selectedRecipe.getId()
 		);
 
+
+
 		try (SQLConnection sqlConnection = new SQLConnection()){
 			Statement s = sqlConnection.getSqlStatement();
-			//s.execute(SQLIngredients.insertDataIntoTable(ingredient));
+//			s.execute(SQLMeals.insertDataIntoTable(Meal));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

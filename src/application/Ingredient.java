@@ -23,26 +23,36 @@ public class Ingredient {
 	 */
 	public Ingredient (String csvString){
 		String[] data = csvString.split(",");
-		for (int i = 0; i < data.length; i++){
-			switch (i) {
-				case 0 ->        //name
-						name = data[i];
-				case 1 ->        //calories
-						calories = data[i];
-				case 2 ->        //carbs
-						carbs = data[i];
-				case 3 ->        //fiber
-						fiber = data[i];
-				case 4 ->        //protein
-						protein = data[i];
-				case 5 ->        //fat
-						fat = data[i];
-				case 6 ->        //sugar
-						sugar = data[i];
-				case 7 ->        //serving size
-						servingSize = data[i];
-			}
-		}
+
+		name = data[0];
+		calories = data[1];
+		carbs = data[2];
+		fiber = data[3];
+		protein = data[4];
+		fat = data[5];
+		sugar = data[6];
+		servingSize = data[7];
+
+//		for (int i = 0; i < data.length; i++){
+//			switch (i) {
+//				case 0 ->        //name
+//						name = data[i];
+//				case 1 ->        //calories
+//						calories = data[i];
+//				case 2 ->        //carbs
+//						carbs = data[i];
+//				case 3 ->        //fiber
+//						fiber = data[i];
+//				case 4 ->        //protein
+//						protein = data[i];
+//				case 5 ->        //fat
+//						fat = data[i];
+//				case 6 ->        //sugar
+//						sugar = data[i];
+//				case 7 ->        //serving size
+//						servingSize = data[i];
+//			}
+//		}
 	}
 
 	public Ingredient(int Id,
