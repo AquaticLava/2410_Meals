@@ -484,4 +484,8 @@ public class EditDataController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+	public void reloadIngredients() {
+		ingredientTableView.getItems().setAll(parseIngredientList("ID"));
+	}
 }

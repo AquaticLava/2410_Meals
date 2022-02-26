@@ -70,12 +70,13 @@ public class AddIngredientController {
 
 			try (SQLConnection sqlConnection = new SQLConnection()) {
 				Statement s = sqlConnection.getSqlStatement();
-				s.execute(SQLIngredients.insertDataIntoTable(ingredient));
+				s.executeUpdate(SQLIngredients.insertDataIntoTable(ingredient));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
-			root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("EditData.fxml"));
+			root = loader.load();
 			scene = new Scene(root);
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(scene);

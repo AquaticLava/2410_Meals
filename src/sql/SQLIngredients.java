@@ -98,7 +98,7 @@ public class SQLIngredients {
 
 		}
 		sb.replace(sb.length() - 1,sb.length(),"");
-//		System.out.println(sb);
+		System.out.println(sb);
 		return sb.toString();
     }
 
