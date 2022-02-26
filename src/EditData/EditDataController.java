@@ -129,7 +129,7 @@ public class EditDataController implements Initializable {
 		mealTableView.getItems().setAll(parseMealList("ID"));
 
 		// ingredient table initialize
-		ingredientIdColumn.setCellValueFactory(new PropertyValueFactory<>("I d"));
+		ingredientIdColumn.setCellValueFactory(new PropertyValueFactory<>("Id"));
 		ingredientNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 		ingredientCaloriesColumn.setCellValueFactory(new PropertyValueFactory<>("calories"));
 		ingredientCarbColumn.setCellValueFactory(new PropertyValueFactory<>("carbs"));
@@ -278,14 +278,6 @@ public class EditDataController implements Initializable {
 	 * @return
 	 */
 	private List<Ingredient> parseIngredientList(String sortMethod) {
-		// Here is where we will populate the ingredient table with default 10 rows for
-		// each table
-		// TODO parse and construct recipe datamodel list by looping your ResultSet rs
-		// and return the list
-//    	List<Ingredient> i = new LinkedList<Ingredient>();
-//    	i.add(new Ingredient(-1, "Chicken Broth", "100", "20g", "0g", "5g", "3g", "0g", "6 oz"));
-//
-//    	return i;
 
 		List<Ingredient> r = new LinkedList<>();
 		try (SQLConnection sqlConnection = new SQLConnection()) {
@@ -358,7 +350,24 @@ public class EditDataController implements Initializable {
 
 	public void deleteMeal() {
 		// TODO need to add call to remove from database
-//		Meal selectedItem = (Meal)recipeTableView.getSelectionModel().getSelectedItem();
-//		mealTableView.getItems().remove(selectedItem);
+		Meal selectedItem = mealTableView.getSelectionModel().getSelectedItem();
+		mealTableView.getItems().remove(selectedItem);
+		try (SQLConnection sqlConnection = new SQLConnection()) {
+			Statement s = sqlConnection.getSqlStatement();
+			s.execute(SQLMeals.deleteRow(selectedItem.getId()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void deleteIngredient() {
+		// TODO need to add call to remove from database
+		Ingredient selectedItem = ingredientTableView.getSelectionModel().getSelectedItem();
+		ingredientTableView.getItems().remove(selectedItem);
+		try (SQLConnection sqlConnection = new SQLConnection()) {
+			Statement s = sqlConnection.getSqlStatement();
+			s.execute(SQLIngredients.deleteRow(selectedItem.getId()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

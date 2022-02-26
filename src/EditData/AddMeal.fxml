@@ -27,7 +27,7 @@
                 <TableView fx:id="mealRecipeTable" prefHeight="200.0" prefWidth="200.0">
                     <columns>
                         <TableColumn fx:id="mealRecipeIdColumn" prefWidth="115.33337652683258" text="Recipe Id"/>
-                        <TableColumn prefWidth="257.33325958251953" text="Recipe Name"/>
+                        <TableColumn fx:id="mealRecipeNameColumn" prefWidth="257.33325958251953" text="Recipe Name"/>
                     </columns>
                 </TableView>
             </VBox>
