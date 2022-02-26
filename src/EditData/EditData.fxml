@@ -80,8 +80,6 @@
                   <TableColumn fx:id="recipePrepTimeColumn" prefWidth="75.0" text="Prep Time" />
                   <TableColumn fx:id="recipeDescriptionColumn" prefWidth="75.0" text="Recipe Description" />
                   <TableColumn fx:id="recipeCostCategoryColumn" prefWidth="75.0" text="Cost Category" />
-                  <TableColumn fx:id="recipeIngredientsColumn" prefWidth="75.0" text="Recipe Ingredients" />
-
                </columns>
             </TableView>
             <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchToAddRecipe" text="Add Item" />

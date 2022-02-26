@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Locale;
 
 import EditData.CSVInput;
 import javafx.application.Application;
@@ -111,12 +113,95 @@ public class Main extends Application{
 		}
 	}
 
+	/**
+	 * Returns a -1 if nothing is found else returns the id of the ingredient that is passed.
+	 *
+	 * @param searchWord
+	 * @return id of ingredient in the database
+	 */
+	public static int findIngredientInDatabase (String searchWord){
+		try (Connection c = DriverManager.getConnection("jdbc:derby:MealDatabase;create=true");
+			 Statement s = c.createStatement()){
+
+			ResultSet rsIngredients = s.executeQuery(SQLIngredients.allDataFromTable("Id"));
+
+			while(rsIngredients.next()) {
+
+				//get the info from the data base
+				int id = rsIngredients.getInt("Id");
+				String name = rsIngredients.getString("Name");
+
+				//make the information lower case
+				searchWord = searchWord.toLowerCase();
+				String originalName = name;
+				name = name.toLowerCase();
+
+				//see if search word is in name
+				if (name.contains(searchWord)){
+					return id;
+				}
+
+//				System.out.printf("%-2d |  | %-14s%n", id, name);
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
+	/**
+	 * Returns an array list of type String that includes the amount and ingredient name seperated by a "|".
+	 *
+	 * @param Name
+	 * @return
+	 */
+	public static ArrayList<String> getIngredientsFromRecipe (String Name){
+		Name = " " + Name + " ";
+		ArrayList<String> ingredients = new ArrayList<>();
+
+		// Read in and save the recipes into an array list of recipes.
+		CSVInput csvRecipes = new CSVInput("src/application/resources/recipes.csv", "recipes");
+		ArrayList<String> dataLineRecipes = csvRecipes.getDataList();
+		String[] lines = dataLineRecipes.get(0).split("@");
+
+		for (int i = 0; i < lines.length; i++){
+
+			String [] parts = lines[i].split("#");
+			if(Name.equals(parts[0])) {
+				String unSplitIngredients = parts[parts.length - 1];
+				String[] ingreds = unSplitIngredients.split(",");
+				String result = "";
+				for (int j = 0; j < ingreds.length; j++) {
+					if (j % 2 == 0) {
+						result += (ingreds[j] + "|");
+					} else {
+						result += (ingreds[j]);
+						ingredients.add(result);
+						result = "";
+					}
+
+				}
+				break;
+			}
+		}
+
+		return ingredients;
+	}
 
 	public static void main(String[] args) {
 
-		csvToDB();
+//		csvToDB();
 
-		launch(args);
+		//Collin's testing:
+		ArrayList<String> list = (getIngredientsFromRecipe("Cheesy Eggplant Gnocchi Caprese"));
+		for (String el: list){
+			System.out.println(el);
+		}
+
+
+//		launch(args);
 
 	}
 }
