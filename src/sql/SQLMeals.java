@@ -1,5 +1,8 @@
 package sql;
 
+import application.Meal;
+import application.Recipe;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -101,16 +104,27 @@ public class SQLMeals {
      * @return the string containing the SQL commands to insert new
      * data into the <code>Ingredients</code> table.
      */
-    public static String insertDataIntoTable() {
-    	
-		return "INSERT INTO Meals "
-				+ "(Name, Photo, RecipeId) VALUES "
-				+ "('Spaghetti Bolognese', 'Pic001.png', 1), "
-				+ "('Sushi', 'Pic002.png', 2), "
-				+ "('Grilled Cheese', 'Pic003.png', 3), "
-				+ "('Tonkotsu Ramen', 'Pic004.png', 4), "
-				+ "('Carne Asada Burrito', 'Pic005.png', 5)";
+    public static String insertDataIntoTable(Meal[] meals) {
+
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("INSERT INTO Meals (Name, Photo, RecipeId) VALUES ");
+
+
+		for (Meal meal: meals){
+			sb.append("('").append(meal.getName()).append("', '")
+					.append(meal.getPhotoName()).append("', ")
+					.append(meal.getRecipeId()).append("),");
+		}
+		sb.replace(sb.length() - 1,sb.length(),"");
+//		System.out.println(sb);
+		return sb.toString();
     }
+
+	public static String insertDataIntoTable(Meal meal) {
+		Meal[] m = {meal};
+		return insertDataIntoTable(m);
+	}
 
 	public static String insertFirstTestMeals (){
 		return "INSERT INTO Meals "
@@ -120,6 +134,10 @@ public class SQLMeals {
 				+ "('Spinach Stuffed Chicken Breast', 'SpinachStuffedChicken.png', 3), "
 				+ "('Instant Pot Baked Ziti', 'InstantPotBakedZiti.png', 4), "
 				+ "('Air Fryer Chicken Sandwich', 'AirFryerChickenSandwich.png', 5)";
+	}
+
+	public static String deleteRow(int id) {
+		return "DELETE FROM Meals WHERE ID = " + id;
 	}
     
 	public static void printData(ResultSet rs) throws SQLException {
@@ -139,6 +157,7 @@ public class SQLMeals {
 			
 		}
 	}
+
 
 
 }

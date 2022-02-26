@@ -392,7 +392,24 @@ public class EditDataController implements Initializable {
 
 	public void deleteMeal() {
 		// TODO need to add call to remove from database
-//		Meal selectedItem = (Meal)recipeTableView.getSelectionModel().getSelectedItem();
-//		mealTableView.getItems().remove(selectedItem);
+		Meal selectedItem = mealTableView.getSelectionModel().getSelectedItem();
+		mealTableView.getItems().remove(selectedItem);
+		try (SQLConnection sqlConnection = new SQLConnection()) {
+			Statement s = sqlConnection.getSqlStatement();
+			s.execute(SQLMeals.deleteRow(selectedItem.getId()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void deleteIngredient() {
+		// TODO need to add call to remove from database
+		Ingredient selectedItem = ingredientTableView.getSelectionModel().getSelectedItem();
+		ingredientTableView.getItems().remove(selectedItem);
+		try (SQLConnection sqlConnection = new SQLConnection()) {
+			Statement s = sqlConnection.getSqlStatement();
+			s.execute(SQLIngredients.deleteRow(selectedItem.getId()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -101,6 +101,15 @@ public class SQLIngredients {
 		System.out.println(sb);
 		return sb.toString();
     }
+
+	public static String insertDataIntoTable(Ingredient ingredients){
+		Ingredient[] i = {ingredients};
+		return insertDataIntoTable(i);
+	}
+
+	public static String deleteRow(int id) {
+		return "DELETE FROM Ingredients WHERE ID = " + id;
+	}
     
 	public static void printData(ResultSet rs) throws SQLException {
 		
@@ -135,4 +144,6 @@ public class SQLIngredients {
 	public static String dropTable() {
 		return "DROP TABLE Ingredients";
 	}
+
+
 }

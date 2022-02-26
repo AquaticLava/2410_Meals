@@ -2,7 +2,6 @@ package sql;
 
 import java.sql.*;
 
-//make this static? todo: think about making this class static.
 /**
  * Manages connections to the database.
  *

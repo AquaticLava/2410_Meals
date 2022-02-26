@@ -61,7 +61,7 @@ public class AddIngredientController {
 
 		try (SQLConnection sqlConnection = new SQLConnection()){
 			Statement s = sqlConnection.getSqlStatement();
-			//s.execute(SQLIngredients.insertDataIntoTable(ingredient));
+			s.execute(SQLIngredients.insertDataIntoTable(ingredient));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

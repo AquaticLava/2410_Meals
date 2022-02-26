@@ -43,7 +43,6 @@ public class AddRecipeController {
 	
 	public void submitRecipe(ActionEvent event) throws IOException {
 
-		
 		//todo: input validation, change gui to use dropdowns
 		Recipe recipe = new Recipe(-1,recipeNameField.getText(),
 				recipeInstructionField.getText(),
