@@ -100,12 +100,12 @@ public class MealBrowserController implements Initializable{
 							
 							
 							rs = finalC.getSqlStatement().executeQuery(SQLRecipesIngredients.pullIngredientsByRecipeID(m.getRecipeId()));
-							LinkedList<Integer> ingredientIdList = new LinkedList<Integer>();
+							LinkedList<Integer> ingredientIdList = new LinkedList<>();
 							while(rs.next()) {
 								ingredientIdList.add(rs.getInt("IngredientId"));
 							}
 							
-							LinkedList<String> ingredientNames = new LinkedList<String>();
+							LinkedList<String> ingredientNames = new LinkedList<>();
 							
 							for(Integer id : ingredientIdList) {
 								

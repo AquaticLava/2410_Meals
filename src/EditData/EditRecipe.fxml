@@ -21,10 +21,10 @@
         <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="400.0">
             <VBox layoutX="186.0" layoutY="99.0" prefHeight="397.3333333333333" prefWidth="472.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                 <TextField fx:id="recipeNameField" />
-                <TextArea fx:id="recipeInstructionField" prefHeight="200.0" prefWidth="200.0" />
+                <TextArea fx:id="recipeInstructionField" prefHeight="200.0" prefWidth="200.0" wrapText="true"/>
                 <TextField fx:id="cookTimeField" />
                 <TextField fx:id="prepTimeField" />
-                <TextArea fx:id="recipeDescriptionField" prefHeight="200.0" prefWidth="514.0" />
+                <TextArea fx:id="recipeDescriptionField" prefHeight="200.0" prefWidth="514.0" wrapText="true"/>
                 <TextField fx:id="costCategoryField" prefHeight="51.0" prefWidth="472.0" />
             </VBox>
         </AnchorPane>

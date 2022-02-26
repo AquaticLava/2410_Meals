@@ -89,18 +89,18 @@ public class Main extends Application{
 
 
 //			System.out.println("Ingredients");
-//			s.execute(SQLIngredients.dropTable());
-//			s.execute(SQLIngredients.createTable());
-//			s.execute(SQLIngredients.insertDataIntoTable(ingredients));
+			s.execute(SQLIngredients.dropTable());
+			s.execute(SQLIngredients.createTable());
+			s.execute(SQLIngredients.insertDataIntoTable(ingredients));
 			ResultSet rsIngredients = s.executeQuery(SQLIngredients.allDataFromTable("Id"));
 //			System.out.println("PRINTING OUT INGREDIENTS");
 //			SQLIngredients.printData(rsIngredients);
 //			System.out.println();
 
 //			System.out.println("Recipes/Ingredients");
-//			s.execute(SQLRecipesIngredients.dropTable());
-//			s.execute(SQLRecipesIngredients.createTable());
-//			s.execute(SQLRecipesIngredients.insertDataIntoTable());
+			s.execute(SQLRecipesIngredients.dropTable());
+			s.execute(SQLRecipesIngredients.createTable());
+			s.execute(SQLRecipesIngredients.insertDataIntoTable());
 //			ResultSet rsRecipesIngredients = s.executeQuery(SQLRecipesIngredients.allDataFromTable());
 //			SQLRecipesIngredients.printData(rsRecipesIngredients);
 //			System.out.println();
@@ -114,7 +114,7 @@ public class Main extends Application{
 
 	public static void main(String[] args) {
 
-//		csvToDB();
+		csvToDB();
 
 		launch(args);
 

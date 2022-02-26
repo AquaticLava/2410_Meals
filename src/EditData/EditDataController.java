@@ -370,6 +370,7 @@ public class EditDataController implements Initializable {
         EditRecipeController editRecipeController = loader.getController();
         // run the controller
         Recipe r = recipeTableView.getSelectionModel().getSelectedItem();
+//		System.out.println(r);
         editRecipeController.loadRecipe(r.getId());
         
 		scene = new Scene(root);
