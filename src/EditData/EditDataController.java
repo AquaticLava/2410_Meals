@@ -92,7 +92,7 @@ public class EditDataController implements Initializable {
 	@FXML
 	private TableColumn<Ingredient, String> ingredientNameColumn;
 	@FXML
-	private TableColumn<Ingredient, String> ingredientCaloriesColumn;
+	private TableColumn<Ingredient, Integer> ingredientCaloriesColumn;
 	@FXML
 	private TableColumn<Ingredient, String> ingredientCarbColumn;
 	@FXML
@@ -278,14 +278,6 @@ public class EditDataController implements Initializable {
 	 * @return
 	 */
 	private List<Ingredient> parseIngredientList(String sortMethod) {
-		// Here is where we will populate the ingredient table with default 10 rows for
-		// each table
-		// TODO parse and construct recipe datamodel list by looping your ResultSet rs
-		// and return the list
-//    	List<Ingredient> i = new LinkedList<Ingredient>();
-//    	i.add(new Ingredient(-1, "Chicken Broth", "100", "20g", "0g", "5g", "3g", "0g", "6 oz"));
-//
-//    	return i;
 
 		List<Ingredient> r = new LinkedList<>();
 		try (SQLConnection sqlConnection = new SQLConnection()) {
@@ -296,7 +288,7 @@ public class EditDataController implements Initializable {
 
 			while (ingredientRS.next()) {
 				r.add(new Ingredient(Integer.parseInt(ingredientRS.getString("Id")), ingredientRS.getString("Name"),
-						ingredientRS.getString("Calories"), ingredientRS.getString("Carbs"),
+						Float.parseFloat(ingredientRS.getString("Calories")), ingredientRS.getString("Carbs"),
 						ingredientRS.getString("Fiber"), ingredientRS.getString("Protein"),
 						ingredientRS.getString("Fat"), ingredientRS.getString("Sugar"),
 						ingredientRS.getString("ServingSize")));

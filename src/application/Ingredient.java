@@ -8,7 +8,8 @@ package application;
 public class Ingredient {
 
 	private int Id;
-	private String name, calories, carbs, fiber, protein, fat, sugar, servingSize;
+	private float calories;
+	private String name, carbs, fiber, protein, fat, sugar, servingSize;
 
 	/**
 	 * This overloaded constructor will take in a String from the csv file
@@ -25,7 +26,7 @@ public class Ingredient {
 		String[] data = csvString.split(",");
 
 		name = data[0];
-		calories = data[1];
+		calories = Float.parseFloat(data[1]);
 		carbs = data[2];
 		fiber = data[3];
 		protein = data[4];
@@ -56,7 +57,7 @@ public class Ingredient {
 	}
 
 	public Ingredient(int Id,
-					  String name, String calories, String carbs,
+					  String name, float calories, String carbs,
 					  String fiber, String protein, String fat,
 					  String sugar, String servingSize) {
 		this.Id = Id;
@@ -78,7 +79,7 @@ public class Ingredient {
 		return name;
 	}
 
-	public String getCalories() {
+	public float getCalories() {
 		return calories;
 	}
 

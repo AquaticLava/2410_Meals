@@ -50,7 +50,7 @@ public class AddIngredientController {
 		
 		//todo: input validation, change gui to use dropdowns
 		Ingredient ingredient = new Ingredient(-1, ingredientNameField.getText(),
-				ingredientCaloriesField.getText(),
+				Float.parseFloat(ingredientCaloriesField.getText()),
 				ingredientCarbsField.getText(),
 				ingredientFiberField.getText(),
 				ingredientProteinField.getText(),
