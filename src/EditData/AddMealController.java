@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import sql.SQLConnection;
@@ -53,25 +54,28 @@ public class AddMealController implements Initializable {
 	public void submitMeal(ActionEvent event) throws IOException {
 		
 		Recipe selectedRecipe = mealRecipeTable.getSelectionModel().getSelectedItem();
-		//todo: input validation, change gui to use dropdowns
-		Meal meal = new Meal(-1,mealNameField.getText(),
-				mealPhotoField.getText(),
-				selectedRecipe.getId()
-		);
-
-
-		try (SQLConnection sqlConnection = new SQLConnection()){
-			Statement s = sqlConnection.getSqlStatement();
-			s.execute(SQLMeals.insertDataIntoTable(meal));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		
-		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
-		scene = new Scene(root);
-		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
+		if (validInput(mealNameField) && validInput(mealPhotoField)) {
+		//TODO change gui to use dropdowns
+			Meal meal = new Meal(-1,mealNameField.getText(),
+					mealPhotoField.getText(),
+					selectedRecipe.getId()
+			);
+	
+	
+			try (SQLConnection sqlConnection = new SQLConnection()){
+				Statement s = sqlConnection.getSqlStatement();
+				s.execute(SQLMeals.insertDataIntoTable(meal));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
+			scene = new Scene(root);
+			stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			stage.setScene(scene);
+			stage.show();
+		}
 	}
 
 	@Override
@@ -101,5 +105,16 @@ public class AddMealController implements Initializable {
 			e.printStackTrace();
 		}
 		return r;
+	}
+	
+	//Checks to see if any input is empty to prevent null values.
+	private boolean validInput(TextArea t) {
+		
+		if (t.getText() == "") {
+			t.setText("ERROR: EACH FIELD NEEDS TO HAVE A VALUE SET");
+			return false;
+		}
+		
+		return true;
 	}
 }

@@ -43,27 +43,52 @@ public class AddRecipeController {
 	
 	public void submitRecipe(ActionEvent event) throws IOException {
 
-		//todo: input validation, change gui to use dropdowns
-		Recipe recipe = new Recipe(-1,recipeNameField.getText(),
-				recipeInstructionField.getText(),
-				cookTimeField.getText(),
-				prepTimeField.getText(),
-				recipeDescriptionField.getText(),
-				costCategoryField.getText()
-		);
+		if(validInput(recipeNameField) && validInput(recipeInstructionField)
+				&& validInput(cookTimeField) && validInput(prepTimeField)
+				&& validInput(recipeDescriptionField) && validInput(costCategoryField)) {
+		//TODO change gui to use dropdowns
+			Recipe recipe = new Recipe(-1,recipeNameField.getText(),
+					recipeInstructionField.getText(),
+					cookTimeField.getText(),
+					prepTimeField.getText(),
+					recipeDescriptionField.getText(),
+					costCategoryField.getText()
+			);
+	
+			try (SQLConnection sqlConnection = new SQLConnection()){
+				Statement s = sqlConnection.getSqlStatement();
+				s.execute(SQLRecipes.insertDataIntoTable(recipe));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
+			scene = new Scene(root);
+			stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			stage.setScene(scene);
+			stage.show();
+		}
 
-		try (SQLConnection sqlConnection = new SQLConnection()){
-			Statement s = sqlConnection.getSqlStatement();
-			s.execute(SQLRecipes.insertDataIntoTable(recipe));
-		} catch (Exception e) {
-			e.printStackTrace();
+	}
+	
+	//Checks to see if any input is empty to prevent null values.
+	private boolean validInput(TextArea t) {
+		
+		if (t.getText() == "") {
+			t.setText("ERROR: EACH FIELD NEEDS TO HAVE A VALUE SET");
+			return false;
 		}
 		
-		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
-		scene = new Scene(root);
-		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
-
+		return true;
+	}
+	
+	private boolean validInput(TextField t) {
+		
+		if (t.getText() == "") {
+			t.setText("ERROR: EACH FIELD NEEDS TO HAVE A VALUE SET");
+			return false;
+		}
+		
+		return true;
 	}
 }
