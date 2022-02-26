@@ -109,14 +109,14 @@ public class MealBrowserController implements Initializable{
 							for(Integer id : ingredientIdList) {
 								
 								rs = finalC.getSqlStatement().executeQuery(SQLIngredients.getIngredientById(id));
-								while(rs.next()) {
-									ingredientNames.add(rs.getString("Name"));
-								}
-								rs.close();
+								rs.next();
+								ingredientNames.add(rs.getString("Name"));
+
 							}
 							
 							ingredientNameList.setItems(FXCollections.observableList(ingredientNames));
 						}
+						rs.close();
 
 					} catch (SQLException e) {
 						e.printStackTrace();
