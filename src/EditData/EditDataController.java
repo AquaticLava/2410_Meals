@@ -323,7 +323,7 @@ public class EditDataController implements Initializable {
 	
 	public void switchToAddRecipe(ActionEvent event) throws IOException {
 
-		root = FXMLLoader.load(getClass().getResource("EditRecipe.fxml"));
+		root = FXMLLoader.load(getClass().getResource("AddRecipe.fxml"));
 		scene = new Scene(root);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
@@ -342,36 +342,43 @@ public class EditDataController implements Initializable {
 
 	public void switchToEditMeal(ActionEvent event, int mealId) throws IOException {
 
-		root = FXMLLoader.load(getClass().getResource("EditRecipe.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("EditMeal.fxml"));
+		root = loader.load();
 		scene = new Scene(root);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();
 	}
 	
-	public void switchToEditIngredient(ActionEvent event, int ingredientId) throws IOException {
+	public void switchToEditIngredient(ActionEvent event) throws IOException {
 
-		root = FXMLLoader.load(getClass().getResource("EditMeal.fxml"));
+		// Load the new scene
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("EditIngredient.fxml"));
+		root = loader.load();
+		// get the controller for the next scene
+        EditIngredientController editIngredientController = loader.getController();
+        // run the controller
+        Ingredient ingredient = ingredientTableView.getSelectionModel().getSelectedItem();
+        editIngredientController.loadCurrentIngredient(ingredient.getId());
+        
 		scene = new Scene(root);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		
-
 		stage.show();
 	}
 
 	public void switchToEditRecipe(ActionEvent event) throws IOException {
 
-		// Load the new page
+		// Load the new scene
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("EditRecipe.fxml"));
 		root = loader.load();
 		
-		// get the controller for the next page
+		// get the controller for the next scene
         EditRecipeController editRecipeController = loader.getController();
         // run the controller
-        Recipe r = recipeTableView.getSelectionModel().getSelectedItem();
-//		System.out.println(r);
-        editRecipeController.loadRecipe(r.getId());
+        Recipe recipe = recipeTableView.getSelectionModel().getSelectedItem();
+        editRecipeController.loadCurrentRecipe(recipe.getId());
         
 		scene = new Scene(root);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

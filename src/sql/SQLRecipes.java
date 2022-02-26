@@ -150,6 +150,17 @@ public class SQLRecipes {
 		return "DELETE FROM Recipes WHERE ID = " + id;
 	}
 	
+	/**
+	 * 
+	 * @param id
+	 * @param recipeName
+	 * @param recipeInstructions
+	 * @param cookTime
+	 * @param prepTime
+	 * @param recipeDescription
+	 * @param costCategory
+	 * @return
+	 */
 	public static String updateRow(int id, String recipeName, String recipeInstructions, String cookTime, 
 			String prepTime, String recipeDescription, String costCategory){
 		

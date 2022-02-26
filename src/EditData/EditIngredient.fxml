@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<SplitPane dividerPositions="0.5" orientation="VERTICAL" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditData.AddIngredientController">
+<SplitPane dividerPositions="0.5" orientation="VERTICAL" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditData.EditIngredientController">
     <SplitPane dividerPositions="0.20479910714285715" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
             <Label layoutX="16.0" layoutY="14.0" text="Ingredient Name" />
@@ -33,6 +33,6 @@
         </AnchorPane>
     </SplitPane>
     <AnchorPane prefHeight="50.0" prefWidth="200.0">
-        <Button layoutX="252.0" layoutY="12.0" mnemonicParsing="false" onAction="#submitIngredient" text="Add Ingredient" />
+        <Button layoutX="252.0" layoutY="12.0" mnemonicParsing="false" onAction="#submitEditedIngredient" text="Add Ingredient" />
     </AnchorPane>
 </SplitPane>

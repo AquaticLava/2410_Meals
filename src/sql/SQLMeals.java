@@ -125,6 +125,23 @@ public class SQLMeals {
 		Meal[] m = {meal};
 		return insertDataIntoTable(m);
 	}
+	
+/**
+ * 
+ * @param id
+ * @param mealName
+ * @param photoName
+ * @param recipeId
+ * @return
+ */
+	public static String updateRow(int id, String mealName, String photoName, String recipeId){
+		
+		return "UPDATE Meals "
+				+ "SET Name = '" + mealName
+				+ "', Photo = '" + photoName
+				+ "', RecipeId = '" + recipeId
+				+ "' WHERE Id = " + id;
+	}
 
 	public static String insertFirstTestMeals (){
 		return "INSERT INTO Meals "

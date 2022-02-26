@@ -127,6 +127,37 @@ public class SQLIngredients {
 		}
 	}
 
+	/**
+	 * Generate SQL string for updating a specific ingredient based on its Id.
+	 * 
+	 * @param id
+	 * @param name
+	 * @param calories
+	 * @param carbs
+	 * @param fiber
+	 * @param protein
+	 * @param fat
+	 * @param sugar
+	 * @param servingSize
+	 * @return : returns a string that can be executed as a SQL query to update
+	 */
+	public static String updateRow(int id, String name, String calories, String carbs, String fiber,
+			String protein, String fat, String sugar, String servingSize){
+		
+		return "UPDATE Ingredients "
+				+ "SET Name = '" + name
+				+ "', Calories = '" + calories
+				+ "', Carbs = '" + carbs
+				+ "', Fiber = '" + fiber
+				+ "', Protein = '" + protein
+				+ "', Fat = '" + fat
+				+ "', Sugar = '" + sugar
+				+ "', ServingSize = '" + servingSize
+				+ "' WHERE Id = " + id;
+	}
+	
+
+	
     public static String allDataFromTable(String sortMethod) {
 		return "SELECT * FROM Ingredients ORDER BY " + sortMethod;
     }

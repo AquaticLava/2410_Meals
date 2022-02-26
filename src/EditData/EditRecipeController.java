@@ -40,8 +40,33 @@ public class EditRecipeController {
 	@FXML
 	TextField costCategoryField;
 	
+	@FXML
+	void submitEditedRecipe(ActionEvent event) throws IOException{
+		
+		String recipeName = recipeNameField.getText();
+		String recipeInstructions =recipeInstructionField.getText();
+		String cookTime =cookTimeField.getText();
+		String prepTime = prepTimeField.getText();
+		String recipeDescription = recipeDescriptionField.getText();
+		String costCategory = costCategoryField.getText();
+		
+		try (SQLConnection sqlConnection = new SQLConnection()){
+			
+			Statement s = sqlConnection.getSqlStatement();
+			s.execute(SQLRecipes.updateRow(recipeId, recipeName, recipeInstructions, cookTime,
+					 prepTime, recipeDescription, costCategory));
+			s.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
+		scene = new Scene(root);
+		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		stage.setScene(scene);
+		stage.show();
+	}
 	
-	public void loadRecipe(int recipeId) {
+	void loadCurrentRecipe(int recipeId) {
 		
 		this.recipeId = recipeId;
 		try (SQLConnection sqlConnection = new SQLConnection()){
@@ -56,35 +81,10 @@ public class EditRecipeController {
 			recipeDescriptionField.setText(rs.getString("RecipeDescription"));
 			costCategoryField.setText(rs.getString("CostCategory"));
 			rs.close();
+			s.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void submitEditedRecipe(ActionEvent event) throws IOException{
-		
-		String recipeName = recipeNameField.getText();
-		String recipeInstructions =recipeInstructionField.getText();
-		String cookTime =cookTimeField.getText();
-		String prepTime = prepTimeField.getText();
-		String recipeDescription = recipeDescriptionField.getText();
-		String costCategory = costCategoryField.getText();
-		
-		try (SQLConnection sqlConnection = new SQLConnection()){
-			Statement s = sqlConnection.getSqlStatement();
-//			System.out.println(SQLRecipes.updateRow(recipeId, recipeName, recipeInstructions, cookTime,
-//					prepTime, recipeDescription, costCategory));
-			s.execute(SQLRecipes.updateRow(recipeId, recipeName, recipeInstructions, cookTime,
-					 prepTime, recipeDescription, costCategory));
-		
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
-		scene = new Scene(root);
-		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
-	}
 }
