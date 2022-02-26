@@ -77,6 +77,10 @@ public class SQLRecipesIngredients {
     			+ "(5, 9), "
     			+ "(5, 10)";
     }
+
+	public static String dropTable() {
+		return "DROP TABLE RecipesIngredients";
+	}
     
 	public static String pullIngredientsByRecipeID (int ID){
 		return "SELECT IngredientId from RecipesIngredients WHERE RecipeId = " + ID;

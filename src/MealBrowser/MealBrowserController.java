@@ -1,6 +1,7 @@
 package MealBrowser;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,6 +11,7 @@ import java.util.ResourceBundle;
 import application.Ingredient;
 import application.Meal;
 import application.StringKeyValuePair;
+import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
@@ -26,6 +28,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import sql.SQLConnection;
@@ -47,6 +56,9 @@ public class MealBrowserController implements Initializable{
 	private Image mealImage;
 	@FXML
 	private ComboBox<StringKeyValuePair<Meal>> mealsDropdown;
+	@FXML
+	private BorderPane mealBrowserPane;
+	
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
@@ -100,12 +112,12 @@ public class MealBrowserController implements Initializable{
 							
 							
 							rs = finalC.getSqlStatement().executeQuery(SQLRecipesIngredients.pullIngredientsByRecipeID(m.getRecipeId()));
-							LinkedList<Integer> ingredientIdList = new LinkedList<Integer>();
+							LinkedList<Integer> ingredientIdList = new LinkedList<>();
 							while(rs.next()) {
 								ingredientIdList.add(rs.getInt("IngredientId"));
 							}
 							
-							LinkedList<String> ingredientNames = new LinkedList<String>();
+							LinkedList<String> ingredientNames = new LinkedList<>();
 							
 							for(Integer id : ingredientIdList) {
 								
@@ -123,7 +135,17 @@ public class MealBrowserController implements Initializable{
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
-
+					
+					String photo = m.getPhotoName();
+					String imagePath = System.getProperty("user.dir") + "\\src\\application\\imgs\\" + photo;
+					Image img = new Image(imagePath, 600, 600, false, true);
+			        BackgroundImage bImg = new BackgroundImage(img,
+			                                                   BackgroundRepeat.NO_REPEAT,
+			                                                   BackgroundRepeat.NO_REPEAT,
+			                                                   BackgroundPosition.DEFAULT,
+			                                                   BackgroundSize.DEFAULT);
+			        Background bGround = new Background(bImg);
+			        mealBrowserPane.setBackground(bGround);
 				});
 	}
 
