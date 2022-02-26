@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import application.Ingredient;
 import application.Meal;
 import application.StringKeyValuePair;
+import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
@@ -135,9 +136,9 @@ public class MealBrowserController implements Initializable{
 						e.printStackTrace();
 					}
 					
-					String imagePath = "img.jpg";
-					InputStream imgStream = getClass().getResourceAsStream(imagePath);
-					Image img = new Image(imgStream);
+					String photo = m.getPhotoName();
+					String imagePath = System.getProperty("user.dir") + "\\src\\application\\imgs\\" + photo;
+					Image img = new Image(imagePath, 600, 600, false, true);
 			        BackgroundImage bImg = new BackgroundImage(img,
 			                                                   BackgroundRepeat.NO_REPEAT,
 			                                                   BackgroundRepeat.NO_REPEAT,
