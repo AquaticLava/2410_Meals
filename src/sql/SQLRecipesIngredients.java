@@ -101,9 +101,9 @@ public class SQLRecipesIngredients {
 		}
 	}
 
-	public static String dropTable() {
-		return "DROP TABLE RecipesIngredients";
-	}
+//	public static String dropTable() {
+//		return "DROP TABLE RecipesIngredients";
+//	}
 
 	public static String allDataFromTable() {
 		return "SELECT * FROM RecipesIngredients";
