@@ -139,8 +139,8 @@ public class SQLMeals {
 		return "UPDATE Meals "
 				+ "SET Name = '" + mealName
 				+ "', Photo = '" + photoName
-				+ "', RecipeId = '" + recipeId
-				+ "' WHERE Id = " + id;
+				+ "', RecipeId = " + recipeId
+				+ " WHERE Id = " + id;
 	}
 
 	public static String insertFirstTestMeals (){
@@ -173,6 +173,11 @@ public class SQLMeals {
 					id, name, photo, recipeId);
 			
 		}
+	}
+
+	public static String getMealById(int mealId) {
+		
+		return "SELECT * FROM Meals WHERE Id = " + mealId;
 	}
 
 

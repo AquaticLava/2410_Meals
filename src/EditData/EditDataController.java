@@ -340,13 +340,21 @@ public class EditDataController implements Initializable {
 		stage.show();
 	}
 
-	public void switchToEditMeal(ActionEvent event, int mealId) throws IOException {
+	public void switchToEditMeal(ActionEvent event) throws IOException {
 
+		// Load the new scene
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("EditMeal.fxml"));
 		root = loader.load();
+		// get the controller for the next scene
+		EditMealController editMealController = loader.getController();
+		// run the controller
+		Meal meal = mealTableView.getSelectionModel().getSelectedItem();
+		editMealController.loadCurrentMeal(meal.getId());
+		
 		scene = new Scene(root);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
+		
 		stage.show();
 	}
 	
