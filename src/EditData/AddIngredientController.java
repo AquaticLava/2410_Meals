@@ -19,16 +19,18 @@ import sql.SQLIngredients;
 import sql.SQLRecipes;
 
 /**
- * Controller class for the add meal page, this will allow users to submit new meals and take them back to the main menu.
+ * Controller class for the add meal page, this will allow users to submit new
+ * meals and take them back to the main menu.
+ * 
  * @author Malcolm
  *
  */
 public class AddIngredientController {
-	
+
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
-	
+
 	// FXML handles to make the respective fields accessible to the controller.
 	@FXML
 	private TextField ingredientNameField;
@@ -46,57 +48,50 @@ public class AddIngredientController {
 	private TextField ingredientSugarField;
 	@FXML
 	private TextField ingredientServingSizeField;
-	
+
 	/**
 	 * Creates a new ingredient and stores it in the database.
-	 * @param event : when the add button is pressed
+	 * 
+	 * @param event : the event when the add ingredient button is pressed
 	 * @throws IOException
 	 */
 	public void submitIngredient(ActionEvent event) throws IOException {
-		
-		//Check valid input
-		if(validInput(ingredientNameField) && validInput(ingredientCaloriesField)
-				&& validInput(ingredientCarbsField) && validInput(ingredientFiberField)
-				&& validInput(ingredientProteinField) && validInput(ingredientFatField)
-				&& validInput(ingredientSugarField) && validInput(ingredientServingSizeField)) 
-		{
-		//TODO change gui to use dropdowns
+
+		// Check valid input
+		if (validInput(ingredientNameField) && validInput(ingredientCaloriesField) && validInput(ingredientCarbsField)
+				&& validInput(ingredientFiberField) && validInput(ingredientProteinField)
+				&& validInput(ingredientFatField) && validInput(ingredientSugarField)
+				&& validInput(ingredientServingSizeField)) {
+			// TODO change gui to use dropdowns
 			Ingredient ingredient = new Ingredient(-1, ingredientNameField.getText(),
-					Float.parseFloat(ingredientCaloriesField.getText()),
-					ingredientCarbsField.getText(),
-					ingredientFiberField.getText(),
-					ingredientProteinField.getText(),
-					ingredientFatField.getText(),
-					ingredientSugarField.getText(),
-					ingredientServingSizeField.getText()
-					);
-			
-			try (SQLConnection sqlConnection = new SQLConnection()){
+					Float.parseFloat(ingredientCaloriesField.getText()), ingredientCarbsField.getText(),
+					ingredientFiberField.getText(), ingredientProteinField.getText(), ingredientFatField.getText(),
+					ingredientSugarField.getText(), ingredientServingSizeField.getText());
+
+			try (SQLConnection sqlConnection = new SQLConnection()) {
 				Statement s = sqlConnection.getSqlStatement();
 				s.execute(SQLIngredients.insertDataIntoTable(ingredient));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 			root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
 			scene = new Scene(root);
-			stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(scene);
 			stage.show();
 		}
-		
-
 
 	}
-	
-	//Checks to see if any input is empty to prevent null values.
+
+	// Checks to see if any input is empty to prevent null values.
 	private boolean validInput(TextField t) {
-		
+
 		if (t.getText() == "") {
 			t.setText("ERROR: EACH FIELD NEEDS TO HAVE A VALUE SET");
 			return false;
 		}
-		
+
 		return true;
 	}
 

@@ -21,7 +21,7 @@ public class EditIngredientController {
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
-	
+
 	private int currentIngredientId;
 	@FXML
 	TextField ingredientNameField;
@@ -39,14 +39,14 @@ public class EditIngredientController {
 	TextField ingredientSugarField;
 	@FXML
 	TextField ingredientServingSizeField;
-	
+
 	@FXML
-	void submitEditedIngredient(ActionEvent event) throws IOException{
-		
-		try(SQLConnection c = new SQLConnection()){
-			
+	void submitEditedIngredient(ActionEvent event) throws IOException {
+
+		try (SQLConnection c = new SQLConnection()) {
+
 			Statement s = c.getSqlStatement();
-			
+
 			String name = ingredientNameField.getText();
 			String calories = ingredientCaloriesField.getText();
 			String carbs = ingredientCarbsField.getText();
@@ -55,27 +55,27 @@ public class EditIngredientController {
 			String fat = ingredientFatField.getText();
 			String sugar = ingredientSugarField.getText();
 			String servingSize = ingredientServingSizeField.getText();
-			
-			s.executeUpdate(SQLIngredients.updateRow(currentIngredientId, name, calories, carbs, fiber,
-					protein, fat, sugar, servingSize));
+
+			s.executeUpdate(SQLIngredients.updateRow(currentIngredientId, name, calories, carbs, fiber, protein, fat,
+					sugar, servingSize));
 			s.close();
-			
+
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		
+
 		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
 		scene = new Scene(root);
-		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
 	void loadCurrentIngredient(int ingredientId) {
-		
+
 		this.currentIngredientId = ingredientId;
-		try(SQLConnection c = new SQLConnection()){
-			
+		try (SQLConnection c = new SQLConnection()) {
+
 			Statement s = c.getSqlStatement();
 			ResultSet rs = s.executeQuery(SQLIngredients.getIngredientById(ingredientId));
 			rs.next();
@@ -87,7 +87,7 @@ public class EditIngredientController {
 			ingredientFatField.setText(rs.getString("Fat"));
 			ingredientSugarField.setText(rs.getString("Sugar"));
 			ingredientServingSizeField.setText(rs.getString("ServingSize"));
-			rs.close();	
+			rs.close();
 			s.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

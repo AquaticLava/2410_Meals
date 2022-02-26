@@ -36,6 +36,7 @@ import java.util.*;
 public class EditDataController implements Initializable {
 	String toggleMethod = "ID";
 
+	// FXML Calls to allow access to various Javafx fields
 	@FXML
 	private ComboBox<String> rowSelectionRecipe;
 	@FXML
@@ -106,6 +107,9 @@ public class EditDataController implements Initializable {
 	@FXML
 	private TableColumn<Ingredient, String> ingredientServingSizeColumn;
 
+	/**
+	 * Populates the tables when the edit data fxml file is loaded.
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -158,7 +162,7 @@ public class EditDataController implements Initializable {
 
 		String[] ints = { "5", "10", "25", "50", "all" };
 		ObservableList<String> integers = FXCollections.observableList(Arrays.asList(ints));
-		
+
 		rowSelectionRecipe.setItems(integers);
 		// Recipe parse based on sort button and number of rows
 		rowSelectionRecipe.getSelectionModel().selectedItemProperty()
@@ -180,7 +184,7 @@ public class EditDataController implements Initializable {
 			}
 			ingredientTableView.getItems().setAll(parseIngredientList(toggleMethod));
 		});
-		
+
 		// Ingredient sort based on sort button and number of rows
 		rowSelectionIngredient.setItems(integers);
 		rowSelectionIngredient.getSelectionModel().selectedItemProperty()
@@ -189,7 +193,7 @@ public class EditDataController implements Initializable {
 					numOfRows = intAsString.equals("all") ? -1 : Integer.parseInt(intAsString);
 					ingredientTableView.getItems().setAll(parseIngredientList(toggleMethod));
 				});
-		
+
 		// Meal sort buttons
 		sortMeals.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
 			RadioButton rbMeal = (RadioButton) sortMeals.getSelectedToggle();
@@ -202,7 +206,7 @@ public class EditDataController implements Initializable {
 			}
 			mealTableView.getItems().setAll(parseMealList(toggleMethod));
 		});
-		
+
 		// Meal sort based on sort button and number of rows
 		rowSelectionMeal.setItems(integers);
 		rowSelectionMeal.getSelectionModel().selectedItemProperty()
@@ -215,10 +219,11 @@ public class EditDataController implements Initializable {
 
 	/**
 	 * Parse method for filling recipe table on the view table page
+	 * 
 	 * @param sortMethod
 	 * @return
 	 */
-	
+
 	private List<Recipe> parseRecipeList(String sortMethod) {
 		List<Recipe> r = new LinkedList<>();
 		try (SQLConnection sqlConnection = new SQLConnection()) {
@@ -242,6 +247,7 @@ public class EditDataController implements Initializable {
 
 	/**
 	 * Parse method for filling meal table on the view table page
+	 * 
 	 * @param sortMethod
 	 * @return
 	 */
@@ -253,10 +259,8 @@ public class EditDataController implements Initializable {
 		try (SQLConnection sqlConnection = new SQLConnection()) {
 			Statement s = sqlConnection.getSqlStatement();
 
-			ResultSet mealRS = (numOfRows == -1) ?
-					s.executeQuery(SQLMeals.allDataFromTable(sortMethod)) :
-					s.executeQuery(SQLMeals.partialDataFromTable
-							(numOfRows,sortMethod));
+			ResultSet mealRS = (numOfRows == -1) ? s.executeQuery(SQLMeals.allDataFromTable(sortMethod))
+					: s.executeQuery(SQLMeals.partialDataFromTable(numOfRows, sortMethod));
 
 			while (mealRS.next()) {
 				r.add(new Meal(Integer.parseInt(mealRS.getString("Id")), mealRS.getString("Name"),
@@ -274,6 +278,7 @@ public class EditDataController implements Initializable {
 
 	/**
 	 * Parse method for filling ingredient table on the view table page
+	 * 
 	 * @param sortMethod
 	 * @return
 	 */
@@ -301,6 +306,12 @@ public class EditDataController implements Initializable {
 		return r;
 	}
 
+	/**
+	 * Loads the main menu page
+	 * 
+	 * @param event : event from main menu button being pressed.
+	 * @throws IOException
+	 */
 	public void switchToMainMenu(ActionEvent event) throws IOException {
 
 		root = FXMLLoader.load(getClass().getResource("/MainMenu/MainMenu.fxml"));
@@ -309,9 +320,13 @@ public class EditDataController implements Initializable {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
-	
 
+	/**
+	 * Loads the add meal page to submit new meals.
+	 * 
+	 * @param event : event from add meal button being pressed.
+	 * @throws IOException
+	 */
 	public void switchToAddMeal(ActionEvent event) throws IOException {
 
 		root = FXMLLoader.load(getClass().getResource("AddMeal.fxml"));
@@ -320,17 +335,29 @@ public class EditDataController implements Initializable {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
+	/**
+	 * Loads the add recipe page
+	 * 
+	 * @param event : event from add recipe button being pressed.
+	 * @throws IOException
+	 */
 	public void switchToAddRecipe(ActionEvent event) throws IOException {
 
 		root = FXMLLoader.load(getClass().getResource("AddRecipe.fxml"));
 		scene = new Scene(root);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
-		
+
 		stage.show();
 	}
 
+	/**
+	 * Loads the add ingredient page
+	 * 
+	 * @param event : event from add ingredient button being pressed.
+	 * @throws IOException
+	 */
 	public void switchToAddIngredient(ActionEvent event) throws IOException {
 
 		root = FXMLLoader.load(getClass().getResource("AddIngredient.fxml"));
@@ -340,6 +367,12 @@ public class EditDataController implements Initializable {
 		stage.show();
 	}
 
+	/**
+	 * Switches to the edit meal page.
+	 * 
+	 * @param event : event from the edit meal button being pressed.
+	 * @throws IOException
+	 */
 	public void switchToEditMeal(ActionEvent event) throws IOException {
 
 		// Load the new scene
@@ -350,52 +383,68 @@ public class EditDataController implements Initializable {
 		// run the controller
 		Meal meal = mealTableView.getSelectionModel().getSelectedItem();
 		editMealController.loadCurrentMeal(meal.getId());
-		
+
 		scene = new Scene(root);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
-		
+
 		stage.show();
 	}
-	
+
+	/**
+	 * Switches to the edit ingredient page
+	 * 
+	 * @param event : event from the edit ingredient button being pressed.
+	 * @throws IOException
+	 */
 	public void switchToEditIngredient(ActionEvent event) throws IOException {
 
 		// Load the new scene
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("EditIngredient.fxml"));
 		root = loader.load();
 		// get the controller for the next scene
-        EditIngredientController editIngredientController = loader.getController();
-        // run the controller
-        Ingredient ingredient = ingredientTableView.getSelectionModel().getSelectedItem();
-        editIngredientController.loadCurrentIngredient(ingredient.getId());
-        
+		EditIngredientController editIngredientController = loader.getController();
+		// run the controller
+		Ingredient ingredient = ingredientTableView.getSelectionModel().getSelectedItem();
+		editIngredientController.loadCurrentIngredient(ingredient.getId());
+
 		scene = new Scene(root);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
-		
+
 		stage.show();
 	}
 
+	/**
+	 * Switches to the edit recipe page
+	 * 
+	 * @param event : event from edit recipe button being pressed.
+	 * @throws IOException
+	 */
 	public void switchToEditRecipe(ActionEvent event) throws IOException {
 
 		// Load the new scene
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("EditRecipe.fxml"));
 		root = loader.load();
-		
+
 		// get the controller for the next scene
-        EditRecipeController editRecipeController = loader.getController();
-        // run the controller
-        Recipe recipe = recipeTableView.getSelectionModel().getSelectedItem();
-        editRecipeController.loadCurrentRecipe(recipe.getId());
-        
+		EditRecipeController editRecipeController = loader.getController();
+		// run the controller
+		Recipe recipe = recipeTableView.getSelectionModel().getSelectedItem();
+		editRecipeController.loadCurrentRecipe(recipe.getId());
+
 		scene = new Scene(root);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
-		
+
 		stage.show();
 	}
 
+	/**
+	 * Removes a recipe from the database.
+	 */
 	public void deleteRecipe() {
+
 		Recipe selectedItem = recipeTableView.getSelectionModel().getSelectedItem();
 		recipeTableView.getItems().remove(selectedItem);
 		try (SQLConnection sqlConnection = new SQLConnection()) {
@@ -406,8 +455,11 @@ public class EditDataController implements Initializable {
 		}
 	}
 
+	/**
+	 * Removes a meal from the database.
+	 */
 	public void deleteMeal() {
-		// TODO need to add call to remove from database
+
 		Meal selectedItem = mealTableView.getSelectionModel().getSelectedItem();
 		mealTableView.getItems().remove(selectedItem);
 		try (SQLConnection sqlConnection = new SQLConnection()) {
@@ -417,8 +469,12 @@ public class EditDataController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * Removes a ingredient from the database.
+	 */
 	public void deleteIngredient() {
-		// TODO need to add call to remove from database
+
 		Ingredient selectedItem = ingredientTableView.getSelectionModel().getSelectedItem();
 		ingredientTableView.getItems().remove(selectedItem);
 		try (SQLConnection sqlConnection = new SQLConnection()) {

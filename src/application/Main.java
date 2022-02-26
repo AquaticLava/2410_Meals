@@ -192,16 +192,16 @@ public class Main extends Application{
 
 	public static void main(String[] args) {
 
-//		csvToDB();
+		csvToDB();
 
-		//Collin's testing:
-		ArrayList<String> list = (getIngredientsFromRecipe("Cheesy Eggplant Gnocchi Caprese"));
-		for (String el: list){
-			System.out.println(el);
-		}
+//		//Collin's testing:
+//		ArrayList<String> list = (getIngredientsFromRecipe("Cheesy Eggplant Gnocchi Caprese"));
+//		for (String el: list){
+//			System.out.println(el);
+//		}
 
 
-//		launch(args);
+		launch(args);
 
 	}
 }

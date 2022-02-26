@@ -39,38 +39,48 @@ public class EditRecipeController {
 	TextArea recipeDescriptionField;
 	@FXML
 	TextField costCategoryField;
-	
+
+	/**
+	 * Updates recipe in database.
+	 * 
+	 * @param event : event from edit recipe button being pressed.
+	 * @throws IOException
+	 */
 	@FXML
-	void submitEditedRecipe(ActionEvent event) throws IOException{
-		
+	void submitEditedRecipe(ActionEvent event) throws IOException {
+
 		String recipeName = recipeNameField.getText();
-		String recipeInstructions =recipeInstructionField.getText();
-		String cookTime =cookTimeField.getText();
+		String recipeInstructions = recipeInstructionField.getText();
+		String cookTime = cookTimeField.getText();
 		String prepTime = prepTimeField.getText();
 		String recipeDescription = recipeDescriptionField.getText();
 		String costCategory = costCategoryField.getText();
-		
-		try (SQLConnection sqlConnection = new SQLConnection()){
-			
+
+		try (SQLConnection sqlConnection = new SQLConnection()) {
+
 			Statement s = sqlConnection.getSqlStatement();
-			s.execute(SQLRecipes.updateRow(recipeId, recipeName, recipeInstructions, cookTime,
-					 prepTime, recipeDescription, costCategory));
+			s.execute(SQLRecipes.updateRow(recipeId, recipeName, recipeInstructions, cookTime, prepTime,
+					recipeDescription, costCategory));
 			s.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
 		scene = new Scene(root);
-		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
+	/**
+	 * Populates the fields based on the recipe selected to be edited.
+	 * @param recipeId
+	 */
 	void loadCurrentRecipe(int recipeId) {
-		
+
 		this.recipeId = recipeId;
-		try (SQLConnection sqlConnection = new SQLConnection()){
-			
+		try (SQLConnection sqlConnection = new SQLConnection()) {
+
 			Statement s = sqlConnection.getSqlStatement();
 			ResultSet rs = s.executeQuery(SQLRecipes.pullRecipeRecordByID(recipeId));
 			rs.next();

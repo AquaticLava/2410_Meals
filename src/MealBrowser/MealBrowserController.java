@@ -69,6 +69,9 @@ public class MealBrowserController implements Initializable{
 	@FXML
 	private ListView<String> ingredientNameList;
 
+	/**
+	 * Loads page and fills value for combo box containing all meals.
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 //		recipeDescriptionField recipeInstructionField
@@ -94,15 +97,16 @@ public class MealBrowserController implements Initializable{
 		}
 		//==========================================================================
 
-//		Meal meal = new Meal(1,"test","photo",9);
 		for (Meal meal : meals) {
 			observableList.add(new StringKeyValuePair<>(meal, meal.getName()));
 		}
-
-		;
+		
+		//Add listener to the drop down to load new meal info whenever a meal is selected.
 		mealsDropdown.getSelectionModel().selectedItemProperty().addListener
 				((observableValue1, integerSingleSelectionModel, t11) -> {
 					Meal m = mealsDropdown.getSelectionModel().getSelectedItem().getValue();
+					
+					//TODO refactor the following block into a method that's called by the listener.
 					try {
 						SQLConnection finalC = new SQLConnection();
 						ResultSet rs = finalC.getSqlStatement().executeQuery(SQLRecipes.pullRecipeByID(m.getId()));
@@ -149,8 +153,12 @@ public class MealBrowserController implements Initializable{
 				});
 	}
 
-
-
+	
+	/**
+	 * Changes the scene back to the main menu.
+	 * @param event
+	 * @throws IOException
+	 */
 	public void switchToMainMenu(ActionEvent event) throws IOException {
 		
 		root = FXMLLoader.load(getClass().getResource("/MainMenu/MainMenu.fxml"));

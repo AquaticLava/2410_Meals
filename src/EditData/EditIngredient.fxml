@@ -33,6 +33,6 @@
         </AnchorPane>
     </SplitPane>
     <AnchorPane prefHeight="50.0" prefWidth="200.0">
-        <Button layoutX="252.0" layoutY="12.0" mnemonicParsing="false" onAction="#submitEditedIngredient" text="Add Ingredient" />
+        <Button layoutX="252.0" layoutY="12.0" mnemonicParsing="false" onAction="#submitEditedIngredient" text="Edit Ingredient" />
     </AnchorPane>
 </SplitPane>

@@ -28,11 +28,11 @@ import sql.SQLMeals;
 import sql.SQLRecipes;
 
 public class EditMealController {
-	
+
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
-	
+
 	private int currentMealId;
 	@FXML
 	TextArea mealNameField;
@@ -45,37 +45,45 @@ public class EditMealController {
 	@FXML
 	TableColumn<Recipe, String> mealRecipeNameColumn;
 
-	
+	/**
+	 * Updates the meal in the SQL database to the new values.
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
-	void submitEditedMeal(ActionEvent event) throws IOException{
-		
-		try(SQLConnection c = new SQLConnection()){
-			
+	void submitEditedMeal(ActionEvent event) throws IOException {
+
+		try (SQLConnection c = new SQLConnection()) {
+
 			Statement s = c.getSqlStatement();
-			
+
 			String mealName = mealNameField.getText();
 			String mealPhoto = mealPhotoField.getText();
 			Recipe mealRecipe = mealRecipeTable.getSelectionModel().getSelectedItem();
-			String recipeId =Integer.toString(mealRecipe.getId());
-			
+			String recipeId = Integer.toString(mealRecipe.getId());
+
 			s.executeUpdate(SQLMeals.updateRow(currentMealId, mealName, mealPhoto, recipeId));
 			s.close();
-			
+
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		
+
 		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
 		scene = new Scene(root);
-		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
+	/**
+	 * Fills in the fields based on the select meal to be edited.
+	 * @param mealId
+	 */
 	void loadCurrentMeal(int mealId) {
-		
+
 		this.currentMealId = mealId;
-		try(SQLConnection c = new SQLConnection()){
+		try (SQLConnection c = new SQLConnection()) {
 			initialize();
 			Statement s = c.getSqlStatement();
 			ResultSet rs = s.executeQuery(SQLMeals.getMealById(mealId));
@@ -84,15 +92,17 @@ public class EditMealController {
 			mealPhotoField.setText(rs.getString("Photo"));
 			Integer recipeId = rs.getInt("RecipeId");
 			mealRecipeTable.getSelectionModel().select(recipeId);
-			rs.close();	
+			rs.close();
 			s.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	
+
+	/**
+	 * Populates the recipe table on load.
+	 */
 	private void initialize() {
 
 		mealRecipeIdColumn.setCellValueFactory(new PropertyValueFactory<>("Id"));
@@ -100,7 +110,12 @@ public class EditMealController {
 
 		mealRecipeTable.getItems().setAll(parseRecipeList("ID"));
 	}
-
+		
+	/**
+	 * Fetches the recipes from the database and passes them as a list
+	 * @param sortMethod determines the field to sort the recipes by.
+	 * @return list of sorted recipes
+	 */
 	private List<Recipe> parseRecipeList(String sortMethod) {
 		List<Recipe> r = new LinkedList<>();
 		try (SQLConnection sqlConnection = new SQLConnection()) {
@@ -110,9 +125,8 @@ public class EditMealController {
 
 			while (rs.next()) {
 				r.add(new Recipe(Integer.parseInt(rs.getString("ID")), rs.getString("RecipeName"),
-						rs.getString("RecipeInstructions"), rs.getString("CookTime"),
-						rs.getString("PrepTime"), rs.getString("RecipeDescription"),
-						rs.getString("CostCategory")));
+						rs.getString("RecipeInstructions"), rs.getString("CookTime"), rs.getString("PrepTime"),
+						rs.getString("RecipeDescription"), rs.getString("CostCategory")));
 			}
 			rs.close();
 		} catch (Exception e) {

@@ -29,17 +29,18 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- * Controller class for the add meal page, this will allow users to submit new meals and take them back to the main menu.
+ * Controller class for the add meal page, this will allow users to submit new
+ * meals and take them back to the main menu.
+ * 
  * @author Malcolm
  *
  */
 public class AddMealController implements Initializable {
 
-
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
-	
+
 	@FXML
 	private TextArea mealNameField;
 	@FXML
@@ -47,32 +48,34 @@ public class AddMealController implements Initializable {
 	@FXML
 	private TableView<Recipe> mealRecipeTable;
 	@FXML
-	private TableColumn<Recipe,Integer> mealRecipeIdColumn;
+	private TableColumn<Recipe, Integer> mealRecipeIdColumn;
 	@FXML
-	private TableColumn<Recipe,String> mealRecipeNameColumn;
-	
+	private TableColumn<Recipe, String> mealRecipeNameColumn;
+
+	/**
+	 * Adds the new meal to our database
+	 * 
+	 * @param event: The event from the add meal button being clicked.
+	 * @throws IOException
+	 */
 	public void submitMeal(ActionEvent event) throws IOException {
-		
+
 		Recipe selectedRecipe = mealRecipeTable.getSelectionModel().getSelectedItem();
-		
+
 		if (validInput(mealNameField) && validInput(mealPhotoField)) {
-		//TODO change gui to use dropdowns
-			Meal meal = new Meal(-1,mealNameField.getText(),
-					mealPhotoField.getText(),
-					selectedRecipe.getId()
-			);
-	
-	
-			try (SQLConnection sqlConnection = new SQLConnection()){
+			// TODO change gui to use dropdowns
+			Meal meal = new Meal(-1, mealNameField.getText(), mealPhotoField.getText(), selectedRecipe.getId());
+
+			try (SQLConnection sqlConnection = new SQLConnection()) {
 				Statement s = sqlConnection.getSqlStatement();
 				s.execute(SQLMeals.insertDataIntoTable(meal));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 			root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
 			scene = new Scene(root);
-			stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(scene);
 			stage.show();
 		}
@@ -96,9 +99,8 @@ public class AddMealController implements Initializable {
 
 			while (rs.next()) {
 				r.add(new Recipe(Integer.parseInt(rs.getString("ID")), rs.getString("RecipeName"),
-						rs.getString("RecipeInstructions"), rs.getString("CookTime"),
-						rs.getString("PrepTime"), rs.getString("RecipeDescription"),
-						rs.getString("CostCategory")));
+						rs.getString("RecipeInstructions"), rs.getString("CookTime"), rs.getString("PrepTime"),
+						rs.getString("RecipeDescription"), rs.getString("CostCategory")));
 			}
 			rs.close();
 		} catch (Exception e) {
@@ -106,15 +108,15 @@ public class AddMealController implements Initializable {
 		}
 		return r;
 	}
-	
-	//Checks to see if any input is empty to prevent null values.
+
+	// Checks to see if any input is empty to prevent null values.
 	private boolean validInput(TextArea t) {
-		
+
 		if (t.getText() == "") {
 			t.setText("ERROR: EACH FIELD NEEDS TO HAVE A VALUE SET");
 			return false;
 		}
-		
+
 		return true;
 	}
 }
