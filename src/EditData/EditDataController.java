@@ -92,7 +92,7 @@ public class EditDataController implements Initializable {
 	@FXML
 	private TableColumn<Ingredient, String> ingredientNameColumn;
 	@FXML
-	private TableColumn<Ingredient, String> ingredientCaloriesColumn;
+	private TableColumn<Ingredient, Integer> ingredientCaloriesColumn;
 	@FXML
 	private TableColumn<Ingredient, String> ingredientCarbColumn;
 	@FXML
@@ -288,7 +288,7 @@ public class EditDataController implements Initializable {
 
 			while (ingredientRS.next()) {
 				r.add(new Ingredient(Integer.parseInt(ingredientRS.getString("Id")), ingredientRS.getString("Name"),
-						ingredientRS.getString("Calories"), ingredientRS.getString("Carbs"),
+						Float.parseFloat(ingredientRS.getString("Calories")), ingredientRS.getString("Carbs"),
 						ingredientRS.getString("Fiber"), ingredientRS.getString("Protein"),
 						ingredientRS.getString("Fat"), ingredientRS.getString("Sugar"),
 						ingredientRS.getString("ServingSize")));
