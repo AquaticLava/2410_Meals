@@ -109,7 +109,7 @@ public class SQLRecipes {
 	}
 	
 	public static String pullRecipeRecordByID (int ID){
-		return "SELECT RecipeDescription, RecipeInstructions from Recipes WHERE ID = " + ID;
+		return "SELECT * from Recipes WHERE ID = " + ID;
 	}
 
 
@@ -154,13 +154,13 @@ public class SQLRecipes {
 			String prepTime, String recipeDescription, String costCategory){
 		
 		return "UPDATE Recipes "
-				+ "SET RecipeName = " + recipeName
-				+ "RecipeInstructions = " + recipeInstructions
-				+ "CookTime = " + cookTime
-				+ "PrepTime = " + prepTime
-				+ "RecipeDescription = " + recipeDescription
-				+ "CostCategory = " + costCategory
-				+ "WHERE Id = " + id;
+				+ "SET RecipeName = '" + recipeName
+				+ "', RecipeInstructions = '" + recipeInstructions
+				+ "', CookTime = '" + cookTime
+				+ "', PrepTime = '" + prepTime
+				+ "', RecipeDescription = '" + recipeDescription
+				+ "', CostCategory = '" + costCategory
+				+ "' WHERE Id = " + id;
 	}
     
 	public static void printData(ResultSet rs) throws SQLException {
