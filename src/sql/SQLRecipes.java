@@ -107,6 +107,11 @@ public class SQLRecipes {
 	public static String pullRecipeByID (int ID){
 		return "SELECT RecipeDescription, RecipeInstructions from Recipes WHERE ID = " + ID;
 	}
+	
+	public static String pullRecipeRecordByID (int ID){
+		return "SELECT RecipeDescription, RecipeInstructions from Recipes WHERE ID = " + ID;
+	}
+
 
 	public static String insertDataIntoTable(Recipe recipe) {
 		Recipe[] r = {recipe};
@@ -143,6 +148,19 @@ public class SQLRecipes {
 
 	public static String deleteRow(int id){
 		return "DELETE FROM Recipes WHERE ID = " + id;
+	}
+	
+	public static String updateRow(int id, String recipeName, String recipeInstructions, String cookTime, 
+			String prepTime, String recipeDescription, String costCategory){
+		
+		return "UPDATE Recipes "
+				+ "SET RecipeName = " + recipeName
+				+ "RecipeInstructions = " + recipeInstructions
+				+ "CookTime = " + cookTime
+				+ "PrepTime = " + prepTime
+				+ "RecipeDescription = " + recipeDescription
+				+ "CostCategory = " + costCategory
+				+ "WHERE Id = " + id;
 	}
     
 	public static void printData(ResultSet rs) throws SQLException {

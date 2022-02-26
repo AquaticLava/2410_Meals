@@ -309,6 +309,8 @@ public class EditDataController implements Initializable {
 		stage.setScene(scene);
 		stage.show();
 	}
+	
+	
 
 	public void switchToAddMeal(ActionEvent event) throws IOException {
 
@@ -316,6 +318,16 @@ public class EditDataController implements Initializable {
 		scene = new Scene(root);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void switchToAddRecipe(ActionEvent event) throws IOException {
+
+		root = FXMLLoader.load(getClass().getResource("EditRecipe.fxml"));
+		scene = new Scene(root);
+		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.setScene(scene);
+		
 		stage.show();
 	}
 
@@ -328,12 +340,42 @@ public class EditDataController implements Initializable {
 		stage.show();
 	}
 
-	public void switchToAddRecipe(ActionEvent event) throws IOException {
+	public void switchToEditMeal(ActionEvent event, int mealId) throws IOException {
 
-		root = FXMLLoader.load(getClass().getResource("AddRecipe.fxml"));
+		root = FXMLLoader.load(getClass().getResource("EditRecipe.fxml"));
 		scene = new Scene(root);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void switchToEditIngredient(ActionEvent event, int ingredientId) throws IOException {
+
+		root = FXMLLoader.load(getClass().getResource("EditMeal.fxml"));
+		scene = new Scene(root);
+		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.setScene(scene);
+		
+
+		stage.show();
+	}
+
+	public void switchToEditRecipe(ActionEvent event) throws IOException {
+
+		// Load the new page
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("EditRecipe.fxml"));
+		root = loader.load();
+		
+		// get the controller for the next page
+        EditRecipeController editRecipeController = loader.getController();
+        // run the controller
+        Recipe r = recipeTableView.getSelectionModel().getSelectedItem();
+        editRecipeController.loadRecipe(r.getId());
+        
+		scene = new Scene(root);
+		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.setScene(scene);
+		
 		stage.show();
 	}
 
