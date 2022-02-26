@@ -8,20 +8,13 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MealBrowser.MealBrowserController">
-   <left>
-       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-           <Image fx:id="mealImage" url="@../../../../../../Downloads/istockphoto-1284690585-1024x1024.jpg" />
-       </ImageView>
-   </left>
+<BorderPane fx:id="mealBrowserPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MealBrowser.MealBrowserController">
    <center>
-       <TabPane>
+       <TabPane opacity="0.5">
            <Tab text="Description">
                <TextArea fx:id="recipeDescriptionField" editable="false" prefHeight="300.0" prefWidth="300.0" text="Populate with Recipe description &#10;and recipe instructions&#10;" wrapText="true" />
            </Tab>
@@ -31,7 +24,7 @@
        </TabPane>
    </center>
    <right>
-       <SplitPane dividerPositions="0.15949820788530464" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+       <SplitPane dividerPositions="0.15949820788530464" opacity="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <TextField editable="false" prefHeight="56.0" prefWidth="157.33333333333334" text="Ingredients Needed" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
            </AnchorPane>
@@ -41,7 +34,7 @@
        </SplitPane>
    </right>
    <bottom>
-       <SplitPane dividerPositions="0.5027901785714286" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+       <SplitPane dividerPositions="0.5027901785714286" opacity="0.5" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="100.0">
                <Button layoutX="90.0" layoutY="66.0" mnemonicParsing="false" text="View Shopping List" />
            </AnchorPane>
@@ -51,7 +44,7 @@
        </SplitPane>
    </bottom>
    <top>
-       <HBox prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+       <HBox opacity="0.5" prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
            <ComboBox fx:id="mealsDropdown" prefHeight="35.0" prefWidth="426.0" promptText="Select Meal" />
            <Button mnemonicParsing="false" onAction="#switchToMainMenu" text="Back to Main Menu" />
        </HBox>

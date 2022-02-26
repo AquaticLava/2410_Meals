@@ -1,6 +1,7 @@
 package MealBrowser;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,6 +27,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import sql.SQLConnection;
@@ -47,6 +55,9 @@ public class MealBrowserController implements Initializable{
 	private Image mealImage;
 	@FXML
 	private ComboBox<StringKeyValuePair<Meal>> mealsDropdown;
+	@FXML
+	private BorderPane mealBrowserPane;
+	
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
@@ -123,7 +134,17 @@ public class MealBrowserController implements Initializable{
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
-
+					
+					String imagePath = "img.jpg";
+					InputStream imgStream = getClass().getResourceAsStream(imagePath);
+					Image img = new Image(imgStream);
+			        BackgroundImage bImg = new BackgroundImage(img,
+			                                                   BackgroundRepeat.NO_REPEAT,
+			                                                   BackgroundRepeat.NO_REPEAT,
+			                                                   BackgroundPosition.DEFAULT,
+			                                                   BackgroundSize.DEFAULT);
+			        Background bGround = new Background(bImg);
+			        mealBrowserPane.setBackground(bGround);
 				});
 	}
 
