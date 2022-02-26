@@ -71,7 +71,7 @@ public class Main extends Application{
 			 Statement s = c.createStatement()){
 
 //			System.out.println("Recipes");
-			s.execute(SQLRecipes.DROPTABLE);
+//			s.execute(SQLRecipes.DROPTABLE);
 			s.execute(SQLRecipes.createTable());
 			s.execute(SQLRecipes.insertDataIntoTable(recipes));
 			ResultSet rsRecipes = s.executeQuery(SQLRecipes.allDataFromTable("ID"));
@@ -80,7 +80,7 @@ public class Main extends Application{
 
 			//Puts five meals into the database and prints out the results.
 //			System.out.println("Put Testing Meals into the database");
-			s.execute(SQLMeals.DROPTABLE);
+//			s.execute(SQLMeals.DROPTABLE);
 			s.execute(SQLMeals.createTable());
 			s.execute(SQLMeals.insertFirstTestMeals());
 			ResultSet rsMeals = s.executeQuery(SQLMeals.ALLDATAFROMTABLE);
@@ -90,18 +90,18 @@ public class Main extends Application{
 
 //			System.out.println("Ingredients");
 //			s.execute(SQLIngredients.dropTable());
-//			s.execute(SQLIngredients.createTable());
-//			s.execute(SQLIngredients.insertDataIntoTable(ingredients));
+			s.execute(SQLIngredients.createTable());
+			s.execute(SQLIngredients.insertDataIntoTable(ingredients));
 			ResultSet rsIngredients = s.executeQuery(SQLIngredients.allDataFromTable("Id"));
 //			System.out.println("PRINTING OUT INGREDIENTS");
 //			SQLIngredients.printData(rsIngredients);
 //			System.out.println();
 
-//			System.out.println("Recipes/Ingredients");
+			System.out.println("Recipes/Ingredients");
 //			s.execute(SQLRecipesIngredients.dropTable());
-//			s.execute(SQLRecipesIngredients.createTable());
-//			s.execute(SQLRecipesIngredients.insertDataIntoTable());
-//			ResultSet rsRecipesIngredients = s.executeQuery(SQLRecipesIngredients.allDataFromTable());
+			s.execute(SQLRecipesIngredients.createTable());
+			s.execute(SQLRecipesIngredients.insertDataIntoTable());
+			ResultSet rsRecipesIngredients = s.executeQuery(SQLRecipesIngredients.allDataFromTable());
 //			SQLRecipesIngredients.printData(rsRecipesIngredients);
 //			System.out.println();
 
