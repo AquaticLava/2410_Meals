@@ -129,7 +129,7 @@ public class EditDataController implements Initializable {
 		mealTableView.getItems().setAll(parseMealList("ID"));
 
 		// ingredient table initialize
-		ingredientIdColumn.setCellValueFactory(new PropertyValueFactory<>("I d"));
+		ingredientIdColumn.setCellValueFactory(new PropertyValueFactory<>("Id"));
 		ingredientNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 		ingredientCaloriesColumn.setCellValueFactory(new PropertyValueFactory<>("calories"));
 		ingredientCarbColumn.setCellValueFactory(new PropertyValueFactory<>("carbs"));
