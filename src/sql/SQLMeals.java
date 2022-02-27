@@ -78,6 +78,7 @@ public class SQLMeals {
 	 * @return the string for a query of rows between startID and endID, inclusive.
 	 */
 	public static String partialDataFromTable(int numberOfRows){
+
 		return partialDataFromTable(numberOfRows,"ID");
 	}
 	
@@ -154,6 +155,7 @@ public class SQLMeals {
 	}
 
 	public static String deleteRow(int id) {
+
 		return "DELETE FROM Meals WHERE ID = " + id;
 	}
     

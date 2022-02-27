@@ -34,26 +34,6 @@ public class Ingredient {
 		sugar = data[6];
 		servingSize = data[7];
 
-//		for (int i = 0; i < data.length; i++){
-//			switch (i) {
-//				case 0 ->        //name
-//						name = data[i];
-//				case 1 ->        //calories
-//						calories = data[i];
-//				case 2 ->        //carbs
-//						carbs = data[i];
-//				case 3 ->        //fiber
-//						fiber = data[i];
-//				case 4 ->        //protein
-//						protein = data[i];
-//				case 5 ->        //fat
-//						fat = data[i];
-//				case 6 ->        //sugar
-//						sugar = data[i];
-//				case 7 ->        //serving size
-//						servingSize = data[i];
-//			}
-//		}
 	}
 
 	public Ingredient(int Id,
@@ -122,18 +102,5 @@ public class Ingredient {
 				'}';
 	}
 
-//	/**
-//	 * This is a testing methods for the class Ingredients.
-//	 *
-//	 * @param args
-//	 */
-//	public static void main (String [] args){
-//		CSVInput csv = new CSVInput("src/application/resources/ingredients.csv");
-//		csv.readFileData();
-//		ArrayList<String> data = csv.getDataList();
-//		Ingredient ingredient = new Ingredient(data.get(45));
-//		System.out.println(ingredient.toString());
-//
-//	}
 
 }

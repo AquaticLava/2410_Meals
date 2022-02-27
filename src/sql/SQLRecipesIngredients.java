@@ -96,6 +96,7 @@ public class SQLRecipesIngredients {
     }
 
 	public static String dropTable() {
+
 		return "DROP TABLE RecipesIngredients";
 	}
     
@@ -104,8 +105,11 @@ public class SQLRecipesIngredients {
 		return "SELECT IngredientId from RecipesIngredients WHERE RecipeId = " + ID;
 	}
 
-
-	
+	/**
+	 * Tester method.
+	 * @param rs
+	 * @throws SQLException
+	 */
 	public static void printData(ResultSet rs) throws SQLException {
 		
 		System.out.println("Recipe Id | Ingredient Id");
@@ -121,10 +125,10 @@ public class SQLRecipesIngredients {
 		}
 	}
 
-//	public static String dropTable() {
-//		return "DROP TABLE RecipesIngredients";
-//	}
-
+	/**
+	 * Selects and retursn all data from the RecipesIngedients table.
+	 * @return String of data.
+	 */
 	public static String allDataFromTable() {
 		return "SELECT * FROM RecipesIngredients";
 	}

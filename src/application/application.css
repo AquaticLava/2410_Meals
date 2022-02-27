@@ -1,4 +1,4 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
 .root{
     -fx-background-color: #343a40;
     -fx-padding: 20px;
@@ -8,16 +8,10 @@
     -fx-background-color: #6c757d;
     -fx-text-fill: #ffffff;
 }
-/*.split-pane{*/
-/*    -fx-background-color: #343a40;*/
-/*}*/
+
 .text-area, .text-field{
     -fx-border-color: #6c757d;
 }
-
-/*.bg-dark{*/
-/*    -fx-background-color: #343a40;*/
-/*}*/
 
 /*Table style*/
 .table-view {

@@ -12,6 +12,7 @@ public class SQLConnection implements AutoCloseable{
     private Connection sqlConnection;
 
     public Statement getSqlStatement() {
+
         return sqlStatement;
     }
 
