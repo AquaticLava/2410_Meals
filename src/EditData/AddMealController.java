@@ -1,6 +1,7 @@
 package EditData;
 
 import application.Ingredient;
+import application.Main;
 import application.Meal;
 import application.Recipe;
 import javafx.event.ActionEvent;
@@ -75,6 +76,7 @@ public class AddMealController implements Initializable {
 
 			root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
 			scene = new Scene(root);
+			scene.getStylesheets().add(Main.css);
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(scene);
 			stage.show();

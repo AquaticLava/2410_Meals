@@ -1,5 +1,6 @@
 package EditData;
 
+import application.Main;
 import application.Recipe;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -65,6 +66,7 @@ public class AddRecipeController {
 
 			root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
 			scene = new Scene(root);
+			scene.getStylesheets().add(Main.css);
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(scene);
 			stage.show();

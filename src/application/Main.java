@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.kordamp.bootstrapfx.BootstrapFX;
 import sql.*;
 
 /**
@@ -24,6 +25,8 @@ import sql.*;
  */
 
 public class Main extends Application{
+
+	public static String css = Main.class.getResource("application.css").toExternalForm();
 	
 	 //Add a properties file that can be read from for SQL queries.
 	@Override
@@ -31,8 +34,9 @@ public class Main extends Application{
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/MainMenu/MainMenu.fxml"));
 			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			
+			scene.getStylesheets().add(Main.css);
+			scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Main Menu");
 			primaryStage.show();
@@ -73,7 +77,7 @@ public class Main extends Application{
 			 Statement s = c.createStatement()){
 
 //			System.out.println("Recipes");
-			s.execute(SQLRecipes.DROPTABLE);
+
 			s.execute(SQLRecipes.createTable());
 			s.execute(SQLRecipes.insertDataIntoTable(recipes));
 			ResultSet rsRecipes = s.executeQuery(SQLRecipes.allDataFromTable("ID"));
@@ -82,7 +86,7 @@ public class Main extends Application{
 
 			//Puts five meals into the database and prints out the results.
 //			System.out.println("Put Testing Meals into the database");
-			s.execute(SQLMeals.DROPTABLE);
+
 			s.execute(SQLMeals.createTable());
 			s.execute(SQLMeals.insertFirstTestMeals());
 			ResultSet rsMeals = s.executeQuery(SQLMeals.ALLDATAFROMTABLE);
@@ -91,7 +95,7 @@ public class Main extends Application{
 
 
 //			System.out.println("Ingredients");
-			s.execute(SQLIngredients.dropTable());
+
 			s.execute(SQLIngredients.createTable());
 			s.execute(SQLIngredients.insertDataIntoTable(ingredients));
 			ResultSet rsIngredients = s.executeQuery(SQLIngredients.allDataFromTable("Id"));
@@ -100,7 +104,7 @@ public class Main extends Application{
 //			System.out.println();
 
 //			System.out.println("Recipes/Ingredients");
-			s.execute(SQLRecipesIngredients.dropTable());
+
 			s.execute(SQLRecipesIngredients.createTable());
 			s.execute(SQLRecipesIngredients.insertDataIntoTable());
 //			ResultSet rsRecipesIngredients = s.executeQuery(SQLRecipesIngredients.allDataFromTable());
@@ -109,6 +113,18 @@ public class Main extends Application{
 
 		} catch (SQLException e) {
 
+			e.printStackTrace();
+		}
+	}
+
+	private static void DBDropTables(){
+		try (Connection c = DriverManager.getConnection("jdbc:derby:MealDatabase;create=true");
+			 Statement s = c.createStatement()) {
+			s.execute(SQLRecipes.DROPTABLE);
+			s.execute(SQLMeals.DROPTABLE);
+			s.execute(SQLIngredients.dropTable());
+			s.execute(SQLRecipesIngredients.dropTable());
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
@@ -192,6 +208,7 @@ public class Main extends Application{
 
 	public static void main(String[] args) {
 
+		DBDropTables();
 		csvToDB();
 
 ////		//Collin's testing:

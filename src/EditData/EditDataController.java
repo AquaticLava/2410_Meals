@@ -1,6 +1,7 @@
 package EditData;
 
 import application.Ingredient;
+import application.Main;
 import application.Meal;
 import application.Recipe;
 import javafx.collections.FXCollections;
@@ -316,6 +317,7 @@ public class EditDataController implements Initializable {
 
 		root = FXMLLoader.load(getClass().getResource("/MainMenu/MainMenu.fxml"));
 		scene = new Scene(root);
+		scene.getStylesheets().add(Main.css);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();
@@ -331,6 +333,7 @@ public class EditDataController implements Initializable {
 
 		root = FXMLLoader.load(getClass().getResource("AddMeal.fxml"));
 		scene = new Scene(root);
+		scene.getStylesheets().add(Main.css);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();
@@ -346,6 +349,7 @@ public class EditDataController implements Initializable {
 
 		root = FXMLLoader.load(getClass().getResource("AddRecipe.fxml"));
 		scene = new Scene(root);
+		scene.getStylesheets().add(Main.css);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 
@@ -362,6 +366,7 @@ public class EditDataController implements Initializable {
 
 		root = FXMLLoader.load(getClass().getResource("AddIngredient.fxml"));
 		scene = new Scene(root);
+		scene.getStylesheets().add(Main.css);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();
@@ -385,6 +390,7 @@ public class EditDataController implements Initializable {
 		editMealController.loadCurrentMeal(meal.getId());
 
 		scene = new Scene(root);
+		scene.getStylesheets().add(Main.css);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 
@@ -409,9 +415,10 @@ public class EditDataController implements Initializable {
 		editIngredientController.loadCurrentIngredient(ingredient.getId());
 
 		scene = new Scene(root);
+		scene.getStylesheets().add(Main.css);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
-
+		scene.getStylesheets().add(Main.css);
 		stage.show();
 	}
 
@@ -434,6 +441,7 @@ public class EditDataController implements Initializable {
 		editRecipeController.loadCurrentRecipe(recipe.getId());
 
 		scene = new Scene(root);
+		scene.getStylesheets().add(Main.css);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 

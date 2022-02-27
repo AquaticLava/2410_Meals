@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import application.Main;
 import application.Recipe;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -76,6 +77,7 @@ public class EditMealController {
 
 		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
 		scene = new Scene(root);
+		scene.getStylesheets().add(Main.css);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();

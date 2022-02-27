@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
+import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -73,6 +74,7 @@ public class EditRecipeController {
 		}
 		root = FXMLLoader.load(getClass().getResource("EditData.fxml"));
 		scene = new Scene(root);
+		scene.getStylesheets().add(Main.css);
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();

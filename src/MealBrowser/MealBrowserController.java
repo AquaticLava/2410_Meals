@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 import application.Ingredient;
+import application.Main;
 import application.Meal;
 import application.StringKeyValuePair;
 import javafx.application.Application;
@@ -153,6 +154,7 @@ public class MealBrowserController implements Initializable{
 		
 		root = FXMLLoader.load(getClass().getResource("/MainMenu/MainMenu.fxml"));
 		scene = new Scene(root);
+		scene.getStylesheets().add(Main.css);
 		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();

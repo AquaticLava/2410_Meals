@@ -2,6 +2,7 @@ package MainMenu;
 
 import java.io.IOException;
 
+import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -29,6 +30,7 @@ public class MainMenuController {
 		
 		root = FXMLLoader.load(getClass().getResource("/MealBrowser/MealBrowser.fxml"));
 		scene = new Scene(root);
+		scene.getStylesheets().add(Main.css);
 		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();
@@ -42,6 +44,7 @@ public class MainMenuController {
 		
 		root = FXMLLoader.load(getClass().getResource("/EditData/EditData.fxml"));
 		scene = new Scene(root);
+		scene.getStylesheets().add(Main.css);
 		stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();
