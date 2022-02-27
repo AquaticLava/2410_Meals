@@ -109,7 +109,7 @@ public class MealBrowserController implements Initializable{
 					//TODO refactor the following block into a method that's called by the listener.
 					try {
 						SQLConnection finalC = new SQLConnection();
-						ResultSet rs = finalC.getSqlStatement().executeQuery(SQLRecipes.pullRecipeByID(m.getId()));
+						ResultSet rs = finalC.getSqlStatement().executeQuery(SQLRecipes.pullRecipeByID(m.getRecipeId()));
 						while (rs.next()){
 							recipeDescriptionField.setText(rs.getString("RecipeDescription"));
 							recipeInstructionField.setText(rs.getString("RecipeInstructions"));
