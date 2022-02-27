@@ -110,7 +110,12 @@ public class SQLIngredients {
 	public static String deleteRow(int id) {
 		return "DELETE FROM Ingredients WHERE ID = " + id;
 	}
-    
+
+	public static String pullIngredientsByRecipeID (int ID){
+		return "SELECT Ingredients.Name FROM Ingredients JOIN RecipesIngredients ON Ingredients.Id = RecipesIngredients.IngredientId" +
+				" JOIN Recipes ON Recipes.Id = RecipesIngredients.RecipeId WHERE Recipes.Id = " + ID;
+	}
+
 	public static void printData(ResultSet rs) throws SQLException {
 		
 		System.out.println("Id |      Name      | Calores");

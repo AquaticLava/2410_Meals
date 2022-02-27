@@ -175,7 +175,7 @@ public class Main extends Application{
 				String result = "";
 				for (int j = 0; j < ingreds.length; j++) {
 					if (j % 2 == 0) {
-						result += (ingreds[j] + "|");
+						result += (ingreds[j] + "@");
 					} else {
 						result += (ingreds[j]);
 						ingredients.add(result);
@@ -194,11 +194,35 @@ public class Main extends Application{
 
 		csvToDB();
 
-//		//Collin's testing:
+////		//Collin's testing:
 //		ArrayList<String> list = (getIngredientsFromRecipe("Cheesy Eggplant Gnocchi Caprese"));
 //		for (String el: list){
-//			System.out.println(el);
+////			System.out.println(el);
+//
+//			//parts[1] is the name of the ingredient whole
+//			String[] parts = el.split("@");
+//			System.out.print(parts[0] + " " + parts[1] + "\n");
+//
+//			//Split the name into individual words
+//			String[] words = parts[1].split(" ");
+//
+//			//go through words and see if match is found
+//			for (String word: words){
+//				int result = findIngredientInDatabase(word);
+//				if (result != -1){ //word is found
+//					System.out.println(word);
+//					System.out.println(result);
+//				} else {//Word is not found
+//					//add ingredient to the database
+//				}
+//			}
+//
+//			//find the ingredient in the database
+//			//findIngredientInDatabase("")
+//
 //		}
+
+
 
 
 		launch(args);

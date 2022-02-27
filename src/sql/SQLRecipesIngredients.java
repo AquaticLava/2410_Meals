@@ -64,10 +64,27 @@ public class SQLRecipesIngredients {
     			+ "(1, 1), "
     			+ "(1, 2), "
     			+ "(1, 3), "
-    			+ "(2, 6), "
-    			+ "(2, 7), "
-    			+ "(3, 8), "
-    			+ "(3, 9), "
+    			+ "(2, 58), "
+    			+ "(2, 59), "
+    			+ "(2, 60), "
+    			+ "(2, 61), "
+    			+ "(2, 62), "
+    			+ "(2, 63), "
+    			+ "(2, 64), "
+    			+ "(2, 65), "
+    			+ "(3, 66), "
+    			+ "(3, 67), "
+    			+ "(3, 68), "
+    			+ "(3, 69), "
+    			+ "(3, 70), "
+    			+ "(3, 71), "
+    			+ "(3, 72), "
+    			+ "(3, 73), "
+    			+ "(3, 74), "
+    			+ "(3, 75), "
+    			+ "(3, 76), "
+    			+ "(3, 77), "
+    			+ "(3, 78), "
     			+ "(4, 1), "
     			+ "(4, 3), "
     			+ "(4, 5), "
@@ -83,8 +100,11 @@ public class SQLRecipesIngredients {
 	}
     
 	public static String pullIngredientsByRecipeID (int ID){
+
 		return "SELECT IngredientId from RecipesIngredients WHERE RecipeId = " + ID;
 	}
+
+
 	
 	public static void printData(ResultSet rs) throws SQLException {
 		

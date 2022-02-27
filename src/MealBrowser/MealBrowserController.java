@@ -67,7 +67,7 @@ public class MealBrowserController implements Initializable{
 	@FXML
 	private TextArea recipeInstructionField;
 	@FXML
-	private ListView<String> ingredientNameList;
+	private ListView<String> ingredientNameListView;
 
 	/**
 	 * Loads page and fills value for combo box containing all meals.
@@ -115,24 +115,14 @@ public class MealBrowserController implements Initializable{
 							recipeInstructionField.setText(rs.getString("RecipeInstructions"));
 							
 							
-							rs = finalC.getSqlStatement().executeQuery(SQLRecipesIngredients.pullIngredientsByRecipeID(m.getRecipeId()));
-							LinkedList<Integer> ingredientIdList = new LinkedList<>();
+							rs = finalC.getSqlStatement().executeQuery(SQLIngredients.pullIngredientsByRecipeID(m.getRecipeId()));
+							LinkedList<String> ingredientNameList = new LinkedList<>();
 							while(rs.next()) {
-								ingredientIdList.add(rs.getInt("IngredientId"));
-							}
-							
-							LinkedList<String> ingredientNames = new LinkedList<>();
-							
-							for(Integer id : ingredientIdList) {
-								
-								rs = finalC.getSqlStatement().executeQuery(SQLIngredients.getIngredientById(id));
-								rs.next();
-								ingredientNames.add(rs.getString("Name"));
-
+								ingredientNameList.add(rs.getString("Name"));
 							}
 
 							
-							ingredientNameList.setItems(FXCollections.observableList(ingredientNames));
+							ingredientNameListView.setItems(FXCollections.observableList(ingredientNameList));
 						}
 						rs.close();
 
