@@ -34,7 +34,6 @@ public class Main extends Application{
 			Parent root = FXMLLoader.load(getClass().getResource("/MainMenu/MainMenu.fxml"));
 			Scene scene = new Scene(root,400,400);
 			scene.getStylesheets().add(Main.css);
-
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Main Menu");
 			primaryStage.show();
