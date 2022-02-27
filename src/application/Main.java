@@ -15,7 +15,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.kordamp.bootstrapfx.BootstrapFX;
 import sql.*;
 
 /**
@@ -35,7 +34,6 @@ public class Main extends Application{
 			Parent root = FXMLLoader.load(getClass().getResource("/MainMenu/MainMenu.fxml"));
 			Scene scene = new Scene(root,400,400);
 			scene.getStylesheets().add(Main.css);
-			scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
 
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Main Menu");
