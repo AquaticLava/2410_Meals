@@ -154,10 +154,10 @@
 
 .text-field, .split-pane{
     -fx-background-color: #343a40;
-    -fx-text-fill: white;
+    -fx-text-fill: #eeeeee;
 }
 .split-pane .label{
-    -fx-text-fill: white;
+    -fx-text-fill: #eeeeee;
 }
 .split-pane .split-pane-divider{
     -fx-background-color: #6c757d;
@@ -168,6 +168,6 @@
 
 }
 .text-area {
-    -fx-text-fill: white;
+    -fx-text-fill: #eeeeee;
 }
 
