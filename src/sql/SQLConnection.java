@@ -5,7 +5,7 @@ import java.sql.*;
 /**
  * Manages connections to the database.
  *
- * @author Eric
+ * @author Eric Rytting
  */
 public class SQLConnection implements AutoCloseable{
     private Statement sqlStatement;

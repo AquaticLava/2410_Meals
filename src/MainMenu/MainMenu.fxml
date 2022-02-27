@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenu.MainMenuController">
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenu.MainMenuController">
     <TitledPane animated="false" collapsible="false" layoutX="-112.0" layoutY="-142.0" prefHeight="300.0" prefWidth="300.0" text="Recipe Book" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="274.0" prefWidth="343.0" style="-fx-background-color: grey;">
             <Button alignment="CENTER" contentDisplay="CENTER" layoutX="67.0" layoutY="77.0" mnemonicParsing="false" onAction="#switchToMealBrowser" prefHeight="56.0" prefWidth="164.0" text="Meal Browser" />
             <Button layoutX="114.0" layoutY="234.0" mnemonicParsing="false" onAction="#switchToEditData" text="View Data" />
+         <TextField alignment="CENTER" editable="false" layoutY="22.0" prefHeight="32.0" prefWidth="292.0" text="Welcome to the Recipe Book!" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </TextField>
         </AnchorPane>
     </TitledPane>
 </AnchorPane>

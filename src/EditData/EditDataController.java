@@ -30,7 +30,7 @@ import java.util.*;
  * Controller class for the data editing tab, controls buttons and manipulates
  * data records.
  * 
- * @author Malcolm and Eric
+ * @author Malcolm Bailey, Eric Rytting
  *
  */
 public class EditDataController implements Initializable {
@@ -221,7 +221,7 @@ public class EditDataController implements Initializable {
 	 * Parse method for filling recipe table on the view table page
 	 * 
 	 * @param sortMethod
-	 * @return
+	 * @return returns a list of recipes queried from the SQL database.
 	 */
 
 	private List<Recipe> parseRecipeList(String sortMethod) {
@@ -249,7 +249,7 @@ public class EditDataController implements Initializable {
 	 * Parse method for filling meal table on the view table page
 	 * 
 	 * @param sortMethod
-	 * @return
+	 * @return returns a list of meals queried from the SQL database.
 	 */
 	private List<Meal> parseMealList(String sortMethod) {
 		// Here is where we will populate the meal table with default 10 rows for each
@@ -280,7 +280,7 @@ public class EditDataController implements Initializable {
 	 * Parse method for filling ingredient table on the view table page
 	 * 
 	 * @param sortMethod
-	 * @return
+	 * @return returns a list of ingredients queried from the SQL database.
 	 */
 	private List<Ingredient> parseIngredientList(String sortMethod) {
 

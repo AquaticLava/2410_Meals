@@ -26,7 +26,12 @@ import sql.SQLConnection;
 import sql.SQLIngredients;
 import sql.SQLMeals;
 import sql.SQLRecipes;
-
+/**
+ * Controller class for the editing of meals, allowing the selected meal to be loaded
+ * then edited and saved back to the database.
+ * @author Malcolm Bailey
+ *
+ */
 public class EditMealController {
 
 	private Parent root;

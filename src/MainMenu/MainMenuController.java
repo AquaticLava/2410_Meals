@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 /**
  * Controller class for the main menu, controls buttons to navigate to other pages.
- * @author Malcolm
+ * @author Malcolm Bailey
  *
  */
 public class MainMenuController {
@@ -20,6 +20,11 @@ public class MainMenuController {
 	private Stage stage;
 	private Scene scene;
 	
+	/**
+	 * Changes view to the meal browser page.
+	 * @param event
+	 * @throws IOException
+	 */
 	public void switchToMealBrowser(ActionEvent event) throws IOException {
 		
 		root = FXMLLoader.load(getClass().getResource("/MealBrowser/MealBrowser.fxml"));
@@ -28,7 +33,11 @@ public class MainMenuController {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+	/**
+	 * Changes view to the edit data page.
+	 * @param event
+	 * @throws IOException
+	 */
 	public void switchToEditData(ActionEvent event) throws IOException {
 		
 		root = FXMLLoader.load(getClass().getResource("/EditData/EditData.fxml"));

@@ -18,9 +18,9 @@ import javafx.stage.Stage;
 import sql.*;
 
 /**
+ * Main method to launch the recipe book application.
  * 
- * @author Malcolm
- * @author Collin
+ * @author Collin Williams, Malcolm Bailey
  */
 
 public class Main extends Application{

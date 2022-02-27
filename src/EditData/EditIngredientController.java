@@ -15,7 +15,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sql.SQLConnection;
 import sql.SQLIngredients;
-
+/**
+ * Controller class that enables the loading of fields for a selected ingredient
+ * and the consequent saving of those fields with updated values.
+ * @author Malcolm Bailey
+ *
+ */
 public class EditIngredientController {
 
 	private Parent root;

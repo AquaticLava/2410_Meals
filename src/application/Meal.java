@@ -1,8 +1,8 @@
 package application;
 
 /**
- * Class represent a meal with a name, id and recipe id.
- * @author Malcolm
+ * Meal class represents a meal with a name, id, photo file and recipe id.
+ * @author Malcolm Bailey
  *
  */
 

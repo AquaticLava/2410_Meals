@@ -4,7 +4,9 @@ import java.sql.Array;
 import java.util.ArrayList;
 
 /**
- * Represents a recipe.
+ * Class file that represents a recipe with a name, a set of instructions,
+ * cook time, prep time, a recipe description, a cost category, and a list of ingredients.
+ *
  *
  * @author Collin, Malcolm
  */

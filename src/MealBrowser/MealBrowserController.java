@@ -45,7 +45,7 @@ import sql.SQLRecipesIngredients;
 
 /**
  * Controller class for the meal browser, controls buttons and loads meal/recipe info.
- * @author Malcolm, Collin, and Eric
+ * @author Malcolm Bailey, Eric Rytting, Collin Williams
  *
  */
 public class MealBrowserController implements Initializable{

@@ -20,7 +20,7 @@ import java.sql.Statement;
  * Controller class for the add meal page, this will allow users to submit new
  * meals and take them back to the main menu.
  * 
- * @author Malcolm
+ * @author Malcolm Bailey
  *
  */
 public class AddRecipeController {

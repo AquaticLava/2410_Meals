@@ -12,9 +12,9 @@ import java.sql.SQLException;
  * For more information database structure documentation is located at:
  * <a href="http://www.ericrytting.com/DatabaseDocs/">Docs</a>
  *
- * @author Eric R
- * @author Malcolm
- * @author Collin
+ * @author Eric Rytting
+ * @author Malcolm Bailey
+ * @author Collin Williams
  */
 public class SQLRecipes {
 

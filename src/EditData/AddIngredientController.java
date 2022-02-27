@@ -22,7 +22,7 @@ import sql.SQLRecipes;
  * Controller class for the add meal page, this will allow users to submit new
  * meals and take them back to the main menu.
  * 
- * @author Malcolm
+ * @author Malcolm Bailey
  *
  */
 public class AddIngredientController {

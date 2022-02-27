@@ -20,6 +20,12 @@ import javafx.stage.Stage;
 import sql.SQLConnection;
 import sql.SQLRecipes;
 
+/**
+ * Controller for the edit recipe fxml window. Enables the loading of a selected recipe's fields
+ * and then the editing of them to the database.
+ * @author Malcolm Bailey
+ *
+ */
 public class EditRecipeController {
 
 	private Parent root;

@@ -10,7 +10,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.stage.Stage;
-
+/**
+ * Prototype class that will allow the user to create a shopping list in the future.
+ * @author Malcolm
+ *
+ */
 public class ShoppingListController {
 
 	private Parent root;
